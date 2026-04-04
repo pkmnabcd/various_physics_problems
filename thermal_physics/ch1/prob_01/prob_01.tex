@@ -51,10 +51,37 @@
 \maketitle
 \begin{flushleft}
 
+We're given a definition of the Fahrenheit temperature scale in terms of the Celsius scale.
+It's given by two points: the freezing point and the boiling point of water at sea level.
+In Celsius, the freezing point of water is 0\degree C.
+The freezing point of water in the Fahrenheit temperature scale is defined as 32\degree F.
+Based on this, we know that at least, the temperature if Fahrenheit, $T_F$ is defined as $T_F=T_C+32\degree$.
+However, we're also given that in Celsius, the boiling point of water is 100\degree C, whereas in Fahrenheit, it's 212\degree F.
+Clearly, we can't just do $T_F=T_C+112\degree$, since that contradicts our previous finding.
+Therefore, we can introduce a factor that multiplies with $T_C$.
+So, use the formula $T_F=aT_C+32\degree$.
+This doesn't contradict the freezing point definition since $T_F=a\cdot0+32\degree=32\degree$.
+So, we can use the definition of $T_F=212\degree$ and $T_C=100\degree$ at the boiling point to determine $a$.\\~\\
 
-In Celsius, the freezing point of water is 0\degree C
+$$T_F=aT_C+32\degree$$
+$$\implies 212\degree=(a\cdot100\degree)+32\degree$$
+$$\implies a\cdot100\degree=180\degree$$
+$$\implies a=\frac{180\degree}{100\degree}$$
+$$\implies a=\frac{9}{5}$$\\~\\
+
+Therefore, with $a$ determined, the formula for degrees Celsius to Fahrenheit is:
+$$T_F=\frac{9}{5}T_C+32\degree$$\\~\\
+
+The inverse of this (Fahrenheit to Celsius) can be found by solving for $T_C$ in the equation we found.
+$$T_F=\frac{9}{5}T_C+32\degree$$
+$$\implies \frac{9}{5}T_C=T_F-32\degree$$
+$$\implies T_C=(T_F-32\degree)\cdot\frac{5}{9}$$\\~\\
 
 
+Absolute zero in Celsius is defined as $-273.15\degree$ C. We can find it in Fahrenheit by plugging it into the first formula we found.
+$$T_F=\frac{9}{5}T_C+32\degree$$
+$$\implies T_F=\frac{9}{5}(-273.15\degree)+32\degree$$
+$$\implies T_F=-459.67\degree$$
 
 
 
