@@ -1,0 +1,4 @@
+# Ignore LaTeX compiler files and renderings.
+*.aux
+*.log
+*.pdf
