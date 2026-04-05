@@ -1,0 +1,91 @@
+\documentclass[12pt]{article}
+\usepackage{graphicx} % Required for inserting images
+\usepackage[margin=0.5in]{geometry}
+\usepackage{amsmath, amssymb}
+\usepackage{mathrsfs}
+
+
+\usepackage{soul}
+
+
+% Dr. David Brown Commands
+\newcommand{\ds}{\displaystyle}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\Q}{\mathbb{Q}}
+\newcommand{\C}{\mathbb{C}}
+
+
+% Commands to get script r
+\usepackage{calligra}
+\DeclareMathAlphabet{\mathcalligra}{T1}{calligra}{m}{n}
+\DeclareFontShape{T1}{calligra}{m}{n}{<->s*[2.2]callig15}{}
+\newcommand{\scripty}[1]{\ensuremath{\mathcalligra{#1}}}
+
+% Unit commands
+\newcommand{\degree}{\text{°}}
+\newcommand{\unitSpeed}{\frac{\text{m}}{\text{s}}}
+\newcommand{\unitAcceleration}{\frac{\text{m}}{\text{s}^2}}
+
+% Constant commands
+\newcommand{\avogadro}{6.022\times10^{23}}
+
+\newcommand{\boltzmannConstK}{1.381\times10^{-23}\frac{\text{J}}{\text{K}}}
+\newcommand{\planckConst}{6.626\times10^{-34}\text{J}\cdot\text{s}}
+
+\newcommand{\atmP}{1.01325\times10^5\,\text{Pa}}
+
+% Commands to easily write partial derivatives
+\newcommand{\partDeriv}[2]{\frac{\partial #1}{\partial #2}}
+\newcommand{\doublePartDeriv}[2]{\frac{\partial^2 #1}{\partial^2 #2}}
+
+
+\title{Problem 85}
+\author{Gabriel Decker}
+
+
+\begin{document}
+
+
+
+\maketitle
+\begin{flushleft}
+
+For this problem, we can consider just the 2nd half of a vertical jump, so only in the y direction.
+We consider only the force of gravity on the person jumping.
+This problem being a constant-force problem where someone would jump with some initial speed implies that the trajectory of the jump is the same going up as it is going down.
+Therefore, we can simplify our problem by just considering the top of the jump down to the floor.
+So consider $t_0=0$ as the time when the jumper is at rest in the vertical direction.
+It's at the height $y=h$.\\~\\
+
+We'll use the following equations.
+$$v=v_0+at$$
+$$y=y_0+v_0t+\frac{1}{2}at^2$$\\~\\
+
+At $t=0$, the top of the jump, $v_0=0$.
+The system is contant-acceleration under gravity, so $a=-g$.
+Therefore, the above equations become the following.
+
+$$v=-gt$$
+$$y=h-\frac{1}{2}gt^2$$\\~\\
+
+With this setup, we can find the time when the person hits the ground and when the person is halfway down ($y=\frac{1}{2}h)$) by plugging in those $y$ values and solving for $t$.
+First, $y=\frac{1}{2}h$.
+$$\frac{1}{2}h=h-\frac{1}{2}gt^2$$
+$$\implies \frac{1}{2}gt^2=\frac{1}{2}h$$
+$$\implies t^2=\frac{h}{g}$$
+$$\implies t=\sqrt{\frac{h}{g}}$$\\~\\
+
+Then, $y=0$.
+$$0=h-\frac{1}{2}gt^2$$
+$$\implies \frac{1}{2}gt^2=h$$
+$$\implies t^2=\frac{2h}{g}$$
+$$\implies t=\sqrt{\frac{2h}{g}}$$\\~\\
+
+The time for $y=0$ is the total time of the descent.
+We can determine the fraction of the time spent in the upper half of the trajectory by dividing the second from the first.
+$$\frac{\sqrt{h/g}}{\sqrt{2}\sqrt{h/g}}=\frac{1}{\sqrt{2}}\approx0.707=70.7\%$$
+
+\end{flushleft}
+
+\end{document}
