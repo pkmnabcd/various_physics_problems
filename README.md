@@ -8,4 +8,5 @@ I have written all of my solutions mainly in LaTeX, so to see a nice rendering o
 
 # Referenced Textbooks
 This repo contains solutions to problems from the following textbooks.
+* "Essential University Physics Fourth Edition Volume One" - Richard Wolfson
 * "An Introduction to Thermal Physics" - Daniel V. Schroeder

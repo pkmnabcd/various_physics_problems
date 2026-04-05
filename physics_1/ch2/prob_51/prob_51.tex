@@ -1,0 +1,72 @@
+\documentclass[12pt]{article}
+\usepackage{graphicx} % Required for inserting images
+\usepackage[margin=0.5in]{geometry}
+\usepackage{amsmath, amssymb}
+\usepackage{mathrsfs}
+
+
+\usepackage{soul}
+
+
+% Dr. David Brown Commands
+\newcommand{\ds}{\displaystyle}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\Q}{\mathbb{Q}}
+\newcommand{\C}{\mathbb{C}}
+
+
+% Commands to get script r
+\usepackage{calligra}
+\DeclareMathAlphabet{\mathcalligra}{T1}{calligra}{m}{n}
+\DeclareFontShape{T1}{calligra}{m}{n}{<->s*[2.2]callig15}{}
+\newcommand{\scripty}[1]{\ensuremath{\mathcalligra{#1}}}
+
+% Unit commands
+\newcommand{\degree}{\text{°}}
+\newcommand{\unitSpeed}{\frac{\text{m}}{\text{s}}}
+\newcommand{\unitAcceleration}{\frac{\text{m}}{\text{s}^2}}
+
+% Constant commands
+\newcommand{\avogadro}{6.022\times10^{23}}
+
+\newcommand{\boltzmannConstK}{1.381\times10^{-23}\frac{\text{J}}{\text{K}}}
+\newcommand{\planckConst}{6.626\times10^{-34}\text{J}\cdot\text{s}}
+
+\newcommand{\atmP}{1.01325\times10^5\,\text{Pa}}
+
+% Commands to easily write partial derivatives
+\newcommand{\partDeriv}[2]{\frac{\partial #1}{\partial #2}}
+\newcommand{\doublePartDeriv}[2]{\frac{\partial^2 #1}{\partial^2 #2}}
+
+
+\title{Problem 51}
+\author{Gabriel Decker}
+
+
+\begin{document}
+
+
+
+\maketitle
+\begin{flushleft}
+
+Say that your speed is $v_1=9.0\,\unitSpeed$. Since your speed is 20\% faster than your brother's speed $v_2$, this implies that $v_1=\frac{6}{5}v_2$ or $v_2=\frac{5}{6}v_1$.
+This implies that $v_2=7.5\,\unitSpeed$.\\~\\
+
+To determine how much time it takes to displace between two locations at a constant speed, use the equation
+$$v=\frac{\Delta x}{\Delta t}$$
+or
+$$\Delta t=\frac{\Delta x}{v}$$
+
+For us, $\Delta x=100\,\text{m}$.
+Therefore, $\Delta t_1=\frac{100}{9.0}\,\text{s}=11.1\,\text{s}$ and $\Delta t_2=\frac{100}{7.5}\,\text{s}=13.3\,\text{s}$.
+For both people to arrive at the same time, you need to know the difference between the amount of time it takes the two people to arrive.
+$\Delta t=t_2-t_1=2.2\,\text{s}$, you have to start running $2.2\,\text{s}$ after.
+
+
+
+
+\end{flushleft}
+
+\end{document}
