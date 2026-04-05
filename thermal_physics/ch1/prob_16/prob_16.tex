@@ -1,0 +1,103 @@
+\documentclass[12pt]{article}
+\usepackage{graphicx} % Required for inserting images
+\usepackage[margin=0.5in]{geometry}
+\usepackage{amsmath, amssymb}
+\usepackage{mathrsfs}
+
+
+\usepackage{soul}
+
+
+% Dr. David Brown Commands
+\newcommand{\ds}{\displaystyle}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\Q}{\mathbb{Q}}
+\newcommand{\C}{\mathbb{C}}
+
+
+% Commands to get script r
+\usepackage{calligra}
+\DeclareMathAlphabet{\mathcalligra}{T1}{calligra}{m}{n}
+\DeclareFontShape{T1}{calligra}{m}{n}{<->s*[2.2]callig15}{}
+\newcommand{\scripty}[1]{\ensuremath{\mathcalligra{#1}}}
+
+% Unit commands
+\newcommand{\degree}{\text{°}}
+\newcommand{\unitSpeed}{\frac{\text{m}}{\text{s}}}
+\newcommand{\unitAcceleration}{\frac{\text{m}}{\text{s}^2}}
+
+% Constant commands
+\newcommand{\avogadro}{6.022\times10^{23}}
+
+\newcommand{\boltzmannConstK}{1.381\times10^{-23}\frac{\text{J}}{\text{K}}}
+\newcommand{\planckConst}{6.626\times10^{-34}\text{J}\cdot\text{s}}
+
+\newcommand{\atmP}{1.01325\times10^5\,\text{Pa}}
+
+% Commands to easily write partial derivatives
+\newcommand{\partDeriv}[2]{\frac{\partial #1}{\partial #2}}
+\newcommand{\doublePartDeriv}[2]{\frac{\partial^2 #1}{\partial^2 #2}}
+
+
+\title{Problem 1.16}
+\author{Gabriel Decker}
+
+
+\begin{document}
+
+
+
+\maketitle
+\begin{flushleft}
+
+First, let's consider the forces on the horizontal slab of air.
+There are the forces from the weight above the slab, the force from the slab's weight, and the force pushing up from the air below the slab.
+The force from the slab's weight are pretty well understood.
+The others are not.
+Label the force from above $F_a$ and the force from below $F_b$.
+These are in the z-direction and point downward and upward, respectively.\\~\\
+
+Since the forces must cancel out for the system to be in equilibrium, this implies that
+$$-F_a-mg+F_b=0$$
+where here $m$ is the total mass of the slab.
+If our slab of air has a surface area $A$ and thickness $dz$, then the mass of the slab can be replaced with the following, given some density $\rho=m/Adz$.
+$$\implies -F_a-\rho Agdz+F_b=0$$
+Dividing the equation by $A$, we can define the equation in terms of the pressure from the top and bottom instead.
+$$\implies -P_a-\rho gdz+P_b=0$$\\~\\
+
+Since our slice has infinitesimal thickness, the difference between the pressure from the top and bottom should be infinitesimal.
+Therefore we can define $dP=P_a-P_b$ since increasing altitude is in the positive z direction.
+$$\implies dP=-\rho gdz$$
+Therefore, 
+$$\implies \frac{dP}{dz}=-\rho g$$\\~\\
+
+We must now get an expression of $\rho$ in terms of $T$, $P$ and the average mass of air $m$.
+We're going to now say that $m_T$ is the total mass of the slab.
+Recall that in general, $\rho=m/V$.
+By the ideal gas law, $V=\frac{NkT}{P}$, so this implies that in our case, $\rho=\frac{m_T}{NkT}P$.
+We have a problem with the $N$ being in there.
+The problem states that we want an average mass $m$.
+Say we have $N$ air molecules and a total mass of $m_T$.
+The average mass $m$ would then be $m=m_T/N$.
+Substituting this into our equation for $\rho$, we get
+$$\rho=\frac{m}{kT}P$$
+Plugging in this equation for $\rho$, we get the following differential equation.
+$$\implies \frac{dP}{dz}=-\frac{mg}{kT}P$$\\~\\
+
+Finally, I'll solve the differential equation.
+This one is pretty simple.
+It's clearly an exponential with $z$ as the variable because differentiating $P$ with respect to $z$ yields $P$ again with some constants in front. So,
+$$\implies P=P_0e^{-mgz/kt}$$\\~\\
+
+But, what is $P_0$?
+That is an arbitrary constant, but we can define it, based on some things we know.
+We know that at sea level ($z=0$), there is 1 atm of pressure, so define $P_0=P(0)$ as 1 atm (in whatever unit you like).
+$$\implies P=P(0)e^{-mgz/kt}$$\\~\\
+
+
+
+
+\end{flushleft}
+
+\end{document}
