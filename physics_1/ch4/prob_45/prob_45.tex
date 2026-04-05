@@ -1,0 +1,80 @@
+\documentclass[12pt]{article}
+\usepackage{graphicx} % Required for inserting images
+\usepackage[margin=0.5in]{geometry}
+\usepackage{amsmath, amssymb}
+\usepackage{mathrsfs}
+
+
+\usepackage{soul}
+
+
+% Dr. David Brown Commands
+\newcommand{\ds}{\displaystyle}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\Q}{\mathbb{Q}}
+\newcommand{\C}{\mathbb{C}}
+
+
+% Commands to get script r
+\usepackage{calligra}
+\DeclareMathAlphabet{\mathcalligra}{T1}{calligra}{m}{n}
+\DeclareFontShape{T1}{calligra}{m}{n}{<->s*[2.2]callig15}{}
+\newcommand{\scripty}[1]{\ensuremath{\mathcalligra{#1}}}
+
+% Unit commands
+\newcommand{\degree}{\text{°}}
+\newcommand{\unitSpeed}{\frac{\text{m}}{\text{s}}}
+\newcommand{\unitAcceleration}{\frac{\text{m}}{\text{s}^2}}
+
+% Constant commands
+\newcommand{\avogadro}{6.022\times10^{23}}
+
+\newcommand{\boltzmannConstK}{1.381\times10^{-23}\frac{\text{J}}{\text{K}}}
+\newcommand{\planckConst}{6.626\times10^{-34}\text{J}\cdot\text{s}}
+
+\newcommand{\atmP}{1.01325\times10^5\,\text{Pa}}
+
+% Commands to easily write partial derivatives
+\newcommand{\partDeriv}[2]{\frac{\partial #1}{\partial #2}}
+\newcommand{\doublePartDeriv}[2]{\frac{\partial^2 #1}{\partial^2 #2}}
+
+
+\title{Problem 45}
+\author{Gabriel Decker}
+
+
+\begin{document}
+
+
+
+\maketitle
+\begin{flushleft}
+
+
+
+Your apparent weight is less than your actual weight when you feel less force on you that normally counteracts the force of gravity.
+For example, in an elevator going up, you feel heavier when it begins accelerating upwards, and you feel lighter when it begins deaccelerating when it's near the top.
+So if you feel your apparent weight to be 70\% of the normal weight, then the plane must be accelerating downwards, putting less force on you.
+Say you have a mass $m$. When the plane is moving normally (not varying in the y-direction), the net force in the y-direction is zero.
+The force of gravity $\vec{F}_g$ and the normal force $\vec{F}_n$ cancel out, so
+$$\vec{F}_g+\vec{F}_n=m\vec{a}=0$$
+Since $\vec{F}_g=-mg\hat{y}$, this implies that $\vec{F}_n=mg\hat{y}$.\\~\\
+
+However, in this case, you feel 70\% of your apparent weight, so this implies that 30\% of the regular normal force is missing, so $\vec{F}_n=\frac{7}{10}mg\hat{y}$.
+Note that now, the forces don't cancel out, so you (and the plane) must be accelerating.
+We can use Newton's 2nd again to find how much we're accelerating in the y-direction.
+$$\vec{F}_g+\vec{F}_n=m\vec{a}$$
+$$\implies-mg\hat{y}+\frac{7}{10}mg\hat{y}=m\vec{a}$$
+$$\implies\vec{a}=-\frac{3}{10}g\hat{y}$$\\~\\
+
+The negative shows that we're accelerating downward.
+Since we're dealing with one component, the magnitude is simply
+$$a=\frac{3}{10}g=2.94\,\text{m/s}^2$$
+
+
+
+
+\end{flushleft}
+
+\end{document}
