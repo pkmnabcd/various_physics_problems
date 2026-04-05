@@ -1,0 +1,78 @@
+\documentclass[12pt]{article}
+\usepackage{graphicx} % Required for inserting images
+\usepackage[margin=0.5in]{geometry}
+\usepackage{amsmath, amssymb}
+\usepackage{mathrsfs}
+
+
+\usepackage{soul}
+
+
+% Dr. David Brown Commands
+\newcommand{\ds}{\displaystyle}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\Q}{\mathbb{Q}}
+\newcommand{\C}{\mathbb{C}}
+
+
+% Commands to get script r
+\usepackage{calligra}
+\DeclareMathAlphabet{\mathcalligra}{T1}{calligra}{m}{n}
+\DeclareFontShape{T1}{calligra}{m}{n}{<->s*[2.2]callig15}{}
+\newcommand{\scripty}[1]{\ensuremath{\mathcalligra{#1}}}
+
+% Unit commands
+\newcommand{\degree}{\text{°}}
+\newcommand{\unitSpeed}{\frac{\text{m}}{\text{s}}}
+\newcommand{\unitAcceleration}{\frac{\text{m}}{\text{s}^2}}
+
+% Constant commands
+\newcommand{\avogadro}{6.022\times10^{23}}
+
+\newcommand{\boltzmannConstK}{1.381\times10^{-23}\frac{\text{J}}{\text{K}}}
+\newcommand{\planckConst}{6.626\times10^{-34}\text{J}\cdot\text{s}}
+
+\newcommand{\atmP}{1.01325\times10^5\,\text{Pa}}
+
+% Commands to easily write partial derivatives
+\newcommand{\partDeriv}[2]{\frac{\partial #1}{\partial #2}}
+\newcommand{\doublePartDeriv}[2]{\frac{\partial^2 #1}{\partial^2 #2}}
+
+
+\title{Problem 1.20}
+\author{Gabriel Decker}
+
+
+\begin{document}
+
+
+
+\maketitle
+\begin{flushleft}
+
+For this problem, we need the following formula.
+\begin{equation}
+    v_\text{rms}=\sqrt{\frac{3kT}{m}}
+\end{equation}
+This is the root-mean-squared speed of an ideal gas.
+The atomic mass of Fluorine is 18.998 amu.
+By the conversion factor of $1\,\text{amu}=1.6605\times10^{-27}\,\text{kg}$, this implies that the mass of a Fluroine atom is $m_F=3.155\times10^{-26}\,\text{kg}$.
+This makes the mass of six Fluorine atoms (some mass will be lost when they bond, but assume that's negligible) $m_{F6}=1.893\times10^{-25}\,\text{kg}$.
+The atomic weight of Uranium-238 is about 238 amu or $m_{U238}=3.952\times10^{-25}\,\text{kg}$.
+The atomic weight of Uranium-235 is about 235 amu or $m_{U238}=3.902\times10^{-25}\,\text{kg}$.\\~\\
+
+Therefore, the atomic weights of the two molecules are about $m_1=5.8449\times10^{-25}\,\text{kg}$ for Uranium-238 and $m_2=5.7951\times10^{-25}\,\text{kg}$ for Uranium-235.
+Since room temp is about $T=300\,\text{K}$, this implies that
+$$v_\text{1 rms}=\sqrt{\frac{3\cdot(\boltzmannConstK)\cdot(300\,\text{K})}{5.8449\times10^{-25}\,\text{kg}}}$$
+$$\implies v_\text{1 rms}=145.82\,\unitSpeed$$
+and
+$$v_\text{2 rms}=\sqrt{\frac{3\cdot(\boltzmannConstK)\cdot(300\,\text{K})}{5.7951\times10^{-25}\,\text{kg}}}$$
+$$\implies v_\text{2 rms}=146.45\,\unitSpeed$$
+
+
+
+
+\end{flushleft}
+
+\end{document}
