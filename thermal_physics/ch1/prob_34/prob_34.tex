@@ -1,0 +1,170 @@
+\documentclass[12pt]{article}
+\usepackage{graphicx} % Required for inserting images
+\usepackage[margin=0.5in]{geometry}
+\usepackage{amsmath, amssymb}
+\usepackage{mathrsfs}
+
+
+\usepackage{soul}
+
+
+% Dr. David Brown Commands
+\newcommand{\ds}{\displaystyle}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\Q}{\mathbb{Q}}
+\newcommand{\C}{\mathbb{C}}
+
+
+% Commands to get script r
+\usepackage{calligra}
+\DeclareMathAlphabet{\mathcalligra}{T1}{calligra}{m}{n}
+\DeclareFontShape{T1}{calligra}{m}{n}{<->s*[2.2]callig15}{}
+\newcommand{\scripty}[1]{\ensuremath{\mathcalligra{#1}}}
+
+% Unit commands
+\newcommand{\degree}{\text{°}}
+\newcommand{\unitSpeed}{\frac{\text{m}}{\text{s}}}
+\newcommand{\unitAcceleration}{\frac{\text{m}}{\text{s}^2}}
+
+% Constant commands
+\newcommand{\avogadro}{6.022\times10^{23}}
+
+\newcommand{\boltzmannConstK}{1.381\times10^{-23}\frac{\text{J}}{\text{K}}}
+\newcommand{\planckConst}{6.626\times10^{-34}\text{J}\cdot\text{s}}
+
+\newcommand{\atmP}{1.01325\times10^5\,\text{Pa}}
+
+% Commands to easily write partial derivatives
+\newcommand{\partDeriv}[2]{\frac{\partial #1}{\partial #2}}
+\newcommand{\doublePartDeriv}[2]{\frac{\partial^2 #1}{\partial^2 #2}}
+
+
+\title{Problem 1.34}
+\author{Gabriel Decker}
+
+
+\begin{document}
+
+
+
+\maketitle
+\begin{flushleft}
+
+Note that it seems like in my version of the textbook, processes C and D are swapped from what you'd expect. I'm going off of what the book actually says, not what you'd expect.\\~\\
+
+For this problem, we have a diatomic gas.
+At room temp, the vibrational degrees of freedom are frozen out, so use $f=5$ degrees of freedom (3 translational, 2 rotational).\\~\\
+
+We'll need the following equations.
+    First the equipartition theorem (used with $f=5$ as discussed):
+\begin{equation}
+    U_\text{thermal}=\frac{1}{2}NfkT
+\end{equation}
+then the equation of work done on quasistatic compression-work-relevant systems in terms of $P$ and $V$:
+\begin{equation}
+    W=-\int_{V_i}^{V_f}P(V)\,dV
+\end{equation}
+then the first law of thermodynamics:
+\begin{equation}
+    \Delta U=W+Q
+\end{equation}
+and finally the following version of the ideal gas law.
+\begin{equation}
+    PV=NkT
+\end{equation}\\~\\
+
+We can combine the equipartition thm and ideal gas law to get an equation for our thermal energy that is more useful to us.
+$$U_\text{thermal}=\frac{5}{2}PV$$
+When we change the volume or pressure, this will cause $U_\text{thermal}$ to change.
+So, we use the following equations to calculate this change, depending on the situation.
+$$\Delta U_\text{thermal}=\frac{5}{2}\Delta PV$$
+$$\Delta U_\text{thermal}=\frac{5}{2}P\Delta V$$\\~\\
+
+\textbf{Part a}\\
+We'll run through all the steps A-D. We'll start by finding $W$.
+Then we'll use the equipartition thm to find $\Delta U$.
+Finally, we'll calculate $Q$.\\~\\
+
+\textit{Process A:}\\
+In step A, we are at a constant volume $V_1$ and are increasing the pressure from $P_1$ to $P_2$.
+This means that $\Delta V=0$ and $\Delta P=P_2-P_1$.
+Since $V_i=V_f$, this implies that $\ds W=-\int_{V_1}^{V_1}P\,dV=0$.
+Thus, $\Delta U=Q$.
+By our previously derived versions of $\Delta U$, this implies that
+$$\Delta U_\text{thermal}=\frac{5}{2}\Delta PV$$
+$$\implies\Delta U_\text{thermal}=\frac{5}{2}(P_2-P_1)V_1$$
+Since $\Delta U=Q$,
+$$\implies Q=\frac{5}{2}(P_2-P_1)V_1$$\\~\\
+
+\textit{Process B:}\\
+In step B, we are at a constant pressure $P_2$ and are increasing the volume from $V_1$ to $V_2$.
+This means that $\Delta P=0$ and $\Delta V=V_2-V_1$.
+Plugging in what we have into the equation for $W$, we get the following.
+$$W=-\int_{V_i}^{V_f}P(V)\,dV$$
+$$\implies W=-\int_{V_1}^{V_2}P_2\,dV$$
+$$\implies W=-P_2(V_2-V_1)$$
+By our previously derived versions of $\Delta U$, this implies that
+$$\Delta U_\text{thermal}=\frac{5}{2}P\Delta V$$
+$$\implies\Delta U_\text{thermal}=\frac{5}{2}P_2(V_2-V_1)$$
+Since $\Delta U=W+Q$,
+$$\implies Q=\Delta U-W$$
+$$\implies Q=\frac{5}{2}P_2(V_2-V_1)+P_2(V_2-V_1)$$
+$$\implies Q=\frac{7}{2}P_2(V_2-V_1)$$\\~\\
+
+\textit{Process C:}\\
+In step C, we are at a constant pressure $P_1$ and are decreasing the volume from $V_2$ to $V_1$.
+This means that $\Delta P=0$ and $\Delta V=-(V_2-V_1)$.
+Plugging in what we have into the equation for $W$, we get the following.
+$$W=-\int_{V_i}^{V_f}P(V)\,dV$$
+$$\implies W=-\int_{V_2}^{V_1}P_1\,dV$$
+$$\implies W=-P_1(V_1-V_2)$$
+$$\implies W=P_1(V_2-V_1)$$
+By our previously derived versions of $\Delta U$, this implies that
+$$\Delta U_\text{thermal}=\frac{5}{2}P\Delta V$$
+$$\implies\Delta U_\text{thermal}=-\frac{5}{2}P_1(V_2-V_1)$$
+Since $\Delta U=W+Q$,
+$$\implies Q=\Delta U-W$$
+$$\implies Q=-\frac{5}{2}P_1(V_2-V_1)-P_1(V_2-V_1)$$
+$$\implies Q=-\frac{7}{2}P_1(V_2-V_1)$$\\~\\
+
+\textit{Process D:}\\
+In step D, we are at a constant volume $V_2$ and are decreasing the pressure from $P_2$ to $P_1$.
+This means that $\Delta V=0$ and $\Delta P=-(P_2-P_1)$.
+Since $V_i=V_f$, this implies that $\ds W=-\int_{V_2}^{V_2}P\,dV=0$.
+Thus, $\Delta U=Q$.
+By our previously derived versions of $\Delta U$, this implies that
+$$\Delta U_\text{thermal}=\frac{5}{2}\Delta PV$$
+$$\implies\Delta U_\text{thermal}=-\frac{5}{2}(P_2-P_1)V_2$$
+Since $\Delta U=Q$,
+$$\implies Q=-\frac{5}{2}(P_2-P_1)V_2$$\\~\\~\\
+
+
+\textbf{Part b}\\
+In process A, no work is done (no piston compression or expansion), but the gas inside is being heated.
+In process B, work is being done to the piston to expand the volume. The gas is being heated.
+In process C, work is being done by the piston to constrict the volume. The gas is being cooled.
+In process D, no work is done (no piston compression or expansion), but the gas inside is being cooled.\\~\\~\\
+
+
+\textbf{Part c}\\
+The net work, heat, and change in energy is just the sum of the previously computed values.
+$$W_\text{tot}=0-P_2(V_2-V_1)+P_1(V_2-V_1)+0=-(P_2-P_1)(V_2-V_1)$$
+$$Q_\text{tot}=\frac{5}{2}(P_2-P_1)V_1+\frac{7}{2}P_2(V_2-V_1)-\frac{7}{2}P_1(V_2-V_1)-\frac{5}{2}(P_2-P_1)V_2$$
+$$\implies Q_\text{tot}=\frac{7}{2}(P_2-P_1)(V_2-V_1)-\frac{5}{2}(P_2-P_1)(V_2-V_1)$$
+$$\implies Q_\text{tot}=(P_2-P_1)(V_2-V_1)=-W_\text{tot}$$
+$$\Delta U_\text{tot}=\frac{5}{2}(P_2-P_1)V_1+\frac{5}{2}P_2(V_2-V_1)-\frac{5}{2}P_1(V_2-V_1)-\frac{5}{2}(P_2-P_1)V_2$$
+$$\implies\Delta U_\text{tot}=-\frac{5}{2}(P_2-P_1)(V_2-V_1)+\frac{5}{2}(P_2-P_1)(V_2-V_1)=0$$\\~\\
+
+Throughout this cycle, the net work done on the gas is negative.
+So, the gas is doing work on the piston.
+The net heat applied to the system is positive, so you're heating the gas, on average.
+The net change in energy is zero, which also makes it so the fact that $W=-Q$ in this case make sense.
+
+
+
+
+
+\end{flushleft}
+
+\end{document}
