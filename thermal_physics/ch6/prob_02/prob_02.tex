@@ -1,0 +1,80 @@
+\documentclass[12pt]{article}
+\usepackage{graphicx} % Required for inserting images
+\usepackage[margin=0.5in]{geometry}
+\usepackage{amsmath, amssymb}
+\usepackage{mathrsfs}
+
+
+\usepackage{soul}
+
+
+% Dr. David Brown Commands
+\newcommand{\ds}{\displaystyle}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\Q}{\mathbb{Q}}
+\newcommand{\C}{\mathbb{C}}
+
+
+% Commands to get script r
+\usepackage{calligra}
+\DeclareMathAlphabet{\mathcalligra}{T1}{calligra}{m}{n}
+\DeclareFontShape{T1}{calligra}{m}{n}{<->s*[2.2]callig15}{}
+\newcommand{\scripty}[1]{\ensuremath{\mathcalligra{#1}}}
+
+% Unit commands
+\newcommand{\degree}{\text{°}}
+\newcommand{\unitSpeed}{\frac{\text{m}}{\text{s}}}
+\newcommand{\unitAcceleration}{\frac{\text{m}}{\text{s}^2}}
+
+% Constant commands
+\newcommand{\avogadro}{6.022\times10^{23}}
+
+\newcommand{\boltzmannConstK}{1.381\times10^{-23}\frac{\text{J}}{\text{K}}}
+\newcommand{\planckConst}{6.626\times10^{-34}\text{J}\cdot\text{s}}
+
+\newcommand{\atmP}{1.01325\times10^5\,\text{Pa}}
+
+% Commands to easily write partial derivatives
+\newcommand{\partDeriv}[2]{\frac{\partial #1}{\partial #2}}
+\newcommand{\doublePartDeriv}[2]{\frac{\partial^2 #1}{\partial^2 #2}}
+
+
+\title{Problem 6.2}
+\author{Gabriel Decker}
+
+
+\begin{document}
+
+
+
+\maketitle
+\begin{flushleft}
+
+We begin by recalling that a fundamental assumption of statistical mechanics is that degenerate microstates are equally likely.
+So, for a given energy $E(s)$, if there are $n$ microstates within that macrostate and the probability of each microstate has probabilty $\mathcal{P}(s)$, then the probability of the atom having energy $E$ is $\mathcal{P}(E)=n\mathcal{P}(s)$.\\~\\
+
+From the 2nd law of thermodynamics, we know that entropy of a system's state $S=k\ln(\Omega)$, where $\Omega$ is the multiplicity of the particular state.
+Here, $n$ is the multiplicity, so we can replace $\Omega$ with $n$ and solve for $n$ so that we can plug in that expression into what we found above.\\~\\
+
+$$S=k\ln(n)$$
+$$\implies \frac{S}{k}=\ln(n)$$
+$$\implies e^{(S/k)}=n$$\\~\\
+
+So, this implies that
+$$\mathcal{P}(E)=n\mathcal{P}(s)=e^{(S/k)}\mathcal{P}(s)$$
+We also know that the probability of a microstate is according to the Boltzmann distribution:
+$$\mathcal{P}(s)=\frac{1}{Z}e^{-E(s)/kT}$$
+Plugging this into our equation for $\mathcal{P}(E)$, we get
+$$\implies\mathcal{P}(E)=e^{(S/k)}\frac{1}{Z}e^{-E/kT}$$
+$$\implies\mathcal{P}(E)=\frac{1}{Z}e^{(S/k)-E/kT}$$
+$$\implies\mathcal{P}(E)=\frac{1}{Z}e^{-(E-TS)/kT}$$
+Substituting $F=E-TS$, this gives the final result:
+$$\implies\mathcal{P}(E)=\frac{1}{Z}e^{-F/kT}$$
+
+
+
+
+\end{flushleft}
+
+\end{document}
