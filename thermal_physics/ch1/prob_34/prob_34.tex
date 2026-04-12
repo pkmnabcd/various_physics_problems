@@ -51,8 +51,6 @@
 \maketitle
 \begin{flushleft}
 
-Note that it seems like in my version of the textbook, processes C and D are swapped from what you'd expect. I'm going off of what the book actually says, not what you'd expect.\\~\\
-
 For this problem, we have a diatomic gas.
 At room temp, the vibrational degrees of freedom are frozen out, so use $f=5$ degrees of freedom (3 translational, 2 rotational).\\~\\
 
@@ -113,7 +111,18 @@ $$\implies Q=\frac{5}{2}P_2(V_2-V_1)+P_2(V_2-V_1)$$
 $$\implies Q=\frac{7}{2}P_2(V_2-V_1)$$\\~\\
 
 \textit{Process C:}\\
-In step C, we are at a constant pressure $P_1$ and are decreasing the volume from $V_2$ to $V_1$.
+In step C, we are at a constant volume $V_2$ and are decreasing the pressure from $P_2$ to $P_1$.
+This means that $\Delta V=0$ and $\Delta P=-(P_2-P_1)$.
+Since $V_i=V_f$, this implies that $\ds W=-\int_{V_2}^{V_2}P\,dV=0$.
+Thus, $\Delta U=Q$.
+By our previously derived versions of $\Delta U$, this implies that
+$$\Delta U_\text{thermal}=\frac{5}{2}\Delta PV$$
+$$\implies\Delta U_\text{thermal}=-\frac{5}{2}(P_2-P_1)V_2$$
+Since $\Delta U=Q$,
+$$\implies Q=-\frac{5}{2}(P_2-P_1)V_2$$\\~\\~\\
+
+\textit{Process D:}\\
+In step D, we are at a constant pressure $P_1$ and are decreasing the volume from $V_2$ to $V_1$.
 This means that $\Delta P=0$ and $\Delta V=-(V_2-V_1)$.
 Plugging in what we have into the equation for $W$, we get the following.
 $$W=-\int_{V_i}^{V_f}P(V)\,dV$$
@@ -128,23 +137,13 @@ $$\implies Q=\Delta U-W$$
 $$\implies Q=-\frac{5}{2}P_1(V_2-V_1)-P_1(V_2-V_1)$$
 $$\implies Q=-\frac{7}{2}P_1(V_2-V_1)$$\\~\\
 
-\textit{Process D:}\\
-In step D, we are at a constant volume $V_2$ and are decreasing the pressure from $P_2$ to $P_1$.
-This means that $\Delta V=0$ and $\Delta P=-(P_2-P_1)$.
-Since $V_i=V_f$, this implies that $\ds W=-\int_{V_2}^{V_2}P\,dV=0$.
-Thus, $\Delta U=Q$.
-By our previously derived versions of $\Delta U$, this implies that
-$$\Delta U_\text{thermal}=\frac{5}{2}\Delta PV$$
-$$\implies\Delta U_\text{thermal}=-\frac{5}{2}(P_2-P_1)V_2$$
-Since $\Delta U=Q$,
-$$\implies Q=-\frac{5}{2}(P_2-P_1)V_2$$\\~\\~\\
 
 
 \textbf{Part b}\\
 In process A, no work is done (no piston compression or expansion), but the gas inside is being heated.
 In process B, work is being done to the piston to expand the volume. The gas is being heated.
-In process C, work is being done by the piston to constrict the volume. The gas is being cooled.
-In process D, no work is done (no piston compression or expansion), but the gas inside is being cooled.\\~\\~\\
+In process C, no work is done (no piston compression or expansion), but the gas inside is being cooled.
+In process D, work is being done by the piston to constrict the volume. The gas is being cooled.\\~\\~\\
 
 
 \textbf{Part c}\\
