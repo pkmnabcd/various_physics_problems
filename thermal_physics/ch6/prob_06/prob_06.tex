@@ -1,0 +1,102 @@
+\documentclass[12pt]{article}
+\usepackage{graphicx} % Required for inserting images
+\usepackage[margin=0.5in]{geometry}
+\usepackage{amsmath, amssymb}
+\usepackage{mathrsfs}
+
+
+\usepackage{soul}
+
+
+% Dr. David Brown Commands
+\newcommand{\ds}{\displaystyle}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\Q}{\mathbb{Q}}
+\newcommand{\C}{\mathbb{C}}
+
+
+% Commands to get script r
+\usepackage{calligra}
+\DeclareMathAlphabet{\mathcalligra}{T1}{calligra}{m}{n}
+\DeclareFontShape{T1}{calligra}{m}{n}{<->s*[2.2]callig15}{}
+\newcommand{\scripty}[1]{\ensuremath{\mathcalligra{#1}}}
+
+% Unit commands
+\newcommand{\degree}{\text{°}}
+\newcommand{\unitSpeed}{\frac{\text{m}}{\text{s}}}
+\newcommand{\unitAcceleration}{\frac{\text{m}}{\text{s}^2}}
+
+% Constant commands
+\newcommand{\avogadro}{6.022\times10^{23}}
+
+\newcommand{\boltzmannConstK}{1.381\times10^{-23}\frac{\text{J}}{\text{K}}}
+\newcommand{\planckConst}{6.626\times10^{-34}\text{J}\cdot\text{s}}
+
+\newcommand{\atmP}{1.01325\times10^5\,\text{Pa}}
+
+% Commands to easily write partial derivatives
+\newcommand{\partDeriv}[2]{\frac{\partial #1}{\partial #2}}
+\newcommand{\doublePartDeriv}[2]{\frac{\partial^2 #1}{\partial^2 #2}}
+
+
+\title{Problem 6.6}
+\author{Gabriel Decker}
+
+
+\begin{document}
+
+
+
+\maketitle
+\begin{flushleft}
+
+
+
+Recall the following equations.\\~\\
+
+First, the equation for the probability for a particular state is
+\begin{equation}
+    \mathcal{P}(s)=\frac{1}{Z}e^{-E(s)/kT}
+\end{equation}
+where $Z$ is the following.
+\begin{equation}
+    Z=\sum_se^{-E(s)/kT}
+\end{equation}\\~\\
+
+So first, we'll have to find $Z$ before we can find any probabilities.
+The first couple of energy levels are the following for a Hydrogen atom:
+$E_1=-13.6\,\text{eV}$, $E_2=-3.4\,\text{eV}$, $E_3=-1.5\,\text{eV}$.
+The ground state $n=1$ has multiplicity of 1. The $n=2$ state has multiplicity of 4. The $n=3$ state has multiplicity of 9.\\~\\
+
+Before plugging into the equation for $Z$, let's find $k$ in $\text{eV/K}$.
+$$k=\boltzmannConstK\cdot\frac{6.242\times10^{18}\,\text{eV}}{1\,\text{J}}=8.6202\times10^{-5}$$\\~\\
+
+We can start calculating $Z$ by using the first three energy levels.
+$$Z\approx e^{13.6\,\text{eV}/(8.6202\times10^{-5}\cdot T)} + 4e^{3.4\,\text{eV}/(8.6202\times10^{-5}\cdot T)} + 9e^{1.5\,\text{eV}/(8.6202\times10^{-5}\cdot T)}$$
+For room temp $T=300\,\text{K}$, this becomes
+$$\implies Z\approx e^{525.897}+4e^{131.474}+9e^{58.003}$$
+Clearly, the first term (the ground state's term) dominates $Z$, so approximate $Z$ as
+$$\implies Z\approx e^{-E_1/kT}$$\\~\\
+
+Now that we have an approximation for the partition function $Z$, we can plug it into the equation for the probability that the atom is in the first excited state ($E_2=-3.4\,\text{eV}$). Recall that this state as multiplicity 4.
+$$\mathcal{P}(E_2)=4\frac{e^{-E_2/kT}}{e^{-E_1/kT}}$$
+$$\implies\mathcal{P}(E_2)=4e^{-(E_2-E_1)/kT}$$
+$$\implies\mathcal{P}(E_2)=4e^{-(10.2\,\text{eV})/kT}$$\\~\\
+
+For $T=300\,\text{K}$,
+$$\implies\mathcal{P}(E_2)=4e^{-(10.2)/(8.6202\times10^{-5}\cdot 300)}$$
+$$\implies\mathcal{P}(E_2)=4e^{-394.4}$$
+$$\implies\mathcal{P}(E_2)\approx 0$$
+So there is essentially zero chance of finding a Hydrogen atom in its first excited state at room temperature.\\~\\
+
+For $T=9500\,\text{K}$,
+$$\implies\mathcal{P}(E_2)=4e^{-(10.2)/(8.6202\times10^{-5}\cdot 9500)}$$
+$$\implies\mathcal{P}(E_2)=4e^{-12.46}$$
+$$\implies\mathcal{P}(E_2)=0.0000156$$
+So the chance of finding a Hydrogen atom in its first excited state is much higher at the surface of $\gamma$ UMa.\\~\\
+
+
+\end{flushleft}
+
+\end{document}
