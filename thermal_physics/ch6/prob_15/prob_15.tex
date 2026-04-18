@@ -1,0 +1,102 @@
+\documentclass[12pt]{article}
+\usepackage{graphicx} % Required for inserting images
+\usepackage[margin=0.5in]{geometry}
+\usepackage{amsmath, amssymb}
+\usepackage{mathrsfs}
+
+
+\usepackage{soul}
+
+
+% Dr. David Brown Commands
+\newcommand{\ds}{\displaystyle}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\Q}{\mathbb{Q}}
+\newcommand{\C}{\mathbb{C}}
+
+
+% Commands to get script r
+\usepackage{calligra}
+\DeclareMathAlphabet{\mathcalligra}{T1}{calligra}{m}{n}
+\DeclareFontShape{T1}{calligra}{m}{n}{<->s*[2.2]callig15}{}
+\newcommand{\scripty}[1]{\ensuremath{\mathcalligra{#1}}}
+
+% Unit commands
+\newcommand{\degree}{\text{°}}
+\newcommand{\unitSpeed}{\frac{\text{m}}{\text{s}}}
+\newcommand{\unitAcceleration}{\frac{\text{m}}{\text{s}^2}}
+
+% Constant commands
+\newcommand{\avogadro}{6.022\times10^{23}}
+
+\newcommand{\boltzmannConstK}{1.381\times10^{-23}\frac{\text{J}}{\text{K}}}
+\newcommand{\boltzmannConstInEV}{8.617\times10^{-5}\frac{\text{eV}}{\text{K}}}
+\newcommand{\planckConst}{6.626\times10^{-34}\text{J}\cdot\text{s}}
+
+\newcommand{\atmP}{1.01325\times10^5\,\text{Pa}}
+
+% Commands to easily write partial derivatives
+\newcommand{\partDeriv}[2]{\frac{\partial #1}{\partial #2}}
+\newcommand{\doublePartDeriv}[2]{\frac{\partial^2 #1}{\partial^2 #2}}
+
+
+\title{Problem 6.15}
+\author{Gabriel Decker}
+
+
+\begin{document}
+
+
+
+\maketitle
+\begin{flushleft}
+
+I will compute the average energy of 10 atoms with the following energy distribution in two ways.
+$0\,\text{eV}$ has 4 atoms.
+$1\,\text{eV}$ has 3 atoms.
+$4\,\text{eV}$ has 2 atoms.
+$6\,\text{eV}$ has 1 atoms.\\~\\
+
+
+\textbf{Part a:}\\
+$$\overline{E}=\frac{4\cdot0\,\text{eV}+3\cdot1\,\text{eV}+2\cdot4\,\text{eV}+1\cdot6\,\text{eV}}{10}$$
+$$\implies\overline{E}=\frac{3\,\text{eV}+8\,\text{eV}+6\,\text{eV}}{10}$$
+$$\implies\overline{E}=\frac{17}{10}\,\text{eV}$$\\~\\
+
+
+
+
+\textbf{Part b:}\\
+The probabilities for each energy level is simply the multiplicity for each energy level. Therefore
+\begin{table}[h]
+    \centering
+    \begin{tabular}{c|c}
+        Energy Level (eV) & Probability\\
+        \hline
+        $0\,\text{eV}$ & $\frac{4}{10}$\\
+        $1\,\text{eV}$ & $\frac{3}{10}$\\
+        $4\,\text{eV}$ & $\frac{2}{10}$\\
+        $6\,\text{eV}$ & $\frac{1}{10}$\\
+    \end{tabular}
+\end{table}\\~\\
+
+
+
+\textbf{Part c:}\\
+Using the following equation, we can calculate the average energy.
+\begin{equation}
+    \overline{E}=\sum_sE(s)\mathcal{P}(s)
+\end{equation}
+
+Plugging in our results from part b, we get the following.
+$$\overline{E}=\left(0\cdot\frac{4}{10}+1\cdot\frac{3}{10}+4\cdot\frac{2}{10}+6\cdot\frac{1}{10}\right)\,\text{eV}$$
+$$\implies\overline{E}=\left(\frac{3}{10}+\frac{8}{10}+\frac{6}{10}\right)\,\text{eV}$$
+$$\implies\overline{E}=\frac{17}{10}\,\text{eV}$$\\~\\
+
+Note that this is the same as in part a!
+
+
+\end{flushleft}
+
+\end{document}
