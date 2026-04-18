@@ -1,0 +1,80 @@
+\documentclass[12pt]{article}
+\usepackage{graphicx} % Required for inserting images
+\usepackage[margin=0.5in]{geometry}
+\usepackage{amsmath, amssymb}
+\usepackage{mathrsfs}
+
+
+\usepackage{soul}
+
+
+% Dr. David Brown Commands
+\newcommand{\ds}{\displaystyle}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\Q}{\mathbb{Q}}
+\newcommand{\C}{\mathbb{C}}
+
+
+% Commands to get script r
+\usepackage{calligra}
+\DeclareMathAlphabet{\mathcalligra}{T1}{calligra}{m}{n}
+\DeclareFontShape{T1}{calligra}{m}{n}{<->s*[2.2]callig15}{}
+\newcommand{\scripty}[1]{\ensuremath{\mathcalligra{#1}}}
+
+% Unit commands
+\newcommand{\degree}{\text{°}}
+\newcommand{\unitSpeed}{\frac{\text{m}}{\text{s}}}
+\newcommand{\unitAcceleration}{\frac{\text{m}}{\text{s}^2}}
+
+% Constant commands
+\newcommand{\avogadro}{6.022\times10^{23}}
+
+\newcommand{\boltzmannConstK}{1.381\times10^{-23}\frac{\text{J}}{\text{K}}}
+\newcommand{\boltzmannConstInEV}{8.617\times10^{-5}\frac{\text{eV}}{\text{K}}}
+\newcommand{\planckConst}{6.626\times10^{-34}\text{J}\cdot\text{s}}
+
+\newcommand{\atmP}{1.01325\times10^5\,\text{Pa}}
+
+% Commands to easily write partial derivatives
+\newcommand{\partDeriv}[2]{\frac{\partial #1}{\partial #2}}
+\newcommand{\doublePartDeriv}[2]{\frac{\partial^2 #1}{\partial^2 #2}}
+
+
+\title{Problem 6.16}
+\author{Gabriel Decker}
+
+
+\begin{document}
+
+
+
+\maketitle
+\begin{flushleft}
+
+Starting off, we know the following definition of $\overline{E}$ and $Z$.
+
+\begin{equation}
+    \overline{E}=\frac{1}{Z}\sum_sE(s)e^{-\beta E(s)}
+\end{equation}
+\begin{equation}
+    Z=\sum_se^{-\beta E(s)}
+\end{equation}
+where $\beta=1/kT$.\\~\\
+
+We'll start with the $Z$ equation and take the derivative $\partDeriv{}{\beta}$.
+$$\partDeriv{Z}{\beta}=\partDeriv{}{\beta}\left(\sum_se^{-\beta E(s)}\right)$$
+This derivative passes through to each individual term in the summation. Each one will bring its respective $E(s)$ up front, along with a negative sign. This yields a new summation:
+$$\implies\partDeriv{Z}{\beta}=-\sum_sE(s)e^{-\beta E(s)}$$
+This looks like the above definition for $\overline{E}$, but it's missing a few elements.
+$$\implies-\frac{1}{Z}\partDeriv{Z}{\beta}=\frac{1}{Z}\sum_sE(s)e^{-\beta E(s)}$$
+Now, this is the definition of $\overline{E}$. Therefore
+$$\implies\overline{E}=-\frac{1}{Z}\partDeriv{Z}{\beta}$$
+This expression can be simplified by remembering the derivative of $\ln(x)$ and the chain theorem.
+$$\implies\overline{E}=-\partDeriv{}{\beta}\ln(Z)$$
+
+
+
+\end{flushleft}
+
+\end{document}
