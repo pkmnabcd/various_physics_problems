@@ -1,0 +1,76 @@
+\documentclass[12pt]{article}
+\usepackage{graphicx} % Required for inserting images
+\usepackage[margin=0.5in]{geometry}
+\usepackage{amsmath, amssymb}
+\usepackage{mathrsfs}
+
+
+\usepackage{soul}
+
+
+% Dr. David Brown Commands
+\newcommand{\ds}{\displaystyle}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\Q}{\mathbb{Q}}
+\newcommand{\C}{\mathbb{C}}
+
+
+% Commands to get script r
+\usepackage{calligra}
+\DeclareMathAlphabet{\mathcalligra}{T1}{calligra}{m}{n}
+\DeclareFontShape{T1}{calligra}{m}{n}{<->s*[2.2]callig15}{}
+\newcommand{\scripty}[1]{\ensuremath{\mathcalligra{#1}}}
+
+% Unit commands
+\newcommand{\degree}{\text{°}}
+\newcommand{\unitSpeed}{\frac{\text{m}}{\text{s}}}
+\newcommand{\unitAcceleration}{\frac{\text{m}}{\text{s}^2}}
+
+% Constant commands
+\newcommand{\avogadro}{6.022\times10^{23}}
+
+\newcommand{\boltzmannConstK}{1.381\times10^{-23}\frac{\text{J}}{\text{K}}}
+\newcommand{\boltzmannConstInEV}{8.617\times10^{-5}\frac{\text{eV}}{\text{K}}}
+\newcommand{\planckConst}{6.626\times10^{-34}\text{J}\cdot\text{s}}
+
+\newcommand{\atmP}{1.01325\times10^5\,\text{Pa}}
+
+% Commands to easily write partial derivatives
+\newcommand{\partDeriv}[2]{\frac{\partial #1}{\partial #2}}
+\newcommand{\doublePartDeriv}[2]{\frac{\partial^2 #1}{\partial^2 #2}}
+
+
+\title{Problem 6.12}
+\author{Gabriel Decker}
+
+
+\begin{document}
+
+
+
+\maketitle
+\begin{flushleft}
+
+For this problem, we can use the equation for when we want to compare the probabilities of atoms being in two states when the system is in thermal equilibrium with a reservoir.
+\begin{equation}
+    \frac{\mathcal{P}(s_1)}{\mathcal{P}(s_0)}=\frac{e^{-E_1/kT}}{e^{-E_0/kT}}=e^{-(E_1-E_0)/kT}
+\end{equation}\\~\\
+
+We're given that $E_1-E_0=4.7\times10^{-4}\,\text{eV}$.
+The problem also gives us that (approximately) for every 10 molecules in the ground state, there are three in the first excited state. It also says that there are three different states in the first excited state, so this implies that the probability of one of the 1st excited states is about $1/13$ while for the ground state it's about $10/13$.\\~\\
+
+By plugging this into the above equation, we can solve for $T$.
+$$\frac{\mathcal{P}(s_1)}{\mathcal{P}(s_0)}=e^{-(E_1-E_0)/kT}$$
+$$\implies\frac{1/13}{10/13}=e^{-(E_1-E_0)/kT}$$
+$$\implies\frac{1}{10}=e^{-(E_1-E_0)/kT}$$
+$$\implies\ln\left(\frac{1}{10}\right)=-(E_1-E_0)/kT$$
+$$\implies-2.30359=-(E_1-E_0)/kT$$
+$$\implies T=\frac{(E_1-E_0)}{k\cdot2.30359}$$
+$$\implies T=\frac{4.7\times10^{-4}\,\text{eV}}{(\boltzmannConstInEV)\cdot2.30359}$$
+$$\implies T=2.37\,\text{K}$$
+
+
+\end{flushleft}
+
+\end{document}
