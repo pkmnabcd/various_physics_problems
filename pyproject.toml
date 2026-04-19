@@ -1,0 +1,14 @@
+[tool.poetry]
+name = "various-physics-problems"
+version = "0.1.0"
+description = "The environment where I run python scripts that need extra libraries"
+authors = ["Gabe Decker <42gdeckers@gmail.com>"]
+
+[tool.poetry.dependencies]
+python = "^3.12"
+sympy = "^1.14.0"
+
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"

@@ -5,3 +5,6 @@
 
 # Ignore generated plots
 *.png
+
+# Ignore poetry lock file
+poetry.lock
