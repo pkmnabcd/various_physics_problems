@@ -56,7 +56,7 @@ In this problem, we deal with the rotational motion of diatomic molecules.
 In this system, molecules can have rotational energies of $E(j)=j(j+1)\epsilon$ which have multiplicity $2j+1$, where $j\in\N$.
 Therefore, the partition function $Z$ is given by the following equation.
 \begin{equation}
-    Z_\text{rot}=\sum_{j=0}^\infty(2j+1)e^{-j(j+1)\epsilon/kt}
+    Z_\text{rot}=\sum_{j=0}^\infty(2j+1)e^{-j(j+1)\epsilon/kT}
 \end{equation}
 
 Using the given $\epsilon=0.00024\,\text{eV}$ for CO and $T=300\,\text{K}$, we will calculate $Z$ in two different ways.
@@ -67,7 +67,7 @@ Then, I will use the high-temperature limit-assumed approximation in the followi
 \end{equation}\\~\\
 
 First, the brute-force evaluation of the first several terms of the infinite summation was accomplished using the python script found in this directory. I summed the terms between $j=0$ and $j=40$. The following was the result.
-$$Z\approx\sum_{j=0}^{40}(2j+1)e^{-j(j+1)\epsilon/kt}=108.046$$
+$$Z\approx\sum_{j=0}^{40}(2j+1)e^{-j(j+1)\epsilon/kT}=108.046$$
 I also tried with the maximum $j$ being 150, and that yielded the same $Z$ up to the three displayed decimal places I displayed.\\~\\
 
 Let's now compare the brute-force result with the high-temperature approximation.
