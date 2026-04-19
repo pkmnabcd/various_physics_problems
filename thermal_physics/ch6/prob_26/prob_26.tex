@@ -1,0 +1,107 @@
+\documentclass[12pt]{article}
+\usepackage{graphicx} % Required for inserting images
+\usepackage[margin=0.5in]{geometry}
+\usepackage{amsmath, amssymb}
+\usepackage{mathrsfs}
+
+
+\usepackage{soul}
+
+
+% Dr. David Brown Commands
+\newcommand{\ds}{\displaystyle}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\Q}{\mathbb{Q}}
+\newcommand{\C}{\mathbb{C}}
+
+
+% Commands to get script r
+\usepackage{calligra}
+\DeclareMathAlphabet{\mathcalligra}{T1}{calligra}{m}{n}
+\DeclareFontShape{T1}{calligra}{m}{n}{<->s*[2.2]callig15}{}
+\newcommand{\scripty}[1]{\ensuremath{\mathcalligra{#1}}}
+
+% Unit commands
+\newcommand{\degree}{\text{°}}
+\newcommand{\unitSpeed}{\frac{\text{m}}{\text{s}}}
+\newcommand{\unitAcceleration}{\frac{\text{m}}{\text{s}^2}}
+
+% Constant commands
+\newcommand{\avogadro}{6.022\times10^{23}}
+
+\newcommand{\boltzmannConstK}{1.381\times10^{-23}\frac{\text{J}}{\text{K}}}
+\newcommand{\boltzmannConstInEV}{8.617\times10^{-5}\frac{\text{eV}}{\text{K}}}
+\newcommand{\planckConst}{6.626\times10^{-34}\text{J}\cdot\text{s}}
+
+\newcommand{\atmP}{1.01325\times10^5\,\text{Pa}}
+
+% Commands to easily write partial derivatives
+\newcommand{\partDeriv}[2]{\frac{\partial #1}{\partial #2}}
+\newcommand{\doublePartDeriv}[2]{\frac{\partial^2 #1}{\partial^2 #2}}
+
+
+\title{Problem 6.26}
+\author{Gabriel Decker}
+
+
+\begin{document}
+
+
+
+\maketitle
+\begin{flushleft}
+
+In this problem, we deal with the low-temperature limit $(kT\ll\epsilon)$ for the rotational partition function. Because of this limit, we can accurately approximate results by just keeping the largest $T$-dependent term at each part of the calculation.
+The partition function $Z$ is given by the following equation.
+\begin{equation}
+    Z_\text{rot}=\sum_{j=0}^\infty(2j+1)e^{-j(j+1)\epsilon/kT}
+\end{equation}\\~\\
+
+We'll start by plugging in a few $j$ values.
+$$Z_\text{rot}=\sum_{j=0}^\infty(2j+1)e^{-j(j+1)\epsilon/kT}$$
+$$\implies Z_\text{rot}\approx\sum_{j=0}^2(2j+1)e^{-j(j+1)\epsilon/kT}$$
+$$\implies Z_\text{rot}\approx e^{0}+3e^{-2\epsilon/kT}+5e^{-6\epsilon/kT}$$
+Since the $j=2$ term yields a more negative numerator in the exponential, clearly the $j=1$ term matters more than it. Further terms will just have an even more negative value in the exponential, so we get the following approximation.
+$$\implies Z_\text{rot}\approx 1+3e^{-2\epsilon/kT}$$
+With $\beta=1/kT$, this implies that
+$$\implies Z_\text{rot}\approx 1+3e^{-2\beta\epsilon}$$\\~\\
+
+We want the average energy of the system, which is obtained by the following equation.
+\begin{equation}
+    \overline{E}=-\partDeriv{}{\beta}\ln(Z)
+\end{equation}
+If we say that there is just one molecule for now, then the following is the heat capacity (or if many particles, consider it the average heat capacity).
+\begin{equation}
+    C=\partDeriv{\overline{E}}{T}
+\end{equation}
+Clearly, we'll start by computing $\overline{E}$.\\~\\
+
+$$\overline{E}=-\partDeriv{}{\beta}\ln(Z)$$
+$$\implies\overline{E}=-\frac{1}{Z}\partDeriv{Z}{\beta}$$
+$$\implies\overline{E}=-\frac{1}{1+3e^{-2\beta\epsilon}}\partDeriv{}{\beta}(1+3e^{-2\beta\epsilon})$$
+$$\implies\overline{E}=-\frac{1}{1+3e^{-2\beta\epsilon}}(-6\epsilon e^{-2\beta\epsilon})$$
+$$\implies\overline{E}=\frac{6\epsilon e^{-2\beta\epsilon}}{1+3e^{-2\beta\epsilon}}$$
+As $\beta\rightarrow\infty$ due to $T\rightarrow0$, this implies that the exponential in the denominator will begin to be insignificant compared to the 1 added to it. Therefore this equation can be simplified to the following.
+$$\implies\overline{E}=\frac{6\epsilon e^{-2\beta\epsilon}}{1}$$
+$$\implies\overline{E}=6\epsilon e^{-2\beta\epsilon}$$
+$$\implies\overline{E}=6\epsilon e^{-2\epsilon/kT}$$\\~\\
+
+Now that we have an equation for $\overline{E}$, we can get the heat capacity $C$.
+$$C=\partDeriv{\overline{E}}{T}$$
+$$\implies C=\partDeriv{}{T}(6\epsilon e^{-2\epsilon/kT})$$
+$$\implies C=6\epsilon \partDeriv{}{T}(e^{-2\epsilon/kT})$$
+$$\implies C=6\epsilon e^{-2\epsilon/kT}\partDeriv{}{T}(-\frac{2\epsilon}{kT})$$
+$$\implies C=6\epsilon e^{-2\epsilon/kT}\frac{2\epsilon}{kT^2}$$
+$$\implies C=\frac{12\epsilon^2}{kT^2}e^{-2\epsilon/kT}$$\\~\\
+
+To validate that this follows the third law of thermodynamics ($T\rightarrow0\implies C\rightarrow0$), I'll apply the limit.
+$$C(T\rightarrow0)=\lim_{T\rightarrow0}\left(\frac{12\epsilon^2}{kT^2}e^{-2\epsilon/kT}\right)$$
+$$\implies C(T\rightarrow0)=\frac{12\epsilon^2}{k}\cdot\lim_{T\rightarrow0}\left(\frac{e^{-2\epsilon/kT}}{T^2}\right)$$
+Exponentials decay faster than quadratics do (I don't want to try to figure out L'Hopital's rule for this), so it's safe to say that the third law of thermodynamics applies.
+
+
+
+\end{flushleft}
+
+\end{document}
