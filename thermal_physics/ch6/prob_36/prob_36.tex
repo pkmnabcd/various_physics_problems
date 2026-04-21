@@ -1,0 +1,102 @@
+\documentclass[12pt]{article}
+\usepackage{graphicx} % Required for inserting images
+\usepackage[margin=0.5in]{geometry}
+\usepackage{amsmath, amssymb}
+\usepackage{mathrsfs}
+
+
+\usepackage{soul}
+
+
+% Dr. David Brown Commands
+\newcommand{\ds}{\displaystyle}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\Q}{\mathbb{Q}}
+\newcommand{\C}{\mathbb{C}}
+
+
+% Commands to get script r
+\usepackage{calligra}
+\DeclareMathAlphabet{\mathcalligra}{T1}{calligra}{m}{n}
+\DeclareFontShape{T1}{calligra}{m}{n}{<->s*[2.2]callig15}{}
+\newcommand{\scripty}[1]{\ensuremath{\mathcalligra{#1}}}
+
+% Unit commands
+\newcommand{\degree}{\text{°}}
+\newcommand{\unitSpeed}{\frac{\text{m}}{\text{s}}}
+\newcommand{\unitAcceleration}{\frac{\text{m}}{\text{s}^2}}
+
+% Constant commands
+\newcommand{\avogadro}{6.022\times10^{23}}
+
+\newcommand{\boltzmannConstK}{1.381\times10^{-23}\frac{\text{J}}{\text{K}}}
+\newcommand{\boltzmannConstInEV}{8.617\times10^{-5}\frac{\text{eV}}{\text{K}}}
+\newcommand{\planckConst}{6.626\times10^{-34}\text{J}\cdot\text{s}}
+
+\newcommand{\atmP}{1.01325\times10^5\,\text{Pa}}
+
+% Commands to easily write partial derivatives
+\newcommand{\partDeriv}[2]{\frac{\partial #1}{\partial #2}}
+\newcommand{\doublePartDeriv}[2]{\frac{\partial^2 #1}{\partial^2 #2}}
+
+
+\title{Problem 6.36}
+\author{Gabriel Decker}
+
+
+\begin{document}
+
+
+
+\maketitle
+\begin{flushleft}
+
+
+In this problem, we must calculate the average speed of ideal gases under the Maxwell Speed Distribution.
+This means that it follows the assumptions of Boltzmann statistics (the system is in thermal equilibrium with a source at temperature $T$ and all particles are confined to the system).
+This yields the following distribution of speeds.
+\begin{equation}
+    \mathcal{D}(v)=4\pi\left(\frac{m}{2\pi kT}\right)^{3/2}v^2e^{-mv^2/2kT}
+\end{equation}
+To calculate the probability of a range of speeds, we use the following.
+\begin{equation}
+    \mathcal{P}([v_1,v_2])=\int_{v_1}^{v_2}\mathcal{D}(v)\,dv
+\end{equation}
+    To calculate the probability of a particular speed (with an incredibly small displacement), we use the following.
+\begin{equation}
+    \mathcal{P}(v)=\mathcal{D}(v)\,dv
+\end{equation}\\~\\
+
+To calculate the average speed, we will begin with the following equation.
+\begin{equation}
+    \overline{v}=\sum_\text{all v}v\mathcal{D}(v)\,dv
+    \label{eq:avgSpeed}
+\end{equation}
+This comes from the following, where the average of a quantity is simply the sum of all the possible quantities with the probability of that quantity existing.
+\begin{equation}
+    \overline{X}=\sum_sX(s)\mathcal{P}(s)
+\end{equation}\\~\\
+
+Beginning with equation \ref{eq:avgSpeed}, we will first assume that there are an infinite many infinitesimal ranges of speeds. This allows us to replace the summation with an integral from $v=0$ to $v=\infty$ (since speed can't be negative).
+$$\overline{v}=\sum_\text{all v}v\mathcal{D}(v)\,dv$$
+$$\implies\overline{v}=\int_0^\infty v\mathcal{D}(v)\,dv$$
+Plugging in $\mathcal{D}(v)$, we get
+$$\implies\overline{v}=\int_0^\infty 4\pi\left(\frac{m}{2\pi kT}\right)^{3/2}v^3e^{-mv^2/2kT}\,dv$$
+$$\implies\overline{v}=4\pi\left(\frac{m}{2\pi kT}\right)^{3/2}\int_0^\infty v^3e^{-mv^2/2kT}\,dv$$
+Substituting $a=m/2kT$, we get
+$$\implies\overline{v}=4\pi\left(\frac{a}{\pi}\right)^{3/2}\int_0^\infty v^3e^{-av^2}\,dv$$\\~\\
+
+This is a standard integral with the solution shown by the included script: quick\_integration.py to result in the following.
+$$\implies\overline{v}=4\pi\left(\frac{a}{\pi}\right)^{3/2}\cdot\frac{1}{2a^2}$$
+$$\implies\overline{v}=2\frac{a^{3/2}}{\pi^{3/2}}\cdot\frac{\pi}{a^2}$$
+$$\implies\overline{v}=2a^{3/2}\cdot a^{-4/2}\cdot\pi^{2/2}\cdot\pi^{-3/2}$$
+$$\implies\overline{v}=2a^{-1/2}\cdot\pi^{-1/2}$$
+$$\implies\overline{v}=2\sqrt{\frac{2kT}{\pi m}}$$
+$$\implies\overline{v}=\sqrt{\frac{8kT}{\pi m}}$$
+
+
+
+\end{flushleft}
+
+\end{document}
