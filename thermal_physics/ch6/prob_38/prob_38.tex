@@ -1,0 +1,100 @@
+\documentclass[12pt]{article}
+\usepackage{graphicx} % Required for inserting images
+\usepackage[margin=0.5in]{geometry}
+\usepackage{amsmath, amssymb}
+\usepackage{mathrsfs}
+
+
+\usepackage{soul}
+
+
+% Dr. David Brown Commands
+\newcommand{\ds}{\displaystyle}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\Q}{\mathbb{Q}}
+\newcommand{\C}{\mathbb{C}}
+
+
+% Commands to get script r
+\usepackage{calligra}
+\DeclareMathAlphabet{\mathcalligra}{T1}{calligra}{m}{n}
+\DeclareFontShape{T1}{calligra}{m}{n}{<->s*[2.2]callig15}{}
+\newcommand{\scripty}[1]{\ensuremath{\mathcalligra{#1}}}
+
+% Unit commands
+\newcommand{\degree}{\text{°}}
+\newcommand{\unitSpeed}{\frac{\text{m}}{\text{s}}}
+\newcommand{\unitAcceleration}{\frac{\text{m}}{\text{s}^2}}
+
+% Constant commands
+\newcommand{\avogadro}{6.022\times10^{23}}
+
+\newcommand{\boltzmannConstK}{1.381\times10^{-23}\frac{\text{J}}{\text{K}}}
+\newcommand{\boltzmannConstInEV}{8.617\times10^{-5}\frac{\text{eV}}{\text{K}}}
+\newcommand{\planckConst}{6.626\times10^{-34}\text{J}\cdot\text{s}}
+
+\newcommand{\atmP}{1.01325\times10^5\,\text{Pa}}
+
+% Commands to easily write partial derivatives
+\newcommand{\partDeriv}[2]{\frac{\partial #1}{\partial #2}}
+\newcommand{\doublePartDeriv}[2]{\frac{\partial^2 #1}{\partial^2 #2}}
+
+
+\title{Problem 6.38}
+\author{Gabriel Decker}
+
+
+\begin{document}
+
+
+
+\maketitle
+\begin{flushleft}
+
+
+In this problem, we must calculate the percentage of Nitrogen molecules (N$_2$) at room temperature are moving with a speed between 0 and $300\,\text{m/s}$.
+We'll need the following probability equation.
+\begin{equation}
+    \mathcal{P}([v_1,v_2])=\int_{v_1}^{v_2}\mathcal{D}(v)\,dv
+\end{equation}
+Where the Maxwell distribution $\mathcal{D}$ is the following.
+\begin{equation}
+    \mathcal{D}(v)=4\pi\left(\frac{m}{2\pi kT}\right)^{3/2}v^2e^{-mv^2/2kT}
+\end{equation}\\~\\
+
+Plugging in the second equation into the first, we get the following.
+$$\mathcal{P}([0,300\,\text{m/s}])=\int_0^{300\,\text{m/s}}\mathcal{D}(v)\,dv$$
+$$\implies\mathcal{P}([0,300\,\text{m/s}])=\int_0^{300\,\text{m/s}}4\pi\left(\frac{m}{2\pi kT}\right)^{3/2}v^2e^{-mv^2/2kT}\,dv$$
+$$\implies\mathcal{P}([0,300\,\text{m/s}])=4\pi\left(\frac{m}{2\pi kT}\right)^{3/2}\int_0^{300\,\text{m/s}}v^2e^{-mv^2/2kT}\,dv$$\\~\\
+
+First, $m$ must be determined. The molecular weight of nitrogen gas is $28.0134\times10^{-3}\,\text{kg/mol}$.
+Avogadro's number is $6.022\times10^{23}\,\text{molecules/mol}$, so this implies that there are $4.652\times10^{-26}\,\text{kg/molecule}$.\\~\\
+
+We can also define $a=m/2kT$ to simplify the integral. This yields the following.
+$$\implies\mathcal{P}([0,300\,\text{m/s}])=4\pi\left(\frac{a}{\pi}\right)^{3/2}\int_0^{300\,\text{m/s}}v^2e^{-av^2}\,dv$$
+We can plug in our known data into $a$ to find it and plug it into our probability equation to simplify the calculation.
+$$a=\frac{m}{2kT}$$
+$$\implies a=\frac{4.652\times10^{-26}\,\text{kg}}{2\cdot\boltzmannConstK\cdot300\,\text{K}}$$
+$$\implies a=5.61428\times10^{-6}\,\text{s}^2\text{/m}^2$$\\~\\
+
+Plugging this result into the front of our equation yields the following.
+$$\implies\mathcal{P}([0,300\,\text{m/s}])=4\pi\left(\frac{5.61428\times10^{-6}\,\text{s}^2\text{/m}^2}{\pi}\right)^{3/2}\int_0^{300\,\text{m/s}}v^2e^{-av^2}\,dv$$
+$$\implies\mathcal{P}([0,300\,\text{m/s}])=3.0002\times10^{-8}\,\text{s}^3\text{/m}^3\cdot\int_0^{300\,\text{m/s}}v^2e^{-av^2}\,dv$$\\~\\
+
+We can now drop the units by seeing that our integral consists of an integrand with units (m/s)$^2$ and our variable of integration having units (m/s), leading to a result with units (m/s)$^3$, cancelling out to a unitless probability when combined with the constant in front.
+So, I will drop units.
+$$\implies\mathcal{P}([0,300\,\text{m/s}])=3.0002\times10^{-8}\cdot\int_0^{300}v^2e^{-av^2}\,dv$$\\~\\
+
+For the rest of this, I'll use the included python script to numerically evaluate the integral and give the final calculation. It gave the following.
+$$\implies\mathcal{P}([0,300\,\text{m/s}])\approx0.2012$$\\~\\
+
+So, there is about a 20\% chance for a Nitrogen molecule to have speed in that range at this temperature.
+
+
+
+
+
+\end{flushleft}
+
+\end{document}
