@@ -1,0 +1,71 @@
+\documentclass[12pt]{article}
+\usepackage{graphicx} % Required for inserting images
+\usepackage[margin=0.5in]{geometry}
+\usepackage{amsmath, amssymb}
+\usepackage{mathrsfs}
+
+
+\usepackage{soul}
+
+
+% Dr. David Brown Commands
+\newcommand{\ds}{\displaystyle}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\Q}{\mathbb{Q}}
+\newcommand{\C}{\mathbb{C}}
+
+
+% Commands to get script r
+\usepackage{calligra}
+\DeclareMathAlphabet{\mathcalligra}{T1}{calligra}{m}{n}
+\DeclareFontShape{T1}{calligra}{m}{n}{<->s*[2.2]callig15}{}
+\newcommand{\scripty}[1]{\ensuremath{\mathcalligra{#1}}}
+
+% Unit commands
+\newcommand{\degree}{\text{°}}
+\newcommand{\unitSpeed}{\frac{\text{m}}{\text{s}}}
+\newcommand{\unitAcceleration}{\frac{\text{m}}{\text{s}^2}}
+
+% Constant commands
+\newcommand{\avogadro}{6.022\times10^{23}}
+
+\newcommand{\boltzmannConstK}{1.381\times10^{-23}\frac{\text{J}}{\text{K}}}
+\newcommand{\boltzmannConstInEV}{8.617\times10^{-5}\frac{\text{eV}}{\text{K}}}
+\newcommand{\planckConst}{6.626\times10^{-34}\text{J}\cdot\text{s}}
+
+\newcommand{\atmP}{1.01325\times10^5\,\text{Pa}}
+
+% Commands to easily write partial derivatives
+\newcommand{\partDeriv}[2]{\frac{\partial #1}{\partial #2}}
+\newcommand{\doublePartDeriv}[2]{\frac{\partial^2 #1}{\partial^2 #2}}
+
+
+\title{Problem 6.48}
+\author{Gabriel Decker}
+
+
+\begin{document}
+
+
+
+\maketitle
+\begin{flushleft}
+
+
+For this problem, we must derive the entropy (and later the chemical potential) of a diatomic gas near room temperature.
+For an ideal gas under these conditions, we have the following equation for entropy.
+\begin{equation}
+    S=Nk\left[\ln\left(\frac{V}{Nv_Q}\right)+\frac{5}{2}\right]-\partDeriv{F_\text{int}}{T}
+\end{equation}
+where
+\begin{equation}
+    F_\text{int}=-NkT\ln(Z_\text{int})
+\end{equation}
+For our purposes, we're given that $Z_\text{int}=Z_eZ_\text{rot}$, where $Z_e$ is the degeneracy of the ground state and $Z_\text{rot}=\frac{kT}{2\epsilon}$ for diatomic molecules with identical atoms at normal temperatures.
+
+
+
+\end{flushleft}
+
+\end{document}
