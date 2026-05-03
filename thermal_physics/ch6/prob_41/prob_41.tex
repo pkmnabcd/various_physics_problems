@@ -1,0 +1,115 @@
+\documentclass[12pt]{article}
+\usepackage{graphicx} % Required for inserting images
+\usepackage[margin=0.5in]{geometry}
+\usepackage{amsmath, amssymb}
+\usepackage{mathrsfs}
+
+
+\usepackage{soul}
+
+
+% Dr. David Brown Commands
+\newcommand{\ds}{\displaystyle}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\Q}{\mathbb{Q}}
+\newcommand{\C}{\mathbb{C}}
+
+
+% Commands to get script r
+\usepackage{calligra}
+\DeclareMathAlphabet{\mathcalligra}{T1}{calligra}{m}{n}
+\DeclareFontShape{T1}{calligra}{m}{n}{<->s*[2.2]callig15}{}
+\newcommand{\scripty}[1]{\ensuremath{\mathcalligra{#1}}}
+
+% Unit commands
+\newcommand{\degree}{\text{°}}
+\newcommand{\unitSpeed}{\frac{\text{m}}{\text{s}}}
+\newcommand{\unitAcceleration}{\frac{\text{m}}{\text{s}^2}}
+
+% Constant commands
+\newcommand{\avogadro}{6.022\times10^{23}}
+
+\newcommand{\boltzmannConstK}{1.381\times10^{-23}\frac{\text{J}}{\text{K}}}
+\newcommand{\boltzmannConstInEV}{8.617\times10^{-5}\frac{\text{eV}}{\text{K}}}
+\newcommand{\planckConst}{6.626\times10^{-34}\text{J}\cdot\text{s}}
+
+\newcommand{\atmP}{1.01325\times10^5\,\text{Pa}}
+
+% Commands to easily write partial derivatives
+\newcommand{\partDeriv}[2]{\frac{\partial #1}{\partial #2}}
+\newcommand{\doublePartDeriv}[2]{\frac{\partial^2 #1}{\partial^2 #2}}
+
+
+\title{Problem 6.41}
+\author{Gabriel Decker}
+
+
+\begin{document}
+
+
+
+\maketitle
+\begin{flushleft}
+
+
+For this problem, we will follow a similar process as was described in the book for the three-dimensional case of the velocity distribution function $\mathcal{D}$.
+We will logically assume that $\mathcal{D}$ is proportional to the probability of a molecule having a particular velocity times the number of velocities that correspond to a speed.\\~\\
+
+Recall that according to the Boltzmann distribution, probability is related to energy by the following.
+\begin{equation}
+    \mathcal{P}(s)\propto e^{-E(s)/kT}
+\end{equation}
+In this case, we can use the kinetic energy equation.
+\begin{equation}
+    E=\frac{1}{2}mv^2
+\end{equation}
+where $v=|\vec{v}|$.
+Therefore, we can combine these into the following.
+\begin{equation}
+    \mathcal{P}\propto e^{-mv^2/2kT}
+\end{equation}\\~\\
+
+When we integrate our eventual distribution function, it will be integrated over speed, not velocity.
+The above proportionality considers the velocity, not the speed, so we must convert it from velocity space to speed space.\\~\\
+
+The result of the above work is the following distribution function based on velocity.
+\begin{equation}
+    \mathcal{D}_{\vec{v}}=C\cdot e^{-mv^2/2kT}
+\end{equation}
+We want a distribution function that gives the probability of a particle having a velocity between $v$ and $v+dv$.
+This would be given by $\mathcal{D}(v)\,dv$.
+We want to convert $\mathcal{D}_{\vec{v}}$ into $\mathcal{D}(v)\,dv$.
+To convert it to distribution that only depends on the speed, we must integrate it over velocity space.
+This will be done in polar corrdinates with $da=v\,dv\,d\theta$.
+$$\mathcal{D}(v)\,dv=\left[\int_0^{2\pi}\mathcal{D}(v)_{\vec{v}}\cdot v\,d\theta\right]\,dv$$
+$$\implies\mathcal{D}(v)\,dv=2\pi v\mathcal{D}(v)_{\vec{v}}\,dv$$
+$$\implies\mathcal{D}(v)=2\pi v\mathcal{D}(v)_{\vec{v}}$$
+$$\implies\mathcal{D}(v)=2\pi vCe^{-mv^2/2kT}$$\\~\\
+
+Solving for $\mathcal{D}$ implies finding $C$. This can be done by assuming that the probability of finding the particle at some speed is 100\%.
+$$\mathcal{P}(v=[0,\infty])=1=2\pi\int_0^\infty v\mathcal{D}(v)_{\vec{v}}\,dv$$
+$$\implies1=2\pi\int_0^\infty Cve^{-mv^2/2kT}\,dv$$\\~\\
+
+To solve this, we'll do a change of variables with $x=v\sqrt{m/2kT}$ or $dx=\sqrt{m/2kT}\,dv$.
+$$\implies1=2\pi C\cdot\frac{2kT}{m}\int_0^\infty xe^{-x^2}\,dx$$
+$$\implies1=C\cdot\frac{4\pi kT}{m}\int_0^\infty xe^{-x^2}\,dx$$
+By using the sympy code found in the included script, we get the following.
+$$\implies1=C\cdot\frac{2\pi kT}{m}$$
+$$\implies C=\frac{m}{2\pi kT}$$\\~\\
+
+Plugging in our $C$ into our $\mathcal{D}$ equation, we can finalize our velocity distribution function.
+$$\mathcal{D}(v)=2\pi vCe^{-mv^2/2kT}$$
+$$\implies\mathcal{D}(v)=\frac{mv}{kT}e^{-mv^2/2kT}$$
+
+
+
+
+
+
+
+
+
+\end{flushleft}
+
+\end{document}
