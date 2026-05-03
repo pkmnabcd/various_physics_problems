@@ -62,7 +62,26 @@ where
 \begin{equation}
     F_\text{int}=-NkT\ln(Z_\text{int})
 \end{equation}
-For our purposes, we're given that $Z_\text{int}=Z_eZ_\text{rot}$, where $Z_e$ is the degeneracy of the ground state and $Z_\text{rot}=\frac{kT}{2\epsilon}$ for diatomic molecules with identical atoms at normal temperatures.
+and
+\begin{equation}
+    v_Q=\left(\frac{h}{\sqrt{2\pi mkT}}\right)^3
+\end{equation}
+For our purposes, we're given that $Z_\text{int}=Z_eZ_\text{rot}$, where $Z_e$ is the degeneracy of the ground state and $Z_\text{rot}=\frac{kT}{2\epsilon}$ for diatomic molecules with identical atoms at normal temperatures.\\~\\
+
+We can find $S$ by plugging in $F_\text{int}$ into the derivative.
+$$S=Nk\left[\ln\left(\frac{V}{Nv_Q}\right)+\frac{5}{2}\right]-\partDeriv{F_\text{int}}{T}$$
+$$\implies S=Nk\left[\ln\left(\frac{V}{Nv_Q}\right)+\frac{5}{2}\right]-\partDeriv{}{T}(-NkT\ln(Z_eZ_\text{rot}))$$
+$$\implies S=Nk\left[\ln\left(\frac{V}{Nv_Q}\right)+\frac{5}{2}\right]+Nk\left[\partDeriv{}{T}(T\ln(Z_eZ_\text{rot}))\right]$$
+$Z_\text{rot}$ depends on $T$, so this means the following results.
+$$\implies S=Nk\left[\ln\left(\frac{V}{Nv_Q}\right)+\frac{5}{2}\right]+Nk\left[\ln(Z_eZ_\text{rot})+\frac{T}{Z_eZ_\text{rot}}\cdot Z_e\partDeriv{Z_\text{rot}}{T}\right]$$
+$$\implies S=Nk\left[\ln\left(\frac{V}{Nv_Q}\right)+\frac{5}{2}\right]+Nk\left[\ln(Z_eZ_\text{rot})+\frac{T}{Z_eZ_\text{rot}}\cdot \frac{Z_eZ_\text{rot}}{T}\right]$$
+$$\implies S=Nk\left[\ln\left(\frac{V}{Nv_Q}\right)+\frac{5}{2}\right]+Nk\left[\ln(Z_eZ_\text{rot})+1\right]$$
+$$\implies S=Nk\left[\ln\left(\frac{V}{Nv_Q}\right)+\ln(Z_eZ_\text{rot})+\frac{7}{2}\right]$$
+$$\implies S=Nk\left[\ln\left(\frac{VZ_eZ_\text{rot}}{Nv_Q}\right)+\frac{7}{2}\right]$$\\~\\
+
+Now that we have an equation for $S$, we can calculate the entropy of a mole of oxygen ($N=6.022\times10^{23}$, $\epsilon=0.00018\,\text{eV}$, and $Z_e=3$) at room temperature and standard pressure.
+First, we were not given a volume, so we must use $PV=NkT$ to replace $V$ in the equation.
+$$\implies S=Nk\left[\ln\left(\frac{kTZ_eZ_\text{rot}}{Pv_Q}\right)+\frac{7}{2}\right]$$
 
 
 
