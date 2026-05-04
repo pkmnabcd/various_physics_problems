@@ -1,0 +1,106 @@
+\documentclass[12pt]{article}
+\usepackage{graphicx} % Required for inserting images
+\usepackage[margin=0.5in]{geometry}
+\usepackage{amsmath, amssymb}
+\usepackage{mathrsfs}
+
+
+\usepackage{soul}
+
+
+% Dr. David Brown Commands
+\newcommand{\ds}{\displaystyle}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\Q}{\mathbb{Q}}
+\newcommand{\C}{\mathbb{C}}
+
+
+% Commands to get script r
+\usepackage{calligra}
+\DeclareMathAlphabet{\mathcalligra}{T1}{calligra}{m}{n}
+\DeclareFontShape{T1}{calligra}{m}{n}{<->s*[2.2]callig15}{}
+\newcommand{\scripty}[1]{\ensuremath{\mathcalligra{#1}}}
+
+% Unit commands
+\newcommand{\degree}{\text{°}}
+\newcommand{\unitSpeed}{\frac{\text{m}}{\text{s}}}
+\newcommand{\unitAcceleration}{\frac{\text{m}}{\text{s}^2}}
+
+% Constant commands
+\newcommand{\avogadro}{6.022\times10^{23}}
+
+\newcommand{\boltzmannConstK}{1.381\times10^{-23}\frac{\text{J}}{\text{K}}}
+\newcommand{\boltzmannConstInEV}{8.617\times10^{-5}\frac{\text{eV}}{\text{K}}}
+\newcommand{\planckConst}{6.626\times10^{-34}\text{J}\cdot\text{s}}
+
+\newcommand{\atmP}{1.01325\times10^5\,\text{Pa}}
+
+% Commands to easily write partial derivatives
+\newcommand{\partDeriv}[2]{\frac{\partial #1}{\partial #2}}
+\newcommand{\doublePartDeriv}[2]{\frac{\partial^2 #1}{\partial^2 #2}}
+
+
+\title{Problem 7.3}
+\author{Gabriel Decker}
+
+
+\begin{document}
+
+
+
+\maketitle
+\begin{flushleft}
+
+For this problem, we will attempt to recover the Saha Equation (below), or the ratio of probabilities for Hydrogen atoms to have or not have an electron, assuming the electron acts as a monatomic ideal gas, neglecting spin states.
+\begin{equation}
+    \frac{\mathcal{P}_p}{\mathcal{P}_H}=\frac{kT}{P_e}\left(\frac{2\pi m_ekT}{h^2}\right)^{3/2}e^{-I/kT}
+\end{equation}
+where $I$ is the ionization energy for the Hydrogen atom's electron from the ground state, $\mathcal{P}_p$ is the probability of an ionized electron, and $\mathcal{P}_H$ is the probability of a complete atom.
+
+This will be obtained by using Gibbs factors and the following definition of chemical potential (for ideal gases).
+\begin{equation}
+    \mu=-kT\ln\left(\frac{VZ_\text{int}}{Nv_Q}\right)
+\end{equation}
+where
+\begin{equation}
+    v_Q=\left(\frac{h}{\sqrt{2\pi mkT}}\right)^3
+\end{equation}
+Recall that for statistical mechanical systems where we assume a net exchange of particles with the thermal reservoir, we use the Gibbs factors in our probabilities.
+\begin{equation}
+    \mathcal{P}(s)=\frac{1}{\mathcal{Z}}e^{-[E(s)-\mu N(s)]/kT}
+\end{equation}
+where $\mathcal{Z}$ is the grand partition function, which is not important for this problem since it will be cancelled out when dividing the probabilities.\\~\\
+
+For our purposes, the two states are the following.
+We are considering the movement of electrons and either the atom has an electron, or it doesn't.
+So one state lacks an electron with $E=0$ and $N=0$.
+The other $E=-I$ and $N=1$.\\~\\
+
+This yields the following probability ratio.
+$$\frac{\mathcal{P}_p}{\mathcal{P}_H}=\frac{\frac{1}{\mathcal{Z}}e^{-[0-\mu\cdot0]/kT}}{\frac{1}{\mathcal{Z}}e^{-[-I-\mu\cdot1]/kT}}$$
+$$\implies\frac{\mathcal{P}_p}{\mathcal{P}_H}=\frac{1}{e^{-[-I-\mu]/kT}}$$
+$$\implies\frac{\mathcal{P}_p}{\mathcal{P}_H}=e^{-\mu/kT}e^{-I/kT}$$\\~\\
+
+Before substituting our definition of $\mu$, recall that for an ideal gas, $PV=NkT$.
+This implies that $V/N=kT/P$.
+If we are dealing with reasonable temperatures, we can assume that $Z_\text{int}$ is negligible.
+We can also plug in the definition of the quantum volume $v_Q$.
+If we do all this, we get the following for $\mu$.
+$$\mu=-kT\ln\left(\frac{VZ_\text{int}}{Nv_Q}\right)$$
+$$\implies\mu=-kT\ln\left(\frac{kT}{Pv_Q}\right)$$
+$$\implies\mu=-kT\ln\left(\frac{kT}{P}\cdot\left(\frac{2\pi mkT}{h^2}\right)^{3/2}\right)$$
+
+Plugging in the above definition for $\mu$ into the probability ratio and changing a few variables to match our given definition, we get the following.
+$$\frac{\mathcal{P}_p}{\mathcal{P}_H}=\text{exp}\left(-\mu/kT\right)e^{-I/kT}$$
+$$\implies\frac{\mathcal{P}_p}{\mathcal{P}_H}=\text{exp}\left(\ln\left(\frac{kT}{P_e}\cdot\left(\frac{2\pi m_ekT}{h^2}\right)^{3/2}\right)\right)e^{-I/kT}$$
+$$\implies\frac{\mathcal{P}_p}{\mathcal{P}_H}=\frac{kT}{P_e}\cdot\left(\frac{2\pi m_ekT}{h^2}\right)^{3/2}e^{-I/kT}$$\\~\\
+
+With this, we have recovered the Saha Equation.
+
+
+
+
+\end{flushleft}
+
+\end{document}
