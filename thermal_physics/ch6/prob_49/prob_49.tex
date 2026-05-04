@@ -1,0 +1,138 @@
+\documentclass[12pt]{article}
+\usepackage{graphicx} % Required for inserting images
+\usepackage[margin=0.5in]{geometry}
+\usepackage{amsmath, amssymb}
+\usepackage{mathrsfs}
+
+
+\usepackage{soul}
+
+
+% Dr. David Brown Commands
+\newcommand{\ds}{\displaystyle}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\Q}{\mathbb{Q}}
+\newcommand{\C}{\mathbb{C}}
+
+
+% Commands to get script r
+\usepackage{calligra}
+\DeclareMathAlphabet{\mathcalligra}{T1}{calligra}{m}{n}
+\DeclareFontShape{T1}{calligra}{m}{n}{<->s*[2.2]callig15}{}
+\newcommand{\scripty}[1]{\ensuremath{\mathcalligra{#1}}}
+
+% Unit commands
+\newcommand{\degree}{\text{°}}
+\newcommand{\unitSpeed}{\frac{\text{m}}{\text{s}}}
+\newcommand{\unitAcceleration}{\frac{\text{m}}{\text{s}^2}}
+
+% Constant commands
+\newcommand{\avogadro}{6.022\times10^{23}}
+
+\newcommand{\boltzmannConstK}{1.381\times10^{-23}\frac{\text{J}}{\text{K}}}
+\newcommand{\boltzmannConstInEV}{8.617\times10^{-5}\frac{\text{eV}}{\text{K}}}
+\newcommand{\planckConst}{6.626\times10^{-34}\text{J}\cdot\text{s}}
+
+\newcommand{\atmP}{1.01325\times10^5\,\text{Pa}}
+
+% Commands to easily write partial derivatives
+\newcommand{\partDeriv}[2]{\frac{\partial #1}{\partial #2}}
+\newcommand{\doublePartDeriv}[2]{\frac{\partial^2 #1}{\partial^2 #2}}
+
+
+\title{Problem 6.49}
+\author{Gabriel Decker}
+
+
+\begin{document}
+
+
+
+\maketitle
+\begin{flushleft}
+
+
+For this problem, we will compute the following for a mole ($n=1\,\text{mol}$) of Nitrogen gas at room temp ($T=300\,\text{K}$) and 1 atm of pressure ($P=\atmP$):
+Energy, Enthalpy, Helmholtz free energy, Gibbs free energy, entropy, and chemical potential.
+We also know that $Z_e=1$, $\epsilon=0.00025\,\text{eV}$, and the mass of a Nitrogen gas molecule is $m=4.65186\times10^{-26}$.
+The relevant equations for these properties are the following.
+
+
+\begin{equation}
+    U=U_\text{int}+\frac{3}{2}nRT
+\end{equation}
+\begin{equation}
+    H=U+PV=U+nRT
+\end{equation}
+\begin{equation}
+    G=U-TS+PV=U-TS+nRT
+\end{equation}
+\begin{equation}
+    F=-nRT[\ln(\frac{V}{v_Q})-\ln(N)+1]+F_\text{int}
+\end{equation}
+\begin{equation}
+    S=nR\left[\ln\left(\frac{VZ_eZ_\text{rot}}{Nv_Q}\right)+\frac{7}{2}\right]
+\end{equation}
+where
+\begin{equation}
+    F_\text{int}=-nRT\ln(Z_eZ_\text{rot})
+\end{equation}
+and
+\begin{equation}
+    v_Q=\left(\frac{h}{\sqrt{2\pi mkT}}\right)^3
+\end{equation}
+\begin{equation}
+    \mu=-kT\ln\left(\frac{VZ_eZ_\text{rot}}{Nv_Q}\right)
+\end{equation}
+
+These come from section 6.6, 6.7, problem 6.48, and previous chapters.
+From the section about rotation of diatomic molecules, we know that $Z_\text{rot}=\frac{kT}{2\epsilon}$ for molecules with identical atoms. We also know that $U_\text{rot}=nRT$.\\~\\
+
+Before solving anything, let's tackle some of the prerequisite parts.
+$$Z_\text{rot}=\frac{kT}{2\epsilon}$$
+$$\implies Z_\text{rot}=\frac{(\boltzmannConstInEV)\cdot(300\,\text{K})}{2\cdot(0.00025\,\text{eV})}$$
+$$\implies Z_\text{rot}=51.702$$
+$$v_Q=\left(\frac{h}{\sqrt{2\pi mkT}}\right)^3$$
+$$\implies v_Q=\left(\frac{\planckConst}{\sqrt{2\pi(4.65186\times10^{-26}\,\text{kg})(\boltzmannConstK)(300\,\text{K})}}\right)^3$$
+$$\implies v_Q=6.90354\times10^{-33}\,\text{m}^3$$
+$$V=\frac{nRT}{P}$$
+$$\implies V=\frac{(1\,\text{mol})(8.314\,\text{J/(mol K)})(300\,\text{K})}{\atmP}$$
+$$\implies V=0.02462\,\text{m}^3$$
+$$\ln\left(\frac{VZ_eZ_\text{rot}}{Nv_Q}\right)=\ln\left(\frac{(0.02462\,\text{m}^3)(1)(51.702)}{(\avogadro)(6.90354\times10^{-33}\,\text{m}^3)}\right)$$
+$$\implies\ln\left(\frac{VZ_eZ_\text{rot}}{Nv_Q}\right)=19.540$$\\~\\
+
+With that out of the way, we can finally determine the various quantities.
+$$U=U_\text{int}+\frac{3}{2}nRT$$
+$$\implies U=nRT+\frac{3}{2}nRT$$
+$$\implies U=\frac{5}{2}nRT$$
+$$\implies U=\frac{5}{2}(1\,\text{mol})(8.314\,\text{J/(mol K)})(300\,\text{K})$$
+$$\implies U=6235.5\,\text{J}$$\\~\\
+
+$$S=nR\left[\ln\left(\frac{VZ_eZ_\text{rot}}{Nv_Q}\right)+\frac{7}{2}\right]$$
+$$\implies S=(1\,\text{mol})(8.314\,\text{J/(mol K)})\left[19.540+\frac{7}{2}\right]$$
+$$\implies S=191.55\,\text{J/K}$$\\~\\
+
+$$F=-nRT[\ln(\frac{V}{v_Q})-\ln(N)+1]+F_\text{int}$$
+$$\implies F=-nRT[\ln(\frac{V}{v_Q})-\ln(N)+1]-nRT\ln(Z_eZ_\text{rot})$$
+$$\implies F=-nRT[\ln\left(\frac{VZ_eZ_\text{rot}}{Nv_Q}\right)+1]$$
+$$\implies F=-(1\,\text{mol})(8.314\,\text{J/(mol K)})(300\,\text{K})[19.540+1]$$
+$$\implies F=-51231\,\text{J}$$\\~\\
+
+$$\mu=-kT\ln\left(\frac{VZ_eZ_\text{rot}}{Nv_Q}\right)$$
+$$\implies\mu=-(\boltzmannConstInEV)(300\,\text{K})(19.540)$$
+$$\implies\mu=-0.505\,\text{eV}$$\\~\\
+
+$$H=U+nRT$$
+$$\implies H=6235.5\,\text{J}+(1\,\text{mol})(8.314\,\text{J/(mol K)})(300\,\text{K})$$
+$$\implies H=8729.7\,\text{J}$$\\~\\
+
+$$G=U-TS+nRT$$
+$$\implies G=6235.5\,\text{J}-(300\,\text{K})(191.55\,\text{J/K})+(1\,\text{mol})(8.314\,\text{J/(mol K)})(300\,\text{K})$$
+$$\implies G=-48735\,\text{J}$$
+
+
+
+\end{flushleft}
+
+\end{document}
