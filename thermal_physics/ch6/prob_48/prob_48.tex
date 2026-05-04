@@ -79,17 +79,37 @@ $$\implies S=Nk\left[\ln\left(\frac{V}{Nv_Q}\right)+\frac{5}{2}\right]+Nk\left[\
 $$\implies S=Nk\left[\ln\left(\frac{V}{Nv_Q}\right)+\ln(Z_eZ_\text{rot})+\frac{7}{2}\right]$$
 $$\implies S=Nk\left[\ln\left(\frac{VZ_eZ_\text{rot}}{Nv_Q}\right)+\frac{7}{2}\right]$$\\~\\
 
-Now that we have an equation for $S$, we can calculate the entropy of a mole of oxygen ($N=6.022\times10^{23}$, $\epsilon=0.00018\,\text{eV}$, and $Z_e=3$) at room temperature and standard pressure.
+Now that we have an equation for $S$, we can calculate the entropy of a mole of molecular oxygen ($N=6.022\times10^{23}$, $\epsilon=0.00018\,\text{eV}$, $m=5.31\times10^{-26}\,\text{kg}$, and $Z_e=3$) at room temperature and standard pressure.
 First, we were not given a volume, so we must use $PV=NkT$ to replace $V$ in the equation.
 $$\implies S=Nk\left[\ln\left(\frac{kTZ_eZ_\text{rot}}{Pv_Q}\right)+\frac{7}{2}\right]$$
-Recall that $T=300\,\text{K}$ and $P=1.0133\times10^{5}\,\text{N/m}^2$.\\~\\
+Recall that $T=300\,\text{K}$ and $P=\atmP$.\\~\\
 
 We can calculate smaller parts to make the process easier.
 $$Z_\text{rot}=\frac{kT}{2\epsilon}$$
 $$\implies Z_\text{rot}=\frac{(\boltzmannConstInEV)\cdot(300\,\text{K})}{2\cdot(0.00018\,\text{eV})}$$
-$$\implies Z_\text{rot}=TODO$$
+$$\implies Z_\text{rot}=71.808$$
 $$v_Q=\left(\frac{h}{\sqrt{2\pi mkT}}\right)^3$$
-$$\implies v_Q=TODO\left(\frac{h}{\sqrt{2\pi mkT}}\right)^3$$
+$$\implies v_Q=\left(\frac{\planckConst}{\sqrt{2\pi(5.31\times10^{-26}\,\text{kg})(\boltzmannConstK)(300\,\text{K})}}\right)^3$$
+$$\implies v_Q=5.66\times10^{-33}\,\text{m}^3$$
+$$\ln\left(\frac{kTZ_eZ_\text{rot}}{Pv_Q}\right)=\ln\left(\frac{(\boltzmannConstK)(300\,\text{K})(3)(71.808)}{(\atmP)(5.66\times10{-33}\,\text{m}^3)}\right)$$
+$$\implies\ln\left(\frac{kTZ_eZ_\text{rot}}{Pv_Q}\right)=21.166$$\\~\\
+
+With all these pieces, we can finally solve for $S$.
+$$S=Nk\left[\ln\left(\frac{kTZ_eZ_\text{rot}}{Pv_Q}\right)+\frac{7}{2}\right]$$
+$$\implies S=(\avogadro)(\boltzmannConstK)\left[21.166+\frac{7}{2}\right]$$
+$$\implies S=205.13\,\text{J/K}$$
+This agrees with the entropy of molecular oxygen in the back of the book.\\~\\
+
+
+Now for the chemical potential of molecular oxygen under the same conditions.
+The relevant equation is the following.
+\begin{equation}
+    \mu=-kT\ln\left(\frac{kTZ_eZ_\text{rot}}{Pv_Q}\right)
+\end{equation}
+This is clearly just the natural log we computed earlier times $-kT$, so this is simply calculated.
+$$\mu=-kT\ln\left(\frac{kTZ_eZ_\text{rot}}{Pv_Q}\right)$$
+$$\implies\mu=-(\boltzmannConstInEV)(300\,\text{K})(21.166)$$
+$$\implies\mu=-0.547\,\text{eV}$$
 
 
 
