@@ -52,15 +52,39 @@
 \maketitle
 \begin{flushleft}
 
-
+For this problem, we'll compute the quantum volume $v_Q$ for Nitrogen gas.
 \begin{equation}
     v_Q=\left(\frac{h}{\sqrt{2\pi mkT}}\right)^3
 \end{equation}
+With this, we'll justifty the use of Boltzmann statistics when dealing with nonrelativistic ideal gases near room temperature by using the following condition.
+The condition for when Boltzmann statistics is sufficient is when we have the following.
+It comes from ensuring that the number of possible single-particle-states is much greater than the number of particles.
+\begin{equation}
+    \frac{V}{N}\gg v_Q
+\end{equation}\\~\\
 
-Before solving anything, let's tackle some of the prerequisite parts.
+First, let's find $v_Q$.
+For one molecule of Nitrogen gas, $m=4.65186\times10^{-26}\,\text{kg}$, and we're dealing with a situation where $T=300\,\text{K}$ and $P=\atmP$.
 $$v_Q=\left(\frac{h}{\sqrt{2\pi mkT}}\right)^3$$
 $$\implies v_Q=\left(\frac{\planckConst}{\sqrt{2\pi(4.65186\times10^{-26}\,\text{kg})(\boltzmannConstK)(300\,\text{K})}}\right)^3$$
-$$\implies v_Q=6.90354\times10^{-33}\,\text{m}^3$$
+$$\implies v_Q=6.90354\times10^{-33}\,\text{m}^3$$\\~\\
+
+Now that we have $v_Q$, we can use it to examine the given condition.
+First, recall that for an ideal gas, $V=NkT/P$.
+Therefore, we get the following.
+$$\frac{V}{N}\gg v_Q$$
+$$\implies\frac{kT}{P}\gg v_Q$$
+$$\implies\frac{(\boltzmannConstK)(300\,\text{K})}{\atmP}\gg 6.90354\times10^{-33}\,\text{m}^3$$
+$$\implies4.089\times10^{-26}\,\text{m}^3\gg 6.90354\times10^{-33}\,\text{m}^3$$
+This is certainly true, so Boltzmann statistics is definitely sufficient for studying this system.\\~\\
+
+Now, let's find the required temperature (ignoring gas changing state) required to make the left comparable to the right.
+We'll call that condition when the left is only ten times the right.
+$$10\frac{kT}{P}=v_Q$$
+$$\implies T=\frac{Pv_Q}{10\cdot k}$$
+$$\implies T=\frac{(\atmP)(6.90354\times10^{-33}\,\text{m}^3)}{10(\boltzmannConstK)}$$
+$$\implies T=0.00000507\,\text{K}$$
+So, quantum statistics is pretty much never relevant for this system.
 
 
 
