@@ -1,0 +1,124 @@
+\documentclass[12pt]{article}
+\usepackage{graphicx} % Required for inserting images
+\usepackage[margin=0.5in]{geometry}
+\usepackage{amsmath, amssymb}
+\usepackage{mathrsfs}
+
+
+\usepackage{soul}
+
+
+% Dr. David Brown Commands
+\newcommand{\ds}{\displaystyle}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\Q}{\mathbb{Q}}
+\newcommand{\C}{\mathbb{C}}
+
+
+% Commands to get script r
+\usepackage{calligra}
+\DeclareMathAlphabet{\mathcalligra}{T1}{calligra}{m}{n}
+\DeclareFontShape{T1}{calligra}{m}{n}{<->s*[2.2]callig15}{}
+\newcommand{\scripty}[1]{\ensuremath{\mathcalligra{#1}}}
+
+% Unit commands
+\newcommand{\degree}{\text{°}}
+\newcommand{\unitSpeed}{\frac{\text{m}}{\text{s}}}
+\newcommand{\unitAcceleration}{\frac{\text{m}}{\text{s}^2}}
+
+% Constant commands
+\newcommand{\avogadro}{6.022\times10^{23}}
+
+\newcommand{\boltzmannConstK}{1.381\times10^{-23}\frac{\text{J}}{\text{K}}}
+\newcommand{\boltzmannConstInEV}{8.617\times10^{-5}\frac{\text{eV}}{\text{K}}}
+\newcommand{\planckConst}{6.626\times10^{-34}\text{J}\cdot\text{s}}
+
+\newcommand{\atmP}{1.01325\times10^5\,\text{Pa}}
+
+% Commands to easily write partial derivatives
+\newcommand{\partDeriv}[2]{\frac{\partial #1}{\partial #2}}
+\newcommand{\doublePartDeriv}[2]{\frac{\partial^2 #1}{\partial^2 #2}}
+
+
+\title{Problem 7.7}
+\author{Gabriel Decker}
+
+
+\begin{document}
+
+
+
+\maketitle
+\begin{flushleft}
+
+
+
+In this problem, we will consider various situations involving distinguishable and indistinguishable particles in a Boltzmann-statistics system.
+These particles can have one of 10 single-particle states which all have energy zero.
+This implies that the Boltzmann factor for each state is $e^{-E(s)/kT}=e^0=1$.
+Therefore, the partition function is simply the number of available single-particle states.\\~\\
+
+\textbf{Part a:}\\
+As stated above, the partition function $Z$ is simply the number of possible states.
+Since we have one particle with 10 states available to it, $Z=10$.\\~\\
+
+\textbf{Part b:}\\
+Since there are now two distinguishable particles, and each particle has 10 possible states, this implies that $Z=10\cdot10=100$.\\~\\
+
+\textbf{Part c:}\\
+We now consider two indistinguishable bosons.
+For this, there are two possible general cases for states.
+The particles can either be in different states or the same states.
+Since there are 10 states, there are 10 possible ways for them to be in the same state.
+Now, consider the case where the particles are in different states.
+Choose the state for each particle sequentially.
+For the first particle, there are 10 states to choose from.
+For the second particle, there are 9 states since we're avoiding the state the first particle is in.
+Therefore, there are $10\cdot9=90$ states for this case.
+However, since our particles are indistinguishable, we must divide this by 2.
+This is because we would otherwise double-count these states.
+So, there are $90/2=45$ states in this case.
+This brings the partition function to $Z=45+10=55$.\\~\\
+
+\textbf{Part d:}\\
+We now consider two indistinguishable fermions.
+This is the same as for the bosons, except states where both particles share a single-particle state are eliminated.
+So, $Z=45$.\\~\\
+
+\textbf{Part e:}\\
+The relevant equation is the following.
+\begin{equation}
+    Z=\frac{1}{N!}Z_1^N
+\end{equation}
+This equation is only true for indistinguishable particles that are only possibly in different states. It is simply an approximation for not-very-dense systems ($Z_1\gg N$).
+For our situation, $Z_1$ is simply what we computed in part a and $N=2$.
+So, we get the following.
+$$Z=\frac{1}{N!}Z_1^N$$
+$$\implies Z=\frac{1}{2!}10^2$$
+$$\implies Z=\frac{1}{2}100$$
+$$\implies Z=50$$
+This is between the fermion and boson case.\\~\\
+
+\textbf{Part f:}\\
+Now, we will use the partition functions (or the number of possible states, in this case) for to calculate the probabilities of both particles being in the same state.
+This will be done for the three scenarios: distinguishable particles, bosons, and fermions.\\~\\
+
+For distinguishable particles, the total number of states is $Z=100$.
+There are 10 states where the particles are in the same state.
+Therefore, $\mathcal{P}=10/100=1/10=0.1$.\\~\\
+
+For bosons, the total number of states is $Z=55$.
+There are 10 states where the particles are in the same state.
+Therefore, $\mathcal{P}=10/55=0.182$.\\~\\
+
+For fermions, the total number of states is $Z=45$.
+However, it is impossible for fermions to share a state, so $\mathcal{P}=0/45=0$.\\~\\
+
+
+
+
+
+\end{flushleft}
+
+\end{document}
