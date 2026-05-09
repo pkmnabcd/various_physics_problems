@@ -1,0 +1,140 @@
+\documentclass[12pt]{article}
+\usepackage{graphicx} % Required for inserting images
+\usepackage[margin=0.5in]{geometry}
+\usepackage{amsmath, amssymb}
+\usepackage{mathrsfs}
+
+
+\usepackage{soul}
+
+
+% Dr. David Brown Commands
+\newcommand{\ds}{\displaystyle}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\Q}{\mathbb{Q}}
+\newcommand{\C}{\mathbb{C}}
+
+
+% Commands to get script r
+\usepackage{calligra}
+\DeclareMathAlphabet{\mathcalligra}{T1}{calligra}{m}{n}
+\DeclareFontShape{T1}{calligra}{m}{n}{<->s*[2.2]callig15}{}
+\newcommand{\scripty}[1]{\ensuremath{\mathcalligra{#1}}}
+
+% Unit commands
+\newcommand{\degree}{\text{°}}
+\newcommand{\unitSpeed}{\frac{\text{m}}{\text{s}}}
+\newcommand{\unitAcceleration}{\frac{\text{m}}{\text{s}^2}}
+
+% Constant commands
+\newcommand{\avogadro}{6.022\times10^{23}}
+
+\newcommand{\boltzmannConstK}{1.381\times10^{-23}\frac{\text{J}}{\text{K}}}
+\newcommand{\boltzmannConstInEV}{8.617\times10^{-5}\frac{\text{eV}}{\text{K}}}
+\newcommand{\planckConst}{6.626\times10^{-34}\text{J}\cdot\text{s}}
+
+\newcommand{\atmP}{1.01325\times10^5\,\text{Pa}}
+
+% Commands to easily write partial derivatives
+\newcommand{\partDeriv}[2]{\frac{\partial #1}{\partial #2}}
+\newcommand{\doublePartDeriv}[2]{\frac{\partial^2 #1}{\partial^2 #2}}
+
+
+\title{Problem 7.13}
+\author{Gabriel Decker}
+
+
+\begin{document}
+
+
+
+\maketitle
+\begin{flushleft}
+
+
+For this problem, we will determine the average occupancy of a state for a system of bosons, varying the energy levels.
+To do this, we'll use the bose-einstein distribution.
+\begin{equation}
+    \overline{n}_\text{BE}=\frac{1}{e^{(\epsilon-\mu)/kT}-1}
+\end{equation}
+where $\epsilon$ is the energy of the state.\\~\\
+
+We will also find the probability of finding $n=1,2,3$ bosons in a state.
+Recall that the probability of a number of particles being in a state is the following.
+\begin{equation}
+    \mathcal{P}(n)=\frac{1}{\mathcal{Z}}e^{-n(\epsilon-\mu)/kT}
+\end{equation}
+where for bosons, $\mathcal{Z}$ is the following.
+\begin{equation}
+    \mathcal{Z}=\frac{1}{1-e^{-(\epsilon-\mu)/kT}}
+\end{equation}
+We can combine these equations into the following.
+$$\mathcal{P}(n)=\frac{1}{\mathcal{Z}}e^{-n(\epsilon-\mu)/kT}$$
+$$\implies\mathcal{P}(n)=(1-e^{-(\epsilon-\mu)/kT})e^{-n(\epsilon-\mu)/kT}$$\\~\\
+
+We can substitute $x=(\epsilon-\mu)/kT$ to get the following.
+$$\implies\mathcal{P}(n)=(1-e^{-x})e^{-nx}$$
+and
+$$\overline{n}_\text{BE}=\frac{1}{e^{x}-1}$$\\~\\
+
+We'll find the occupancies and probabilities for the following values of $\epsilon$.
+\begin{enumerate}
+    \item[a.] $\epsilon=\mu+0.001\,\text{eV}$:\\
+    \item[b.] $\epsilon=\mu+0.01\,\text{eV}$:\\
+    \item[c.] $\epsilon=\mu+0.1\,\text{eV}$:\\
+    \item[d.] $\epsilon=\mu+1\,\text{eV}$:\\
+\end{enumerate}
+
+We'll be doing calculations at $T=300\,\text{K}$.
+We can further substitue $x$ by representing the offsets from $\mu$ as $\delta$.
+$$x=(\epsilon-\mu)/kT$$
+$$\implies x=(\mu+\delta-\mu)/kT$$
+$$\implies x=\delta/kT$$
+We can go ahead and plug in $k$ and $T$ since that is always the same.
+$$\implies x=\delta/0.025851\,\text{eV}$$\\~\\
+
+
+\textbf{Part a}\\
+For this part, $\delta=0.001\,\text{eV}$.
+Plugging this into the above equations, we get the following.
+$$\overline{n}_\text{BE}=25.354$$
+$$\mathcal{P}(0)=0.0379$$
+$$\mathcal{P}(1)=0.0365$$
+$$\mathcal{P}(2)=0.0351$$
+$$\mathcal{P}(3)=0.0338$$
+
+\textbf{Part b}\\
+For this part, $\delta=0.01\,\text{eV}$.
+Plugging this into the above equations, we get the following.
+$$\overline{n}_\text{BE}=2.117$$
+$$\mathcal{P}(0)=0.321$$
+$$\mathcal{P}(1)=0.218$$
+$$\mathcal{P}(2)=0.148$$
+$$\mathcal{P}(3)=0.101$$
+
+\textbf{Part c}\\
+For this part, $\delta=0.1\,\text{eV}$.
+Plugging this into the above equations, we get the following.
+$$\overline{n}_\text{BE}=0.021$$
+$$\mathcal{P}(0)=0.979$$
+$$\mathcal{P}(1)=0.0205$$
+$$\mathcal{P}(2)=0.000427$$
+$$\mathcal{P}(3)=0.000009$$
+
+\textbf{Part d}\\
+For this part, $\delta=1\,\text{eV}$.
+Plugging this into the above equations, we get the following.
+$$\overline{n}_\text{BE}=1.58\times10^{-17}$$
+$$\mathcal{P}(0)=1$$
+$$\mathcal{P}(1)=1.58\times10^{-17}$$
+$$\mathcal{P}(2)=2.51\times10^{-34}$$
+$$\mathcal{P}(3)=3.98\times10^{-51}$$
+
+
+
+
+
+\end{flushleft}
+
+\end{document}
