@@ -1,0 +1,187 @@
+\documentclass[12pt]{article}
+\usepackage{graphicx} % Required for inserting images
+\usepackage[margin=0.5in]{geometry}
+\usepackage{amsmath, amssymb}
+\usepackage{mathrsfs}
+
+
+\usepackage{soul}
+
+
+% Dr. David Brown Commands
+\newcommand{\ds}{\displaystyle}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\Q}{\mathbb{Q}}
+\newcommand{\C}{\mathbb{C}}
+
+
+% Commands to get script r
+\usepackage{calligra}
+\DeclareMathAlphabet{\mathcalligra}{T1}{calligra}{m}{n}
+\DeclareFontShape{T1}{calligra}{m}{n}{<->s*[2.2]callig15}{}
+\newcommand{\scripty}[1]{\ensuremath{\mathcalligra{#1}}}
+
+% Unit commands
+\newcommand{\degree}{\text{°}}
+\newcommand{\unitSpeed}{\frac{\text{m}}{\text{s}}}
+\newcommand{\unitAcceleration}{\frac{\text{m}}{\text{s}^2}}
+
+% Constant commands
+\newcommand{\avogadro}{6.022\times10^{23}}
+
+\newcommand{\boltzmannConstK}{1.381\times10^{-23}\frac{\text{J}}{\text{K}}}
+\newcommand{\boltzmannConstInEV}{8.617\times10^{-5}\frac{\text{eV}}{\text{K}}}
+\newcommand{\planckConst}{6.626\times10^{-34}\text{J}\cdot\text{s}}
+
+\newcommand{\atmP}{1.01325\times10^5\,\text{Pa}}
+
+% Commands to easily write partial derivatives
+\newcommand{\partDeriv}[2]{\frac{\partial #1}{\partial #2}}
+\newcommand{\doublePartDeriv}[2]{\frac{\partial^2 #1}{\partial^2 #2}}
+
+
+\title{Problem 7.10}
+\author{Gabriel Decker}
+
+
+\begin{document}
+
+
+
+\maketitle
+\begin{flushleft}
+
+
+For this problem, we will consider various situations of distinguishable particles, bosons, and fermions in a system where energy states are evenly spaced and nondegenerate.
+We are given five particles.
+Recall that fermions cannot share energy states, while bosons can.
+Also recall that in systems of distinguishable particles, you have to consider each possible configuration of those particles.
+For the distinguishable particles, the configuration of possible systems will be the same as with bosons, but because the particles are distinguishable, the degeneracy of the states will greatly increase the number of possible states.\\~\\
+
+For the distinguishable particles, a discussion on some combinatorics is needed.
+In combinatorics, the number of ways you can pick $k$ distinguishable objects from a set of $n$ objects is the following, called $n$ choose $k$.
+\begin{equation}
+    \left.n\choose k\right.=\frac{n!}{k!\cdot(n-k)!}
+\end{equation}
+This is going to be helpful because when dealing with distinguishable particles, we must consider the degeneracy of the various system states (different system total energies).
+If we can have different particles in different groups, then we must come up with a formula to calculate the number of possible combinations these states could have.
+Thus, if we could have two particles separate from the others, this implies that we are finding the number of ways we can pick two particles out of a set of five to separate.\\~\\
+
+Let's compute a few of these that we'll need.
+$$\left.5\choose 1\right.=\frac{5!}{1!\cdot(5-1)!}$$
+$$\implies\left.5\choose 1\right.=\frac{5!}{4!}$$
+$$\implies\left.5\choose 1\right.=5$$
+$$\left.5\choose 2\right.=\frac{5!}{2!\cdot(5-2)!}$$
+$$\implies\left.5\choose 2\right.=\frac{5!}{2!\cdot3!}$$
+$$\implies\left.5\choose 2\right.=\frac{5\cdot4}{2}$$
+$$\implies\left.5\choose 2\right.=10$$
+$$\left.5\choose 3\right.=\frac{5!}{3!\cdot(5-3)!}$$
+$$\implies\left.5\choose 3\right.=\frac{5!}{3!\cdot2!}$$
+$$\implies\left.5\choose 2\right.=10$$
+$$\left.4\choose 1\right.=\frac{4!}{1!\cdot(4-1)!}$$
+$$\implies\left.4\choose 1\right.=\frac{4!}{3!}$$
+$$\implies\left.4\choose 1\right.=4$$
+
+
+\textbf{Part a}\\
+First, we will consider the ground state of these systems.
+\begin{enumerate}
+
+    \item Fermions:\\
+    Since fermions cannot share states, each of the first five lowest-energy states will be filled up by a particle.\\~\\
+
+    \item Bosons:\\
+    Since bosons can share states, each of the five particles will be in the lowest (ground) energy state.\\~\\
+
+    \item Distinguishable Particles:\\
+    Since distinguishable particles can share states, each of the five particles will be in the lowest (ground) energy state.
+    Since each particle is in the same state, there is still only one possible configuration.\\~\\
+
+\end{enumerate}
+
+
+\textbf{Part b}\\
+Next, let's consider the situation where the system has one unit of energy above the ground state.
+This implies that there is enough energy for one particle to have more energy than what would normally happen in the ground state.
+\begin{enumerate}
+
+    \item Fermions:\\
+    In this case, the first four energy states will have one particle, each, while the fifth will be empty because the sixth will have one particle in it. This is because of the extra energy introduced to the system. We can't promote one of the lower-level particles because that would violate the fact that fermions can't share states.\\~\\
+
+    \item Bosons:\\
+    For this case, one particle will will be in the second state, while the other four will be in the first state.\\~\\
+
+    \item Distinguishable Particles:\\
+    For this case, one particle will will be in the second state, while the other four will be in the first state.
+    However, since the particles are distinguishable, it matters which one is promoted, so there are five different possible states, one for each particle being the excited one.
+    This can be thought of as choosing one particle out of a set of five to be promoted, so this is also $5\choose1$.\\~\\
+
+\end{enumerate}
+
+\textbf{Part c}\\
+Next, let's consider the situation where the system has two units of energy above the ground state.
+This implies that there is enough energy for either one particle to move up two states or for two particles to move up one state.
+\begin{enumerate}
+
+    \item Fermions:\\
+    In this case, there are two possible states.
+    For one, the particle in the fifth state could move up to the seventh state.
+    For the other, the particle in the fifth state could move up to the sixth while the particle in the fourth move up to the fifth.
+    This is the only way to not violate the exclusivity of fermions.\\~\\
+
+    \item Bosons:\\
+    For this case, there are two possible states.
+    For one, one particle will will be in the third state, while the other four will be in the first state.
+    For the other, two particles will be in the second state, while the other three will be in the first state.\\~\\
+
+    \item Distinguishable Particles:\\
+    This will have the same configuration of states as the bosons.
+    However, we must account for the degeneracy.
+    In the case of one particle being excited to the third state, we'll clearly use $5\choose1$ or 5 for the degeneracy of that state.
+    In the case of two particles being in the second state, we'll use $5\choose2$ or 10 for the degeneracy of that state.
+    With both possibilities accounted for, this yields a total number of 15 possible states.
+
+\end{enumerate}
+
+Next, let's consider the situation where the system has three units of energy above the ground state.
+This implies that there is enough energy for either one particle to move up three states, for one particle to move up two states and one move up one state, or for three particles to move up one state.
+\begin{enumerate}
+
+    \item Fermions:\\
+    In this case, there are three possible states.
+    For one, the particle in the fifth state could move up to the eigth state.
+    For another, the particle in the fifth state could move up to the seventh state and the particle in the fourth state move up to the fifth state.
+    For the other, the particles in the fifth and fourth states could each move up to the next state.
+    This is the only way to not violate the exclusivity of fermions.\\~\\
+
+    \item Bosons:\\
+    For this case, there are three possible states.
+    For one, one particle will will be in the fourth state, while the other four will be in the first state.
+    For another, one particle will be in the third state, another in the second state, while the other three will be in the first state.
+    For the other, three particles will be in the second state, while the other two will be in the first state.\\~\\
+
+    \item Distinguishable Particles:\\
+    This will have the same configuration of states as the bosons.
+    However, we must account for the degeneracy.
+    In the case of one particle being excited to the fourth state, we'll clearly use $5\choose1$ or 5 for the degeneracy of that state.
+    In the case of one particle being in the second state and one in the third, it gets a bit more tricky.
+    We can first choose one of the five particles to go into the third state $5\choose1$, then choose one of the remaining particles to go into the second state $4\choose1$.
+    This makes the degeneracy of this case $\left.5\choose1\right.\cdot\left.4\choose1\right.=5\cdot4=20$.
+    In the case of three particles being in the second state, we'll use $5\choose3$ or 10 for the degeneracy of that state.
+    With both possibilities accounted for, this yields a total number of 35 possible states.
+
+\end{enumerate}
+
+\textbf{Part d}\\
+At low energies, for bosons, the number of states is low (essentially scaling linearly with the number of energy units).
+For a system of distinguishable particles, however, the degeracy is pretty high, so there are way more numbers of states.\\~\\
+
+Recall that the probabilty of finding a particle at a particular energy level is proportional to the Boltzmann factor (in this case) $e^{-E/kT}$ and also to the degeneracy of the energy level.
+Since, as shown above, the degeneracy for distinguishable particles is much higher than that of bosons, so that means that higher energy states are much more likely for distinguishable particles than it is for bosons.
+
+
+
+\end{flushleft}
+
+\end{document}
