@@ -1,0 +1,96 @@
+\documentclass[12pt]{article}
+\usepackage{graphicx} % Required for inserting images
+\usepackage[margin=0.5in]{geometry}
+\usepackage{amsmath, amssymb}
+\usepackage{mathrsfs}
+
+
+\usepackage{soul}
+
+
+% Dr. David Brown Commands
+\newcommand{\ds}{\displaystyle}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\Q}{\mathbb{Q}}
+\newcommand{\C}{\mathbb{C}}
+
+
+% Commands to get script r
+\usepackage{calligra}
+\DeclareMathAlphabet{\mathcalligra}{T1}{calligra}{m}{n}
+\DeclareFontShape{T1}{calligra}{m}{n}{<->s*[2.2]callig15}{}
+\newcommand{\scripty}[1]{\ensuremath{\mathcalligra{#1}}}
+
+% Unit commands
+\newcommand{\degree}{\text{°}}
+\newcommand{\unitSpeed}{\frac{\text{m}}{\text{s}}}
+\newcommand{\unitAcceleration}{\frac{\text{m}}{\text{s}^2}}
+
+% Constant commands
+\newcommand{\avogadro}{6.022\times10^{23}}
+
+\newcommand{\boltzmannConstK}{1.381\times10^{-23}\frac{\text{J}}{\text{K}}}
+\newcommand{\boltzmannConstInEV}{8.617\times10^{-5}\frac{\text{eV}}{\text{K}}}
+\newcommand{\planckConst}{6.626\times10^{-34}\text{J}\cdot\text{s}}
+
+\newcommand{\atmP}{1.01325\times10^5\,\text{Pa}}
+
+% Commands to easily write partial derivatives
+\newcommand{\partDeriv}[2]{\frac{\partial #1}{\partial #2}}
+\newcommand{\doublePartDeriv}[2]{\frac{\partial^2 #1}{\partial^2 #2}}
+
+
+\title{Problem 7.18}
+\author{Gabriel Decker}
+
+
+\begin{document}
+
+
+\maketitle
+\begin{flushleft}
+
+In this problem, we will consider a type of particle where zero, one, or two particles can share an energy state.
+We will derive the occupancy, or the average number of particles in the state.
+This is simply an average value problem involving probability.
+\begin{equation}
+    \overline{n}=\sum_nn\mathcal{P}(n)
+\end{equation}
+where $\mathcal{P}(n)$, the probability of a number of particles being in a state is the following.
+\begin{equation}
+    \mathcal{P}(n)=\frac{1}{\mathcal{Z}}e^{-n(\epsilon-\mu)/kT}
+\end{equation}
+where $\mathcal{Z}$, or the grand partition function for this system, is the sum of the Gibbs factors.
+In this case, we're considering that the energy of the state is $E=n\epsilon$.
+This gives us Gibbs factors of $e^{-n(\epsilon-\mu)/kT}$.\\~\\
+
+First, let's determine the grand partition function.
+It is the sum of possible states for our energy level, which depends on $n$.
+Therefore, since for our hypothetical particle, $n=0,1,2$, this implies the following.
+$$\mathcal{Z}=\sum_{n=0}^2e^{-n(\epsilon-\mu)/kT}$$
+$$\implies\mathcal{Z}=e^{-0(\epsilon-\mu)/kT}+e^{-1(\epsilon-\mu)/kT}+e^{-2(\epsilon-\mu)/kT}$$
+$$\implies\mathcal{Z}=1+e^{-(\epsilon-\mu)/kT}+\left(e^{-(\epsilon-\mu)/kT}\right)^2$$\\~\\
+
+We have the grand partition function, so we can now calculate the probability of $n$ particles sharing an energy state, again, the possible values for $n$ are $n=0,1,2$.
+$$\mathcal{P}(n)=\frac{1}{\mathcal{Z}}e^{-n(\epsilon-\mu)/kT}$$
+$$\implies\mathcal{P}(n)=\frac{\ds e^{-n(\epsilon-\mu)/kT}}{\ds1+e^{-(\epsilon-\mu)/kT}+\left(e^{-(\epsilon-\mu)/kT}\right)^2}$$\\~\\
+
+Now that we have the probability function, we can finally get the occupancy distribution.
+$$\overline{n}=\sum_nn\mathcal{P}(n)$$
+$$\implies\overline{n}=\sum_{n=0}^2n\frac{\ds e^{-n(\epsilon-\mu)/kT}}{\ds1+e^{-(\epsilon-\mu)/kT}+\left(e^{-(\epsilon-\mu)/kT}\right)^2}$$
+$$\implies\overline{n}=0+1\frac{\ds e^{-1(\epsilon-\mu)/kT}}{\ds1+e^{-(\epsilon-\mu)/kT}+\left(e^{-(\epsilon-\mu)/kT}\right)^2}+2\frac{\ds e^{-2(\epsilon-\mu)/kT}}{\ds1+e^{-(\epsilon-\mu)/kT}+\left(e^{-(\epsilon-\mu)/kT}\right)^2}$$
+$$\implies\overline{n}=\frac{1}{\ds e^{(\epsilon-\mu)/kT}+1+e^{-(\epsilon-\mu)/kT}}+2\frac{1}{\ds \left(e^{(\epsilon-\mu)/kT}\right)^2+e^{(\epsilon-\mu)/kT}+1}$$
+We can define $x=(\epsilon-\mu)/kT$ to simplify the equation.
+$$\implies\overline{n}=\frac{1}{\ds e^{x}+1+e^{-x}}+\frac{2}{\ds \left(e^{x}\right)^2+e^{x}+1}$$\\~\\
+
+With this, we can plot the average number of particles as a function of $\epsilon$ for a number of $T$.\\
+\includegraphics[width=0.8\linewidth]{energy_vs_occupancy.png}
+
+
+
+
+
+\end{flushleft}
+
+\end{document}
