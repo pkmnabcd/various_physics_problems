@@ -52,10 +52,86 @@
 \begin{flushleft}
 
 
+In this problem, we will consider a degenerate electron gas where each electron has highly relativistic speed.
+This implies that their energies are essentially $\epsilon=|\vec{p}|c$.
+Given that, we will derive the chemical potential (or Fermi energy) and the total energy.\\~\\
 
+\textbf{Part a}\\
 
+First, let's begin with the energy $\epsilon$ of the electrons.
+It depends on the momentum of the electrons.
+We can do a similar thing as the book's derivation, where we assume that our system is a box and only certain de Broglie wavelenghts and momenta are allowed.
+$\lambda_n=2L/n$ and $p_n=h/\lambda_n$ imply that $p=hn/2L$.
+This yields the following for each direction $q\in[x,y,z]$ for the system.
+$$p_q=\frac{hn_q}{2L}$$\\~\\
 
+With this, we can put the three components of momentum into a vector.
+$$\vec{p}=\frac{hn_x}{2L}\hat{x}+\frac{hn_y}{2L}\hat{y}+\frac{hn_z}{2L}\hat{z}$$
+$$\implies\vec{p}=\frac{h}{2L}\left[n_x\hat{x}+n_y\hat{y}+n_z\hat{z}\right]$$
+We can describe a space of $n$s ($n$-space) where each coordinate's corresponding $n$ has its own axis and describe a molecule's state with a vector.
+Each point in the grid (with one unit separating points) represents a different state because each point has a different configuration of $n_q$s.
+$$\implies\vec{p}=\frac{h}{2L}\vec{n}$$
+$$\implies|\vec{p}|=\frac{h}{2L}|\vec{n}|=\frac{h}{2L}\sqrt{n_x^2+n_y^2+n_z^2}$$\\~\\
 
+By plugging in our relation for relativistic energy $\epsilon=|\vec{p}|c$, we get the allowed energy states.
+$$\epsilon=|\vec{p}|c$$
+$$\implies\epsilon=\frac{hc}{2L}|\vec{n}|$$\\~\\
+
+In our degenerate electron gas, the electrons are in the lowest states.
+Therefore, we, like the book, can think of the $n$-space as approximately one eighth of a sphere (since $n_q>0$).
+There is also no preference, direction-wise.
+So, we can define $n_\text{max}=|\vec{n}|$ for when we're interested in the Fermi energy.
+$n_\text{max}$ is the maximum $n$ in a particular direction.
+This is because Fermi energy $\epsilon_F=\mu$ is the highest energy level of the system.
+This works because the radius of the sphere is approximately the same in all directions, and each direction's max $n$ implies that the the other $n$s are minimal.
+Therefore, the fermi temperature (or $\mu$) is the following.
+$$\implies\epsilon_F=\frac{hc}{2L}n_\text{max}$$\\~\\
+
+We now want to express $\epsilon_F$ in more general terms.
+Specifically, in terms of $N/V$.
+$V$ is easy, since it's simply $V=L^3$ in our box.\\~\\
+
+If we consider the eighth of a sphere in $n$-space again, the total volume of the eigth-sphere equals the number of enclosed points.
+This works because each state has at least one unit separating itself from every other state, so we can think of each grid point as having a 1-by-1-by-1 cube surrounding it.
+This implies that the total number of electrons is two (accounting for spin up and down) times the volume of this eighth-sphere.
+This cube has a volume of one, so the enclosed volume thus represents the number of points or states.
+Thus, since $n_\text{max}$ is again, the radius of the sphere,
+$$N=2\cdot\frac{1}{8}\cdot\frac{4}{3}\pi n_\text{max}^3$$
+$$\implies N=\frac{\pi n_\text{max}^3}{3}$$
+This is the same as the text's derivation.\\~\\
+
+We can combine these into the $\epsilon_F$ equation by doing the following.
+$$\epsilon_F=\frac{hc}{2L}n_\text{max}$$
+$$\implies\epsilon_F=\frac{hc}{2}\cdot\left(\frac{3}{\pi}\right)^{1/3}\cdot\left(\frac{\pi}{3}\right)^{1/3}\cdot\frac{n_\text{max}}{L}$$
+$$\implies\epsilon_F=\frac{hc}{2}\cdot\left(\frac{3}{\pi}\right)^{1/3}\left[\left[\left(\frac{\pi}{3}\right)^{1/3}\cdot\frac{n_\text{max}}{L}\right]^3\right]^{1/3}$$
+$$\implies\epsilon_F=\frac{hc}{2}\cdot\left(\frac{3}{\pi}\right)^{1/3}\left[\frac{\pi n_\text{max}^3}{L^3}\right]^{1/3}$$
+$$\implies\epsilon_F=\frac{hc}{2}\cdot\left(\frac{3}{\pi}\right)^{1/3}\left[\frac{N}{V}\right]^{1/3}$$
+$$\implies\epsilon_F=hc\left[\frac{3N}{8\pi V}\right]^{1/3}$$\\~\\
+
+\textbf{Part b}\\
+Now that we have an equation for the Fermi energy, we can derive an equation for the total energy.
+The total energy of our system is simply the sum of the individual energies of our electrons.
+Therefore, we get the following.
+$$U=2\sum_{n_x}\sum_{n_y}\sum_{n_z}\epsilon(\vec{n})$$
+If we assume that we have enough electrons to make a pretty good sphere in $n$-space, we can treat this as an integral.
+$$\implies U=2\int\int\int\epsilon(\vec{n})\,dn_xdn_ydn_z$$
+We can simplify this by using our $n$-space eight-sphere again and use spherical coordinates.
+Since the radius is $n_\text{max}$, we can use that in our integral.
+Recall that in spherical coordinates, $dV=n^2\sin(\theta)dnd\theta d\phi$.
+Also, in general, $|\vec{n}|=n$.
+$$\implies U=2\int\int\int\epsilon(n)n^2\sin(\theta)dnd\theta d\phi$$
+$$\implies U=2\int_0^{n_\text{max}}\epsilon(n)n^2\,dn\int_0^{\pi/2}\sin(\theta)\,d\theta \int_0^{\pi/2}\,d\phi$$
+$$\implies U=2\int_0^{n_\text{max}}\epsilon(n)n^2\,dn\cdot1\cdot\frac{\pi}{2}$$
+$$\implies U=\pi\int_0^{n_\text{max}}\epsilon(n)n^2\,dn$$
+We can substitute our expression for $\epsilon$ to continue to solve this.
+$$\implies U=\pi\int_0^{n_\text{max}}\frac{hc}{2L}n\cdot n^2\,dn$$
+$$\implies U=\frac{hc\pi}{2L}\int_0^{n_\text{max}}n^3\,dn$$
+$$\implies U=\frac{hc\pi}{8L}n_\text{max}^4$$\\~\\
+
+Now, expressing $U$ in terms of $N$ and $\epsilon_F$, we get the following.
+$$U=\frac{hc\pi}{8L}n_\text{max}^4$$
+$$\implies U=\frac{hc}{2L}n_\text{max}\cdot\frac{\pi n_\text{max}^3}{3}\cdot\frac{3}{4}$$
+$$\implies U=\frac{3}{4}N\epsilon_F$$
 
 
 
