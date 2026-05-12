@@ -1,0 +1,125 @@
+\documentclass[12pt]{article}
+\usepackage{graphicx} % Required for inserting images
+\usepackage[margin=0.5in]{geometry}
+\usepackage{amsmath, amssymb}
+\usepackage{mathrsfs}
+
+
+\usepackage{soul}
+
+
+% Dr. David Brown Commands
+\newcommand{\ds}{\displaystyle}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\Q}{\mathbb{Q}}
+\newcommand{\C}{\mathbb{C}}
+
+
+% Commands to get script r
+\usepackage{calligra}
+\DeclareMathAlphabet{\mathcalligra}{T1}{calligra}{m}{n}
+\DeclareFontShape{T1}{calligra}{m}{n}{<->s*[2.2]callig15}{}
+\newcommand{\scripty}[1]{\ensuremath{\mathcalligra{#1}}}
+
+% Unit commands
+\newcommand{\degree}{\text{°}}
+\newcommand{\unitSpeed}{\frac{\text{m}}{\text{s}}}
+\newcommand{\unitAcceleration}{\frac{\text{m}}{\text{s}^2}}
+
+% Constant commands
+\newcommand{\avogadro}{6.022\times10^{23}}
+
+\newcommand{\boltzmannConstK}{1.381\times10^{-23}\frac{\text{J}}{\text{K}}}
+\newcommand{\boltzmannConstInEV}{8.617\times10^{-5}\frac{\text{eV}}{\text{K}}}
+\newcommand{\planckConst}{6.626\times10^{-34}\text{J}\cdot\text{s}}
+
+\newcommand{\atmP}{1.01325\times10^5\,\text{Pa}}
+
+% Commands to easily write partial derivatives
+\newcommand{\partDeriv}[2]{\frac{\partial #1}{\partial #2}}
+\newcommand{\doublePartDeriv}[2]{\frac{\partial^2 #1}{\partial^2 #2}}
+
+
+\title{Problem 7.19}
+\author{Gabriel Decker}
+
+
+\begin{document}
+
+
+\maketitle
+\begin{flushleft}
+
+
+
+In this problem, we will consider whether the electrons in a chunk of copper can be considered a degenerate fermi gas.
+We will calcuate the Fermi energy, Fermi temperature, degeneracy pressure, and the contribution of the degeneracy pressure to the bulk modulus.
+We will assume each atom of copper in a chunk of copper contributes one electron.
+We will use the following data for copper: density $\rho=8960\,\text{kg/m}^3$ and atomic mass $m_a=0.063546\,\text{kg/mol}$.\\~\\
+
+The relevant formulas are the following.
+\begin{equation}
+    \epsilon_F=\frac{h^2}{8m}\left(\frac{3N}{\pi V}\right)^{2/3}
+\end{equation}
+\begin{equation}
+    T_F=\frac{\epsilon_F}{k}
+\end{equation}
+\begin{equation}
+    P=\frac{2}{3}\frac{U}{V}
+\end{equation}
+\begin{equation}
+    B=\frac{10}{9}\frac{U}{V}
+\end{equation}
+where $B$ is the bulk modulus and
+\begin{equation}
+    U=\frac{3}{5}N\epsilon_F
+\end{equation}\\~\\
+
+We aren't given a specific amount of copper to deal with, but that doesn't matter.
+What matters is the number of electrons contained in a volume.
+So, let's calculate $N/V$ using the atomic mass and density because that will be very important throughout.
+We can use atomic mass because we know that each atom will contribute one electron to the cloud.
+Recall that $\rho=\frac{m}{V}$ and $m_a$ is the mass per $\avogadro$ particles.
+$$\rho=\frac{m}{V}$$
+$$\implies\frac{N}{V}=\frac{N\rho}{m}$$
+If we consider $N=\avogadro=1\,\text{mol}$, then this implies that $m=m_a\cdot1\,\text{mol}$. Therefore, we get the following.
+$$\implies\frac{N}{V}=\frac{(1\,\text{mol})(8960\,\text{kg/m}^3)}{(0.063546\,\text{kg/mol})(1\,\text{mol})}$$
+$$\implies\frac{N}{V}=\frac{(\avogadro\,\text{electrons})(8960\,\text{kg/m}^3)}{(0.063546\,\text{kg/mol})(1\,\text{mol})}$$
+$$\implies\frac{N}{V}=8.49103\times10^{28}\,\text{electrons/m}^3$$\\~\\
+
+This ratio will be used to find the quantities we're actually interested in.
+First, let's find the Fermi energy.
+Note that from now on, $m$ refers to the mass of an electron $m=9.1094\times10^{-31}\,\text{kg}$.
+$$\epsilon_F=\frac{h^2}{8m}\left(\frac{3N}{\pi V}\right)^{2/3}$$
+$$\implies\epsilon_F=\frac{(\planckConst)^2}{8\cdot(9.1094\times10^{-31}\,\text{kg})}\left(\frac{3}{\pi}(8.49103\times10^{28}\,\text{1/m}^3)\right)^{2/3}$$
+$$\implies\epsilon_F=1.1286\times10^{-18}\,\text{J}$$\\~\\
+
+Now for the Fermi Temperature.
+$$T_F=\frac{\epsilon_F}{k}$$
+$$\implies T_F=\frac{1.1286\times10^{-18}\,\text{J}}{\boltzmannConstK}$$
+$$\implies T_F=81724\,\text{K}$$
+Based on this, room temperature is certainly sufficiently low to treat the system as a degenerate electron gas.\\~\\
+
+Now for the degeneracy pressure.
+First, let's simplify our calculation a bit by combining our definition of $U$ into $P$.
+$$P=\frac{2}{3}\frac{U}{V}$$
+$$\implies P=\frac{2}{5}\epsilon_F\cdot\frac{N}{V}$$
+$$\implies P=\frac{2}{5}(1.1286\times10^{-18}\,\text{J})\cdot(8.49103\times10^{28}\,\text{1/m}^3)$$
+$$\implies P=3.833\times10^{10}\,\text{Pa}$$\\~\\
+
+And for the bulk modulus, we'll do the following since it's so similar to $P$.
+$$B=\frac{10}{9}\frac{U}{V}$$
+$$\implies B=\frac{10}{9}\frac{3}{2}\cdot\frac{2}{3}\frac{U}{V}$$
+$$\implies B=\frac{5}{3}P$$
+$$\implies B=\frac{5}{3}(3.833\times10^{10}\,\text{Pa})$$
+$$\implies B=6.389\,\text{Pa}$$
+
+
+
+
+
+
+\end{flushleft}
+
+\end{document}
