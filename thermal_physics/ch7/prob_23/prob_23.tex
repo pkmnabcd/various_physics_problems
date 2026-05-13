@@ -1,0 +1,165 @@
+\documentclass[12pt]{article}
+\usepackage{graphicx} % Required for inserting images
+\usepackage[margin=0.5in]{geometry}
+\usepackage{amsmath, amssymb}
+\usepackage{mathrsfs}
+
+
+\usepackage{soul}
+
+
+% Dr. David Brown Commands
+\newcommand{\ds}{\displaystyle}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\Q}{\mathbb{Q}}
+\newcommand{\C}{\mathbb{C}}
+
+
+% Commands to get script r
+\usepackage{calligra}
+\DeclareMathAlphabet{\mathcalligra}{T1}{calligra}{m}{n}
+\DeclareFontShape{T1}{calligra}{m}{n}{<->s*[2.2]callig15}{}
+\newcommand{\scripty}[1]{\ensuremath{\mathcalligra{#1}}}
+
+% Unit commands
+\newcommand{\degree}{\text{°}}
+\newcommand{\unitSpeed}{\frac{\text{m}}{\text{s}}}
+\newcommand{\unitAcceleration}{\frac{\text{m}}{\text{s}^2}}
+
+% Constant commands
+\newcommand{\avogadro}{6.022\times10^{23}}
+
+\newcommand{\boltzmannConstK}{1.381\times10^{-23}\frac{\text{J}}{\text{K}}}
+\newcommand{\boltzmannConstInEV}{8.617\times10^{-5}\frac{\text{eV}}{\text{K}}}
+\newcommand{\planckConst}{6.626\times10^{-34}\text{J}\cdot\text{s}}
+
+\newcommand{\atmP}{1.01325\times10^5\,\text{Pa}}
+
+% Known Value Commands
+\newcommand{\electronMass}{9.109\times10^{-31}\,\text{kg}}
+\newcommand{\protonMass}{1.673\times10^{-27}\,\text{kg}}
+
+% Commands to easily write partial derivatives
+\newcommand{\partDeriv}[2]{\frac{\partial #1}{\partial #2}}
+\newcommand{\doublePartDeriv}[2]{\frac{\partial^2 #1}{\partial^2 #2}}
+
+
+\title{Problem 7.23}
+\author{Gabriel Decker}
+
+
+\begin{document}
+
+
+\maketitle
+\begin{flushleft}
+
+
+
+In this problem, we will consider a white dwarf star and model its electrons as a degenerate electron cloud.
+We will assume that it is a sphere of uniform density, and that it has total mass $M$ and radius $R$.
+We also assume that for every electron there is one proton and one neutron.
+Note that the mass of a neutron is very close to that of a proton, and that the mass of electrons is negligible.\\~\\
+
+
+\textbf{Part a}\\
+First, we're given that the gravitational potential energy of the star is
+\begin{equation}
+    U_\text{grav}=-\frac{3}{5}\frac{GM^2}{R}
+\end{equation}
+We must first argue using dimensional analysis that this is the correct configuration of $G$, $M$, and $R$.
+Recall that $G$ has units of N$\cdot$m$^2$/kg$^2$ and that energy is in units of N$\cdot$m.
+If we were to assume that $G$ should be present in our equation for $U$, this implies that we need to multiply by something of unit kg$^2$ and divide by something of unit m to get the correct N$\cdot$m units that $U$ is expecting.
+This implies that we should multiply by $M^2$ and divide by $R$ to fulfill this.\\~\\~\\
+
+
+
+
+\textbf{Part b}\\
+Now, we're going to find the kinetic energy, assuming that the electrons are nonrelativistic.
+This is simply the energy according to our definition of our degenerate electron gas.
+\begin{equation}
+    U_\text{kinetic}=\frac{3}{5}N_e\epsilon_F
+\end{equation}
+where
+\begin{equation}
+    \epsilon_F=\frac{h^2}{8m_e}\left(\frac{3N_e}{\pi V}\right)^{2/3}
+\end{equation}\\~\\
+
+If there is one proton and one neutron per electron and the electron mass is negligible, then this implies that $N_e=M/2m_p$.
+The volume of the system is easy to get since the system is a sphere.
+This implies the following.
+$$\epsilon_F=\frac{h^2}{8m_e}\left(\frac{3N_e}{\pi V}\right)^{2/3}$$
+$$\implies\epsilon_F=\frac{h^2}{8m_e}\left(\frac{3(M/2m_p)}{\pi (4\pi R^3/3)}\right)^{2/3}$$
+$$\implies\epsilon_F=\frac{h^2}{8m_e}\left(\frac{9M}{8\pi^2m_p R^3}\right)^{2/3}$$
+$$\implies\epsilon_F=\frac{9^{2/3}M^{2/3}h^2}{32\pi^{4/3}m_em_p^{2/3}R^2}$$
+Plugging this into $U_\text{kinetic}$, we get the following.
+$$U_\text{kinetic}=\frac{3}{5}N_e\epsilon_F$$
+$$\implies U_\text{kinetic}=\frac{3}{5}\frac{M}{2m_p}\frac{9^{2/3}M^{2/3}h^2}{32\pi^{4/3}m_em_p^{2/3}R^2}$$
+$$\implies U_\text{kinetic}=\frac{3}{10}\cdot\frac{9^{2/3}}{32\pi^{4/3}}\cdot\frac{M^{5/3}h^2}{m_em_p^{5/3}R^2}$$
+$$\implies U_\text{kinetic}=(0.00882)\frac{M^{5/3}h^2}{m_em_p^{5/3}R^2}$$\\~\\~\\
+
+
+
+
+\textbf{Part c}\\
+The total energy for this system is $U_\text{total}=U_\text{grav}+U_\text{kinetic}$.
+This is the following.
+$$U_\text{total}=U_\text{grav}+U_\text{kinetic}$$
+$$\implies U_\text{total}=-\frac{3}{5}\frac{GM^2}{R}+(0.00882)\frac{M^{5/3}h^2}{m_em_p^{5/3}R^2}$$
+where $h=\planckConst$, $G=6.674\times10^{-11}\,\text{N}\cdot\text{m}^2/\text{kg}^2$ and $m_e=\electronMass$ and $m_p=\protonMass$.
+Here is a plot of the total energy.\\
+\includegraphics[width=0.6\linewidth]{./R_vs_Utotal.png}\\
+It turns out that it's pretty hard, so here's an example at $M=10^5$.\\~\\
+
+The equilibrium radius, or the radius at which the total energy is minimum, will occur when the slope of this curve is zero.
+So, let's take a derivative of $U_\text{total}$ and set it equal to zero.
+$$U_\text{total}=-\frac{3}{5}\frac{GM^2}{R}+(0.00882)\frac{M^{5/3}h^2}{m_em_p^{5/3}R^2}$$
+$$\implies \frac{dU_\text{total}}{dR}=\frac{3}{5}\frac{GM^2}{R^2}-2\cdot(0.00882)\frac{M^{5/3}h^2}{m_em_p^{5/3}R^3}$$
+$$\implies 0=\frac{1}{R^2}\left[\frac{3}{5}GM^2-2\cdot(0.00882)\frac{M^{5/3}h^2}{m_em_p^{5/3}R}\right]$$
+This is true only when what's inside the brackets equals zero.
+$$\implies 0=\frac{3}{5}GM^2-2\cdot(0.00882)\frac{M^{5/3}h^2}{m_em_p^{5/3}R}$$
+$$\implies \frac{3}{5}GM^2=2\cdot(0.00882)\frac{M^{5/3}h^2}{m_em_p^{5/3}R}$$
+$$\implies R=\frac{10}{3GM^2}\cdot(0.00882)\frac{M^{5/3}h^2}{m_em_p^{5/3}}$$
+$$\implies R=(0.0294)\frac{h^2}{Gm_em_p^{5/3}}\frac{1}{M^{1/3}}$$\\~\\
+
+According to this, the radius decreases as mass increases.
+This is because mass contributes more to the graviational potential energy than it does to the kinetic energy, so adding more mass implies that the total energy will decrease more than it will increase.\\~\\~\\
+
+
+
+\textbf{Part d}\\
+We will now calculate the equilibrium radius for a star with the sun's mass of $M=2\times10^{30}\,\text{kg}$.
+We will also calculate the density and compare that density to water's.\\~\\
+
+Plugging in our $M$ into our equation for $R$, we get the following.
+$$R=(0.0294)\frac{h^2}{Gm_em_p^{5/3}}\frac{1}{M^{1/3}}$$
+$$\implies R=(0.0294)\frac{h^2}{Gm_em_p^{5/3}}\frac{1}{(2\times10^{30}\,\text{kg})^{1/3}}$$
+$$\implies R=7.147\times10^{6}\,\text{m}$$\\~\\
+
+Density is simply mass/volume, so that is calculated simply by remembering that we're dealing with a sphere.
+$$\rho=\frac{M}{V}$$
+$$\implies\rho=\frac{M}{\frac{4}{3}\pi R^3}$$
+$$\implies\rho=\frac{2\times10^{30}\,\text{kg}}{\frac{4}{3}\pi(7.147\times10^{6}\,\text{m})}$$
+$$\implies\rho=1.31\times10^9\,\text{kg/m}^3$$
+Compare water's density of about 1000 kg/m$^3$.\\~\\~\\
+
+
+
+\textbf{Part e}\\
+We will now calculate the Fermi energy and temperature for this system.
+Recall the definition of Fermi energy, specifically the one where we plugged into $N$ and $V$.
+\begin{equation}
+    \epsilon_F=\frac{9^{2/3}M^{2/3}h^2}{32\pi^{4/3}m_em_p^{2/3}R^2}
+\end{equation}
+We have $M$ and $R$ now (for the sun), so we can simply plug those in.
+
+
+
+
+
+
+\end{flushleft}
+
+\end{document}
