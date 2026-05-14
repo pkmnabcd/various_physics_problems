@@ -36,6 +36,24 @@ plt.savefig("R_vs_Utotal.png")
 # Now do the calculation for the Sun's white dwarf radius.
 M = 2 * pow(10, 30) # kg
 R = 0.0294 * pow(h, 2) / G / m_e / pow(m_p, 5/3) / pow(M, 1/3)
+k = 1.381 * pow(10,-23) # in J/K
+
 density = M / (4/3*pi*pow(R, 3))
+
+fermi_energy = pow(9, 2/3) * pow(M, 2/3) * pow(h, 2) / ( 32 * pow(pi, 4/3) * m_e * pow(m_p, 2/3) * pow(R, 2) )
+fermi_temp = fermi_energy / k
+
 print(f"The Sun's white dwarf radius: {R:e} m")
 print(f"The Sun's white dwarf density: {density:e} kg/m^3")
+print(f"The Sun's Fermi energy: {fermi_energy:e} J")
+print(f"The Sun's Fermi temperature: {fermi_temp:e} K")
+print()
+
+
+# Now calculate M such that average energy equals m_ec^2
+c = 2.998 * pow(10, 8)
+rest_energy = m_e * pow(c, 2)
+
+alpha = 3/5 * pow(9, 2/3) / (32 * pow(pi, 4/3)) * pow(G, 2) * m_e * pow(m_p, 8/3) / pow(h, 2) / pow(0.0294, 2)
+m = pow(rest_energy / alpha, 3/4)
+print(f"The mass needed before relativistic effects take over is {m:e} kg.")

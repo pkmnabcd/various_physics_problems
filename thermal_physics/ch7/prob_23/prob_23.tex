@@ -153,7 +153,80 @@ Recall the definition of Fermi energy, specifically the one where we plugged int
 \begin{equation}
     \epsilon_F=\frac{9^{2/3}M^{2/3}h^2}{32\pi^{4/3}m_em_p^{2/3}R^2}
 \end{equation}
+Also recall the Fermi temperature.
+\begin{equation}
+    T_F=\frac{\epsilon_F}{k}
+\end{equation}\\~\\
+
 We have $M$ and $R$ now (for the sun), so we can simply plug those in.
+$$\epsilon_F=3.123\times10^{-14}\,\text{J}$$
+$$T_F=2.261\times10^9\,\text{K}$$\\~\\
+
+According to the high Fermi Temperature, this approximation is valid.\\~\\~\\
+
+
+
+\textbf{Part f}\\
+We'll now consider the case where the electrons are relativistic.
+We'll find the kinetic energy of the system in that case.
+Specifically, we want to know how $R$ is related to $U_\text{kinetic}$.
+From problem 7.22, we got the following result for the total (kinetic) energy
+\begin{equation}
+    U=\frac{3}{4}N\epsilon_F
+\end{equation}
+where
+\begin{equation}
+    \epsilon_F=hc\left[\frac{3N}{8\pi V}\right]^{1/3}
+\end{equation}
+We can use the same substitutions, as discussed in part b of this problem, to describe $U$ in terms of $V$ and $M$.
+They are $N=M/2m_p$ and $V=\frac{4}{3}\pi R^3$.\\~\\
+
+$$U_\text{kinetic}=\frac{3}{4}N\epsilon_F$$
+$$\implies U_\text{kinetic}=\frac{3}{4}Nhc\left[\frac{3N}{8\pi V}\right]^{1/3}$$
+$$\implies U_\text{kinetic}=\frac{3}{4}\frac{M}{2m_p}hc\left[\frac{3(M/2m_p)}{8\pi(4\pi R^3/3)}\right]^{1/3}$$
+$$\implies U_\text{kinetic}=\frac{3}{4}\frac{M}{2m_p}hc\left[\frac{9M}{64\pi^2m_p}\right]^{1/3}\cdot\frac{1}{R}$$
+With this, we see that $U_\text{kinetic}\propto R^{-1}$, compared to the $R^{-2}$ proportionality in the nonrelativistic case.\\~\\~\\
+
+
+
+\textbf{Part g}\\
+We're given that the transition point where we must start considering the relativistic case instead of the nonrelativistic case is when the average electron kinetic energy equals its rest energy $mc^2$.
+We will first evaluate whether the nonrelativistic case is valid for a star of the sun's mass, and at what mass the relativistic case must be considered.\\~\\
+
+Recall that for nonrelativistic electrons, we have the following equation for total energy (see part b and c).
+$$U_\text{kinetic}=\frac{3}{5}N_e\epsilon_F$$
+where
+$$\epsilon_F=\frac{9^{2/3}M^{2/3}h^2}{32\pi^{4/3}m_em_p^{2/3}R^2}$$
+and
+$$R=(0.0294)\frac{h^2}{Gm_em_p^{5/3}}\frac{1}{M^{1/3}}$$
+The average electron kinetic energy $\overline{\epsilon}$ is simply the total energy divided by $N_e$.
+$$\overline{\epsilon}=\frac{3}{5}\epsilon_F$$
+$$\implies\overline{\epsilon}=\frac{3}{5}\frac{9^{2/3}M^{2/3}h^2}{32\pi^{4/3}m_em_p^{2/3}R^2}$$
+$$\implies\overline{\epsilon}=\frac{3}{5}\frac{9^{2/3}M^{2/3}h^2}{32\pi^{4/3}m_em_p^{2/3}}\cdot\left(\frac{Gm_em_p^{5/3}}{h^2}\frac{M^{1/3}}{0.0294}\right)^2$$
+$$\implies\overline{\epsilon}=\frac{3}{5}\frac{9^{2/3}h^2}{32\pi^{4/3}m_em_p^{2/3}}\cdot\left(\frac{Gm_em_p^{5/3}}{h^2}\frac{1}{0.0294}\right)^2\cdot M^{4/3}$$
+$$\implies\overline{\epsilon}=\frac{3}{5}\frac{9^{2/3}h^2}{32\pi^{4/3}m_em_p^{2/3}}\cdot\frac{G^2m_e^2m_p^{10/3}}{h^4}\frac{1}{(0.0294)^2}\cdot M^{4/3}$$
+$$\implies\overline{\epsilon}=\frac{3}{5}\frac{9^{2/3}}{32\pi^{4/3}}\cdot\frac{G^2m_em_p^{8/3}}{h^2}\frac{1}{(0.0294)^2}\cdot M^{4/3}$$\\~\\
+
+We already calculated $\epsilon_F$ for the sun.
+It is $\epsilon_F=3.123\times10^{-14}\,\text{J}$.
+Therefore,
+$$\overline{\epsilon}=\frac{3}{5}\epsilon_F$$
+$$\implies\overline{\epsilon}=\frac{3}{5}(3.123\times10^{-14}\,\text{J})$$
+$$\implies\overline{\epsilon}=1.874\times10^{-14}\,\text{J}$$
+An electron has rest energy $m_ec^2=(\electronMass)(2.998\times10^8\,\text{m/s})^2=8.187\times10^{-14}\,\text{J}$.
+This implies that the sun's system should be well-served by the nonrelativistic model.\\~\\
+
+We can continue to simplify the $\overline{\epsilon}$ equation and solve for $M$ when $\overline{\epsilon}=m_ec^2$ to find the mass at which relativity starts to dominate.
+$$\overline{\epsilon}=\frac{3}{5}\frac{9^{2/3}}{32\pi^{4/3}}\cdot\frac{G^2m_em_p^{8/3}}{h^2}\frac{1}{(0.0294)^2}\cdot M^{4/3}$$
+$$\implies\overline{\epsilon}=\alpha\cdot M^{4/3}$$
+$$\implies M^{4/3}=\frac{\overline{\epsilon}}{\alpha}$$
+$$\implies M=\left(\frac{\overline{\epsilon}}{\alpha}\right)^{3/4}$$
+With $\overline{\epsilon}=8.187\times10^{-14}\,\text{J}$, we get the following.
+$$\implies M=\left(\frac{8.187\times10^{-14}\,\text{J}}{\alpha}\right)^{3/4}$$
+with
+$$\alpha=\frac{3}{5}\frac{9^{2/3}}{32\pi^{4/3}}\cdot\frac{G^2m_em_p^{8/3}}{h^2}\frac{1}{(0.0294)^2}$$
+Plugging everything in, we get the following solution for $M$.
+$$\implies M=6.044\times10^{30}\,\text{kg}$$
 
 
 
