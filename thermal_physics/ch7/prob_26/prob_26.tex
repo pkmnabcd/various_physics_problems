@@ -1,0 +1,132 @@
+\documentclass[12pt]{article}
+\usepackage{graphicx} % Required for inserting images
+\usepackage[margin=0.5in]{geometry}
+\usepackage{amsmath, amssymb}
+\usepackage{mathrsfs}
+
+
+\usepackage{soul}
+
+
+% Dr. David Brown Commands
+\newcommand{\ds}{\displaystyle}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\Q}{\mathbb{Q}}
+\newcommand{\C}{\mathbb{C}}
+
+
+% Commands to get script r
+\usepackage{calligra}
+\DeclareMathAlphabet{\mathcalligra}{T1}{calligra}{m}{n}
+\DeclareFontShape{T1}{calligra}{m}{n}{<->s*[2.2]callig15}{}
+\newcommand{\scripty}[1]{\ensuremath{\mathcalligra{#1}}}
+
+% Unit commands
+\newcommand{\degree}{\text{°}}
+\newcommand{\unitSpeed}{\frac{\text{m}}{\text{s}}}
+\newcommand{\unitAcceleration}{\frac{\text{m}}{\text{s}^2}}
+
+% Constant commands
+\newcommand{\avogadro}{6.022\times10^{23}}
+
+\newcommand{\boltzmannConstK}{1.381\times10^{-23}\frac{\text{J}}{\text{K}}}
+\newcommand{\boltzmannConstInEV}{8.617\times10^{-5}\frac{\text{eV}}{\text{K}}}
+\newcommand{\planckConst}{6.626\times10^{-34}\text{J}\cdot\text{s}}
+
+\newcommand{\atmP}{1.01325\times10^5\,\text{Pa}}
+
+% Known Value Commands
+\newcommand{\electronMass}{9.109\times10^{-31}\,\text{kg}}
+\newcommand{\protonMass}{1.673\times10^{-27}\,\text{kg}}
+
+% Commands to easily write partial derivatives
+\newcommand{\partDeriv}[2]{\frac{\partial #1}{\partial #2}}
+\newcommand{\doublePartDeriv}[2]{\frac{\partial^2 #1}{\partial^2 #2}}
+
+
+\title{Problem 7.26}
+\author{Gabriel Decker}
+
+
+\begin{document}
+
+
+\maketitle
+\begin{flushleft}
+
+
+In this problem, we consider ${}^3\text{He}$, modeling it as a nearly degenerate Fermi gas (I say nearly degenerate because $T$ is nearly zero, but not zero).
+We're given the fact that Helium-3 atoms are fermions because of the unpaired neutrons in their nuclei.
+We're also ignoring the fact that ${}^3\text{He}$ liquifies.\\~\\
+
+\textbf{Part a}\\
+First, we'll find the Fermi energy and temperature.
+These are given by the following equations.
+\begin{equation}
+    \epsilon_F=\frac{h^2}{8m}\left(\frac{3N}{\pi V}\right)^{2/3}
+\end{equation}
+\begin{equation}
+    T_F=\epsilon_F/k
+\end{equation}\\~\\
+
+We are given that the molar volume (the volume of one mole of ${}^3\text{He}$) is 37 cm$^3$.
+Or, $N/V=\avogadro/(37\times10^{-6}\,\text{m}^3)=1.62757\times10^{28}\,\text{m}^{-3}$.\\~\\
+
+Now, let's plug in our data into the above definitions to get our desired quantities.
+I did this in a python program.
+$$\epsilon_F=6.82\times10^{-23}\,\text{J}$$
+$$T_F=4.94\,\text{K}$$\\~\\~\\
+
+
+
+
+\textbf{Part b}\\
+We will now use the above to calculate $C_V$, assuming temperatures $T\ll T_F$.
+We will compare our result with the experimental result of $C_V=(2.8\,\text{K}^{-1})NkT$.
+The equation for heat capacity in this state is the following.
+\begin{equation}
+    C_V=\frac{\pi^2 Nk^2 T}{2\epsilon_F}
+\end{equation}\\~\\
+
+We can simplify this to get it into the right form and then calculate the result.
+$$C_V=\frac{\pi^2 Nk^2 T}{2\epsilon_F}$$
+$$\implies C_V=\frac{\pi^2k}{2\epsilon_F}NkT$$
+$$\implies C_V=(0.999\,\text{K}^{-1})NkT$$
+The experimental result is about three times larger.\\~\\~\\
+
+
+
+
+
+\textbf{Part c}\\
+Now, we will compare this nearly degenerate Fermi gas model of ${}^3\text{He}$ to solid ${}^3\text{He}$ by comparing their entropies.
+We're given that for solid ${}^3\text{He}$, its entropy depends nearly entirely on the nuclear spin arrangements.
+This implies that for each nucleus, there are two states, and that the entropy in this case is $S_s=k\ln(\Omega)=k\ln(2^N)$, or $S_s=Nk\ln(2)$.\\~\\
+
+For our nearly degenerate Fermi gas model, we already have an equation for the heat capacity, so we can use the following equation to get the entropy.
+\begin{equation}
+    dS=\frac{C_V}{T}\,dT
+\end{equation}
+We'll use our result from part b and integrate this.
+$$S_g=\int_0^T\frac{C_V}{T'}\,dT'$$
+$$\implies S_g=\int_0^T\frac{(0.999\,\text{K}^{-1})NkT'}{T'}\,dT'$$
+$$\implies S_g=(0.999\,\text{K}^{-1})Nk\int_0^T\,dT'$$
+$$\implies S_g=(0.999\,\text{K}^{-1})NkT$$\\~\\
+
+The following is a plot of both entropies as a function of $T$ for $N=1$.\\
+\includegraphics[width=0.6\linewidth]{entropies.png}\\~\\
+
+We can also find at what temperature these entropies are equal.
+$$(0.999\,\text{K}^{-1})NkT=Nk\ln(2)$$
+$$\implies T=\frac{\ln(2)}{0.999}\,\text{K}$$
+$$\implies T=0.694\,\text{K}$$
+
+
+
+
+
+
+\end{flushleft}
+
+\end{document}
