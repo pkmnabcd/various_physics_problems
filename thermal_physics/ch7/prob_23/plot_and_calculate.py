@@ -2,9 +2,10 @@ import numpy as np
 import matplotlib.pyplot as plt
 from math import pow, pi
 
-# This program plots the average number of particles present at an energy state
-# as a function of the difference between the energy of the state epsilon and 
-# the chemical potential mu.
+# This program plots the total energy of a white dwarf as a function of R
+# and calculates some fermi gas properties of the sun's white dwarf state.
+# It also does some calculations to find the mass where relativistic effects
+# dominate.
 
 # Boltzman's const in eV / K
 k = 8.617 * pow(10,-5)
