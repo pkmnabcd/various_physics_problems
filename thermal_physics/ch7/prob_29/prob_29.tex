@@ -1,0 +1,123 @@
+\documentclass[12pt]{article}
+\usepackage{graphicx} % Required for inserting images
+\usepackage[margin=0.5in]{geometry}
+\usepackage{amsmath, amssymb}
+\usepackage{mathrsfs}
+
+
+\usepackage{soul}
+
+
+% Dr. David Brown Commands
+\newcommand{\ds}{\displaystyle}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\Q}{\mathbb{Q}}
+\newcommand{\C}{\mathbb{C}}
+
+
+% Commands to get script r
+\usepackage{calligra}
+\DeclareMathAlphabet{\mathcalligra}{T1}{calligra}{m}{n}
+\DeclareFontShape{T1}{calligra}{m}{n}{<->s*[2.2]callig15}{}
+\newcommand{\scripty}[1]{\ensuremath{\mathcalligra{#1}}}
+
+% Unit commands
+\newcommand{\degree}{\text{°}}
+\newcommand{\unitSpeed}{\frac{\text{m}}{\text{s}}}
+\newcommand{\unitAcceleration}{\frac{\text{m}}{\text{s}^2}}
+
+% Constant commands
+\newcommand{\avogadro}{6.022\times10^{23}}
+
+\newcommand{\boltzmannConstK}{1.381\times10^{-23}\frac{\text{J}}{\text{K}}}
+\newcommand{\boltzmannConstInEV}{8.617\times10^{-5}\frac{\text{eV}}{\text{K}}}
+\newcommand{\planckConst}{6.626\times10^{-34}\text{J}\cdot\text{s}}
+
+\newcommand{\atmP}{1.01325\times10^5\,\text{Pa}}
+
+% Known Value Commands
+\newcommand{\electronMass}{9.109\times10^{-31}\,\text{kg}}
+\newcommand{\protonMass}{1.673\times10^{-27}\,\text{kg}}
+
+% Commands to easily write partial derivatives
+\newcommand{\partDeriv}[2]{\frac{\partial #1}{\partial #2}}
+\newcommand{\doublePartDeriv}[2]{\frac{\partial^2 #1}{\partial^2 #2}}
+
+
+\title{Problem 7.29}
+\author{Gabriel Decker}
+
+
+\begin{document}
+
+
+\maketitle
+\begin{flushleft}
+
+
+
+In this problem, we will solve the book's equation for the total energy of a system of fermions with a density of energy states $g(\epsilon)$ (book equation 7.54) for a Fermi gas with $kT\ll\epsilon_F$ in three dimensions.
+We will use the Sommerfield Expansion to do so.
+We will first go from this equation:
+\begin{equation}
+    \label{eq:start}
+    U=\int_0^\infty\epsilon g(\epsilon)\frac{1}{e^{(\epsilon-\mu)/kT}+1}\,d\epsilon
+\end{equation}
+to this equation.
+\begin{equation}
+    U=\frac{3}{5}N\frac{\mu^{5/2}}{\epsilon_F^{3/2}}+\frac{3\pi^2}{8}N\frac{(kT)^2}{\epsilon_F}+\dots
+\end{equation}\\~\\
+
+In this case, we get the following equation for $g(\epsilon)$ from the book.
+\begin{equation}
+    g(\epsilon)=\frac{3N}{2\epsilon_F^{3/2}}\epsilon^{1/2}
+\end{equation}
+and this can be expressed as $g(\epsilon)=g_0\epsilon^{1/2}$.
+Also, recall that the fraction with the exponent in equation \ref{eq:start} is the fermi-dirac distribution.
+\begin{equation}
+    \overline{n}_\text{FD}(\epsilon)=\frac{1}{e^{(\epsilon-\mu)/kT}+1}
+\end{equation}\\~\\
+
+With all that preable, we begin applying the Sommerfield Expansion by plugging in our $g$ and doing integration by parts.
+$$U=\int_0^\infty\epsilon g(\epsilon)\overline{n}_\text{FD}(\epsilon)\,d\epsilon$$
+$$\implies U=\int_0^\infty\epsilon g_0\epsilon^{1/2}\overline{n}_\text{FD}(\epsilon)\,d\epsilon$$
+$$\implies U=\int_0^\infty\epsilon^{3/2}\overline{n}_\text{FD}(\epsilon)\,d\epsilon$$
+$dv=g_0\epsilon^{3/2}\,d\epsilon$, so $v=g_0\frac{2}{5}\epsilon^{5/2}$.\\
+$u=\overline{n}_\text{FD}(\epsilon)$, so $du=\frac{d\overline{n}_\text{FD}(\epsilon)}{d\epsilon}$.\\
+By integration by parts, this implies the following.
+$$\implies U=g_0\frac{2}{5}\epsilon^{5/2}\overline{n}_\text{FD}(\epsilon)\Big|_0^\infty-g_0\int_0^\infty\frac{2}{5}\epsilon^{5/2}\frac{d\overline{n}_\text{FD}(\epsilon)}{d\epsilon}\,d\epsilon$$
+$$\implies U=g_0\frac{2}{5}\epsilon^{5/2}\overline{n}_\text{FD}(\epsilon)\Big|_0^\infty+\frac{2}{5}g_0\int_0^\infty\epsilon^{5/2}\left(-\frac{d\overline{n}_\text{FD}(\epsilon)}{d\epsilon}\right)\,d\epsilon$$
+The first term goes to zero because at $\epsilon\rightarrow\infty$, $\overline{n}_\text{FD}\rightarrow0$ exponentially, while at $\epsilon=0$, $\overline{n}_\text{FD}$ becomes just some number while $\epsilon^{5/2}=0$.
+So, we get the following integral left.
+$$\implies U=\frac{2}{5}g_0\int_0^\infty\epsilon^{5/2}\left(-\frac{d\overline{n}_\text{FD}(\epsilon)}{d\epsilon}\right)\,d\epsilon$$\\~\\
+
+We know that far from $\epsilon=\mu$, the derivative of $\overline{n}_\text{FD}$ is nearly zero since there is nearly no change in the function, except near $\mu$, especially at lower temperatures, which we're assuming.
+Therefore, our approximation is still pretty accurate if we extend the bounds of integration to negative infinity.
+This makes our integrals more symmetric.
+$$\implies U=\frac{2}{5}g_0\int_{-\infty}^\infty\epsilon^{5/2}\left(-\frac{d\overline{n}_\text{FD}(\epsilon)}{d\epsilon}\right)\,d\epsilon$$\\~\\
+
+The book provided the following solution to the derivative in the integrand.
+$$-\frac{d\overline{n}_\text{FD}(\epsilon)}{d\epsilon}=\frac{1}{kT}\frac{e^x}{(e^x+1)^2}$$
+with $x=(\epsilon-\mu)/kT$ and thus $dx=d\epsilon/kT$.
+We can put this in the integral and get the following.
+$$\implies U=\frac{2}{5}g_0\int_{-\infty}^\infty\epsilon^{5/2}\left(\frac{1}{kT}\frac{e^x}{(e^x+1)^2}\right)\,d\epsilon$$
+$$\implies U=\frac{2}{5}g_0\int_{-\infty}^\infty\frac{e^x}{(e^x+1)^2}\epsilon^{5/2}\frac{d\epsilon}{kT}$$
+$$\implies U=\frac{2}{5}g_0\int_{-\infty}^\infty\frac{e^x}{(e^x+1)^2}\epsilon^{5/2}\,dx$$
+We still need to express $\epsilon^{5/2]}$ in terms of $x$, but this can be simplified by taking the taylor expansion of it, centered around $\mu$.
+This expansion is the following.
+$$\epsilon^{5/2}=\mu^{5/2}+\frac{5}{2}\mu^{3/2}(\epsilon-\mu)+\frac{15}{8}\mu^{1/2}(\epsilon-\mu)^2+\dots$$
+Since $(\epsilon-\mu)=xkT$, we can substitute that in here.
+$$\implies\epsilon^{5/2}=\mu^{5/2}+\frac{5}{2}\mu^{3/2}xkT+\frac{15}{8}\mu^{1/2}(xkT)^2+\dots$$\\~\\
+
+We can now plug this into our integral to get only $x$ dependence.
+$$\implies U=\frac{2}{5}g_0\int_{-\infty}^\infty\frac{e^x}{(e^x+1)^2}\left[\mu^{5/2}+\frac{5}{2}\mu^{3/2}xkT+\frac{15}{8}\mu^{1/2}(xkT)^2+\dots\right]\,dx$$
+This integral can be solved using methods similar to the book, but let's try doing it using sympy.
+
+
+
+
+
+\end{flushleft}
+
+\end{document}
