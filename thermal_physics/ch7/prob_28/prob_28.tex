@@ -1,0 +1,197 @@
+\documentclass[12pt]{article}
+\usepackage{graphicx} % Required for inserting images
+\usepackage[margin=0.5in]{geometry}
+\usepackage{amsmath, amssymb}
+\usepackage{mathrsfs}
+
+
+\usepackage{soul}
+
+
+% Dr. David Brown Commands
+\newcommand{\ds}{\displaystyle}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\Q}{\mathbb{Q}}
+\newcommand{\C}{\mathbb{C}}
+
+
+% Commands to get script r
+\usepackage{calligra}
+\DeclareMathAlphabet{\mathcalligra}{T1}{calligra}{m}{n}
+\DeclareFontShape{T1}{calligra}{m}{n}{<->s*[2.2]callig15}{}
+\newcommand{\scripty}[1]{\ensuremath{\mathcalligra{#1}}}
+
+% Unit commands
+\newcommand{\degree}{\text{°}}
+\newcommand{\unitSpeed}{\frac{\text{m}}{\text{s}}}
+\newcommand{\unitAcceleration}{\frac{\text{m}}{\text{s}^2}}
+
+% Constant commands
+\newcommand{\avogadro}{6.022\times10^{23}}
+
+\newcommand{\boltzmannConstK}{1.381\times10^{-23}\frac{\text{J}}{\text{K}}}
+\newcommand{\boltzmannConstInEV}{8.617\times10^{-5}\frac{\text{eV}}{\text{K}}}
+\newcommand{\planckConst}{6.626\times10^{-34}\text{J}\cdot\text{s}}
+
+\newcommand{\atmP}{1.01325\times10^5\,\text{Pa}}
+
+% Known Value Commands
+\newcommand{\electronMass}{9.109\times10^{-31}\,\text{kg}}
+\newcommand{\protonMass}{1.673\times10^{-27}\,\text{kg}}
+
+% Commands to easily write partial derivatives
+\newcommand{\partDeriv}[2]{\frac{\partial #1}{\partial #2}}
+\newcommand{\doublePartDeriv}[2]{\frac{\partial^2 #1}{\partial^2 #2}}
+
+
+\title{Problem 7.28}
+\author{Gabriel Decker}
+
+
+\begin{document}
+
+
+\maketitle
+\begin{flushleft}
+
+
+In this problem, we will consider a free Fermi gas in two dimensions.
+This gas is confined to a square with $A=L^2$ instead of a cube.
+We assume that the particles in the gas are nonrelativistic.\\~\\
+
+
+\textbf{Part a}\\
+If we first treat the system as $T=0$, then we can calculate the Fermi energy for this system.
+I've already done something similar in problem 7.22, but this derivation is even more similar to the book's three-dimensional derivation.
+Since there are only two directions, the allowed energies are the following.
+$$\epsilon=\frac{h^2}{8mL^2}(n_x^2+n_y^2)$$
+$$\implies\epsilon=\frac{h^2}{8mA}(n_x^2+n_y^2)$$
+If we again consider $n$-space, this time in two-dimensions, we can use polar coordinates to describe each combination of $n_x$ and $n_y$.
+We can use the coordinates $n$, or the distance from the origin, and $\theta$, the angle relative to the $n_x$ axis.
+This implies that $n_x^2+n_y^2$ is the radius squared of a circle in $n$-space in polar coordinates.
+So, we can write the above $\epsilon$ expression as the following.
+$$\implies\epsilon=\frac{h^2n^2}{8mA}$$\\~\\
+
+Fermi energy is the max energy state at $T=0$, which occurs at $n=n_\text{max}$ (see my problem 7.22 solution and the book for more explanation).
+$$\implies\epsilon_F=\frac{h^2n_\text{max}^2}{8mA}$$\\~\\
+
+We can more helpfully express the energy or fermi energy by converting it to a relation of $N$.
+Similar to problem 7.22 and the book's derivation, we can get the number of particles with an amount of energy, or less, by using the area of a circle in $n$-space.
+This corresponds with the using the volume of the sphere in the other derivations.
+Problem 7.22 and the book derivation specifically does it for $N$ using the Fermi energy's $n_\text{max}$, but this same technique can be used for any energy less than $\epsilon_F$.\\~\\
+
+Since $n_x$ and $n_y$ are positive integers, all the allowed states within the radius $n$ are in the first quadrant.
+So, the area we're interested in is one-fourth of the area of the circle with radius $n$ in $n$-space.
+So, the total number of particles with energy less than or equal to $\epsilon(n)$, $N_\epsilon$ is the following.
+$$N_\epsilon=2\cdot\frac{1}{4}\cdot(\pi n^2)$$
+$$\implies N_\epsilon=\frac{\pi n^2}{2}$$
+$N$ is simply the $N_{\epsilon_F}$, so
+$$\implies N=\frac{\pi n_\text{max}^2}{2}$$
+Plugging this into the equation for $\epsilon$, we get the following.
+$$\epsilon=\frac{h^2n^2}{8mA}$$
+$$\implies\epsilon=\frac{h^2}{4\pi mA}\cdot\frac{\pi n^2}{2}$$
+$$\implies\epsilon=\frac{h^2N_\epsilon}{4\pi mA}$$
+$$\implies\epsilon_F=\frac{h^2N}{4\pi mA}$$\\~\\
+
+We can also get the total energy $U$, and thus the average energy $U/N$.
+$$U=2\int\int\epsilon(n_x, n_y)\,dn_xdn_y$$
+We can evaluate this integral using polar coordinates again, with $dn_xdn_y=n\,dnd\theta$.
+$$\implies U=2\int_0^{n_\text{max}}\int_0^{2\pi}\epsilon(n)n\,d\theta dn$$
+$$\implies U=2\int_0^{n_\text{max}}\epsilon(n)n\,dn\int_0^{\pi/2}\,d\theta$$
+$$\implies U=2\int_0^{n_\text{max}}\frac{h^2n^2}{8mA}n\,dn\cdot\frac{\pi}{2}$$
+$$\implies U=\pi\frac{h^2}{8mA}\int_0^{n_\text{max}}n^3\,dn$$
+$$\implies U=\frac{\pi h^2n_\text{max}^4}{32mA}$$
+$$\implies U=\frac{h^2}{8\pi mA}\cdot\frac{\pi^2 n_\text{max}^4}{4}$$
+$$\implies U=\frac{h^2N}{8\pi mA}N$$
+$$\implies U=\epsilon_FN/2$$\\~\\
+
+Finally, the average energy is the following.
+$$\implies U/N=\epsilon_F/2$$\\~\\~\\
+
+
+\textbf{Part b}\\
+We can now get a formula for the density of states.
+Like the book, we can start with the integral for $U$.
+$$U=2\int_0^{n_\text{max}}\epsilon(n)n\,dn\int_0^{\pi/2}\,d\theta$$
+$$\implies U=\pi\int_0^{n_\text{max}}\epsilon n\,dn$$\\~\\
+
+We want to replace the integral by $n$ to an integral by $\epsilon$, so we need to express $n$ in terms of $\epsilon$.
+$$\epsilon=\frac{h^2}{8mA}n^2$$
+$$\implies n=\sqrt{\frac{8mA}{h^2}}\sqrt{\epsilon}$$
+$$\implies dn=\frac{1}{2}\sqrt{\frac{8mA}{h^2}}(\epsilon)^{-1/2}\,d\epsilon$$\\~\\
+
+Plugging this into $U$, we get the following.
+$$\implies U=\pi\int_0^{\epsilon_F}\epsilon\cdot\sqrt{\frac{8mA}{h^2}}\sqrt{\epsilon}\cdot\frac{1}{2}\sqrt{\frac{8mA}{h^2}}(\epsilon)^{-1/2}\,d\epsilon$$
+$$\implies U=\int_0^{\epsilon_F}\epsilon\cdot\left[\frac{4\pi mA}{h^2}\right]\,d\epsilon$$\\~\\
+
+The quantity in brackets being multiplied by $\epsilon$ is the number of single-particle states per unit energy.
+Notice that the bracketed quantity equals $N/\epsilon_F$.
+This is the density of states $g(\epsilon)$ function that we want.
+Notice that it is independent of $\epsilon$, so $g(\epsilon)\rightarrow g$.
+So,
+$$g=\frac{4\pi mA}{h^2}$$\\~\\~\\
+
+
+
+\textbf{Part d}\\
+Since $g(\epsilon)$ is constant in $\epsilon$, we can solve the following integral derived in the book.
+$$N=\int_0^\infty g(\epsilon)\frac{1}{e^{(\epsilon-\mu)/kT}+1}\,d\epsilon$$
+$$\implies N=g\int_0^\infty\frac{1}{e^{(\epsilon-\mu)/kT}+1}\,d\epsilon$$
+Plugging this integral into sympy, we get the following result.
+$$\implies N=gkT\ln(e^{\mu/kT} + 1)$$
+$$\implies N=\frac{4\pi mA}{h^2}kT\ln(e^{\mu/kT} + 1)$$\\~\\
+
+With this, we can get an equation for $\mu$ in terms of $N$.
+$$\implies \ln(e^{\mu/kT}+1)=\frac{h^2}{4\pi mAkT}N$$
+$$\implies e^{\mu/kT}+1=\text{exp}\left(\frac{h^2}{4\pi mAkT}N\right)$$
+$$\implies e^{\mu/kT}=\text{exp}\left(\frac{h^2}{4\pi mAkT}N\right)-1$$
+$$\implies \mu/kT=\ln\left[\text{exp}\left(\frac{h^2}{4\pi mAkT}N\right)-1\right]$$
+$$\implies \mu=kT\ln\left[\text{exp}\left(\frac{h^2}{4\pi mAkT}N\right)-1\right]$$
+$$\implies \mu=kT\ln\left(e^{N/gkT}-1\right)$$
+$$\implies \mu=kT\ln\left(e^{\epsilon_F/kT}-1\right)$$\\~\\
+
+As we vary $T$, we can see the following.
+when $kT\gg\epsilon_F$, this implies that the natural log goes negative, so $\mu$ becomes negative.
+When $kT\ll\epsilon_F$, the exponential gets very large, so that implies the following.
+$$\implies \mu\approx kT\ln\left(e^{\epsilon_F/kT}\right)$$
+$$\implies \mu\approx kT\epsilon_F/kT$$
+$$\implies \mu\approx \epsilon_F$$
+This is the expected behavior.\\~\\
+
+
+
+\textbf{Part e}\\
+We must now show that when $kT\gg\epsilon_F$, this implies that the chemical potential of this system is the same as that of an ideal gas.
+We can start by reminding ourselves that this condition implies that the argument of the exponential is very small, so we can use the taylor approximation $e^x\approx1+x$.
+$$\mu=kT\ln\left(e^{\epsilon_F/kT}-1\right)$$
+$$\implies \mu=kT\ln\left(1+\frac{\epsilon_F}{kT}-1\right)$$
+$$\implies \mu=kT\ln\left(\frac{\epsilon_F}{kT}\right)$$
+$$\implies \mu=kT\ln\left(\frac{h^2N}{4\pi mAkT}\right)$$\\~\\
+
+In chapter 6, the statistical approach for ideal gas was investigated.
+It gave the following equation for $\mu$.
+\begin{equation}
+    \mu=-kT\ln\left(\frac{VZ_\text{int}}{Nv_Q}\right)
+\end{equation}
+where
+\begin{equation}
+    v_Q=\ell_Q^3=\left(\frac{h}{\sqrt{2\pi mkT}}\right)^3
+\end{equation}\\~\\
+
+For our two-dimensional system, we will consider $\ell_Q^3\rightarrow\ell_Q^2$ and $V\rightarrow A$.
+Since we have the spin-up and spin-down internal states, $Z_\text{int}=2$.
+Let's modify our equation for $\mu$ to make it look like a two-dimensional version of the above.
+$$\mu=kT\ln\left(\frac{h^2N}{4\pi mAkT}\right)$$
+$$\implies \mu=kT\ln\left(\frac{1}{2}\frac{h^2}{2\pi mkT}\frac{N}{A}\right)$$
+$$\implies \mu=kT\ln\left(\frac{N\ell_Q^2}{2A}\right)$$
+$$\implies \mu=-kT\ln\left(\frac{2A}{N\ell_Q^2}\right)$$
+This matches our expectation.
+
+
+
+
+
+\end{flushleft}
+
+\end{document}
