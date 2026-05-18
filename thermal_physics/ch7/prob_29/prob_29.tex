@@ -112,8 +112,46 @@ $$\implies\epsilon^{5/2}=\mu^{5/2}+\frac{5}{2}\mu^{3/2}xkT+\frac{15}{8}\mu^{1/2}
 
 We can now plug this into our integral to get only $x$ dependence.
 $$\implies U=\frac{2}{5}g_0\int_{-\infty}^\infty\frac{e^x}{(e^x+1)^2}\left[\mu^{5/2}+\frac{5}{2}\mu^{3/2}xkT+\frac{15}{8}\mu^{1/2}(xkT)^2+\dots\right]\,dx$$
-This integral can be solved using methods similar to the book, but let's try doing it using sympy.
+This integral can be solved using methods similar to the book.\\~\\
 
+The first term involves the following integral, which the book gives a solution to.
+$$\int_{-\infty}^\infty\frac{e^x}{(e^x+1)^2}\,dx=1$$
+The second term turns out to be an odd function, so integrating from negative infinity to positive infinity yields zero.
+For the third term, we're given the following solution.
+$$\int_{-\infty}^\infty\frac{x^2e^x}{(e^x+1)^2}\,dx=\frac{\pi^2}{3}$$\\~\\
+
+So, we can plug in these solutions into the equation for $U$ to get the following.
+$$\implies U=\frac{2}{5}g_0\left[1\cdot\mu^{5/2}+\frac{\pi^2}{3}\cdot\frac{15}{8}\mu^{1/2}(kT)^2+\dots\right]$$
+$$\implies U=\frac{2}{5}g_0\left[\mu^{5/2}+\frac{5\pi^2}{8}\mu^{1/2}(kT)^2+\dots\right]$$
+$$\implies U=\frac{2}{5}\frac{3N}{2\epsilon_F^{3/2}}\left[\mu^{5/2}+\frac{5\pi^2}{8}\mu^{1/2}(kT)^2+\dots\right]$$
+$$\implies U=\frac{3N}{5\epsilon_F^{3/2}}\left[\mu^{5/2}+\frac{5\pi^2}{8}\mu^{1/2}(kT)^2+\dots\right]$$
+$$\implies U=\frac{3N}{5\epsilon_F^{3/2}}\mu^{5/2}+\frac{3N}{5\epsilon_F^{3/2}}\frac{5\pi^2}{8}\mu^{1/2}(kT)^2+\dots$$
+$$\implies U=\frac{3N}{5\epsilon_F^{3/2}}\mu^{5/2}+\frac{3N\pi^2}{8\epsilon_F^{3/2}}\mu^{1/2}(kT)^2+\dots$$
+$$\implies U=\frac{3}{5}N\frac{\mu^{5/2}}{\epsilon_F^{3/2}}+\frac{3\pi^2}{8}N\frac{\mu^{1/2}(kT)^2}{\epsilon_F^{3/2}}+\dots$$\\~\\
+
+This is nearly the desired form from the textbook, but the textbook gets rid of the $\mu^{1/2}$ in the second term.
+This is because we're considering $kT\ll\epsilon_F$, so $\mu\approx\epsilon_F$.
+We use this to cancel the $\mu^{1/2}$ using the $\epsilon_F^{3/2}$.
+$$\implies U=\frac{3}{5}N\frac{\mu^{5/2}}{\epsilon_F^{3/2}}+\frac{3\pi^2}{8}N\frac{(kT)^2}{\epsilon_F}+\dots$$\\~\\
+
+The book gives the following definition of $\mu$.
+$$\mu=\epsilon_F\left[1-\frac{\pi^2}{12}\left(\frac{kT}{\epsilon_F}\right)^2+\dots\right]$$
+Let's now plug it (ignoring the trailing terms) into our equation for $U$.
+$$\implies\mu^{5/2}=\epsilon_F^{3/2}\epsilon_F^{2/2}\left[1-\frac{\pi^2}{12}\left(\frac{kT}{\epsilon_F}\right)^2\right]^{5/2}$$\\~\\
+
+$$U=\frac{3}{5}N\frac{\mu^{5/2}}{\epsilon_F^{3/2}}+\frac{3\pi^2}{8}N\frac{(kT)^2}{\epsilon_F}+\dots$$
+$$\implies U=\frac{3}{5}N\left[\epsilon_F^{2/2}\left[1-\frac{\pi^2}{12}\left(\frac{kT}{\epsilon_F}\right)^2\right]^{5/2}\right]+\frac{3\pi^2}{8}N\frac{(kT)^2}{\epsilon_F}+\dots$$
+$$\implies U=\frac{3}{5}N\left[\epsilon_F^{2/2}\left[1-\frac{\pi^2}{12}\left(\frac{kT}{\epsilon_F}\right)^2\right]^{5/2}\right]+\frac{3\pi^2}{8}N\frac{(kT)^2}{\epsilon_F}+\dots$$
+$$\implies U=\frac{3}{5}N\epsilon_F\left[1-\frac{\pi^2}{12}\left(\frac{kT}{\epsilon_F}\right)^2\right]^{5/2}+\frac{3\pi^2}{8}N\frac{(kT)^2}{\epsilon_F}+\dots$$\\~\\
+
+To finish simplifying this, recall that $kT\ll\epsilon_F$.
+This means that we can use the binomial expansion $(1-x)^p\approx1-px$, with $p=5/2$.
+$$\implies U=\frac{3}{5}N\epsilon_F\left[1-\frac{5}{2}\frac{\pi^2}{12}\left(\frac{kT}{\epsilon_F}\right)^2\right]+\frac{3\pi^2}{8}N\frac{(kT)^2}{\epsilon_F}+\dots$$
+$$\implies U=\frac{3}{5}N\epsilon_F-\frac{3}{5}N\epsilon_F\frac{5}{2}\frac{\pi^2}{12}\left(\frac{kT}{\epsilon_F}\right)^2+\frac{3\pi^2}{8}N\frac{(kT)^2}{\epsilon_F}+\dots$$
+$$\implies U=\frac{3}{5}N\epsilon_F-\frac{\pi^2}{8}N\frac{(kT)^2}{\epsilon_F}+\frac{3\pi^2}{8}N\frac{(kT)^2}{\epsilon_F}+\dots$$
+$$\implies U=\frac{3}{5}N\epsilon_F+\frac{2\pi^2}{8}N\frac{(kT)^2}{\epsilon_F}+\dots$$
+$$\implies U=\frac{3}{5}N\epsilon_F+\frac{\pi^2}{4}N\frac{(kT)^2}{\epsilon_F}+\dots$$
+This is the desired result.
 
 
 
