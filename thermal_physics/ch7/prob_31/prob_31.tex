@@ -1,0 +1,150 @@
+\documentclass[12pt]{article}
+\usepackage{graphicx} % Required for inserting images
+\usepackage[margin=0.5in]{geometry}
+\usepackage{amsmath, amssymb}
+\usepackage{mathrsfs}
+
+
+\usepackage{soul}
+
+
+% Dr. David Brown Commands
+\newcommand{\ds}{\displaystyle}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\Q}{\mathbb{Q}}
+\newcommand{\C}{\mathbb{C}}
+
+
+% Commands to get script r
+\usepackage{calligra}
+\DeclareMathAlphabet{\mathcalligra}{T1}{calligra}{m}{n}
+\DeclareFontShape{T1}{calligra}{m}{n}{<->s*[2.2]callig15}{}
+\newcommand{\scripty}[1]{\ensuremath{\mathcalligra{#1}}}
+
+% Unit commands
+\newcommand{\degree}{\text{°}}
+\newcommand{\unitSpeed}{\frac{\text{m}}{\text{s}}}
+\newcommand{\unitAcceleration}{\frac{\text{m}}{\text{s}^2}}
+
+% Constant commands
+\newcommand{\avogadro}{6.022\times10^{23}}
+
+\newcommand{\boltzmannConstK}{1.381\times10^{-23}\frac{\text{J}}{\text{K}}}
+\newcommand{\boltzmannConstInEV}{8.617\times10^{-5}\frac{\text{eV}}{\text{K}}}
+\newcommand{\planckConst}{6.626\times10^{-34}\text{J}\cdot\text{s}}
+
+\newcommand{\atmP}{1.01325\times10^5\,\text{Pa}}
+
+% Known Value Commands
+\newcommand{\electronMass}{9.109\times10^{-31}\,\text{kg}}
+\newcommand{\protonMass}{1.673\times10^{-27}\,\text{kg}}
+
+% Commands to easily write partial derivatives
+\newcommand{\partDeriv}[2]{\frac{\partial #1}{\partial #2}}
+\newcommand{\doublePartDeriv}[2]{\frac{\partial^2 #1}{\partial^2 #2}}
+
+
+\title{Problem 7.31}
+\author{Gabriel Decker}
+
+
+\begin{document}
+
+
+\maketitle
+\begin{flushleft}
+
+
+
+In this problem, we'll continue our work in problem 7.28 where we found the density of states for a two-dimensional Fermi gas.
+We will find the system's total energy $U$ using the Sommerfield Expansion so that we can get the heat capacity $C_V$.
+We will begin with the following $U$ equation.
+\begin{equation}
+    \label{eq:start}
+    U=\int_0^\infty\epsilon g(\epsilon)\frac{1}{e^{(\epsilon-\mu)/kT}+1}\,d\epsilon
+\end{equation}
+with
+\begin{equation}
+    g(\epsilon)=\frac{4\pi mA}{h^2}=\frac{N}{\epsilon_F}
+\end{equation}
+to eventually get the heat capacity.
+\begin{equation}
+    C_V=\left(\partDeriv{U}{T}\right)_V
+\end{equation}
+Also, recall the following.
+\begin{equation}
+    \overline{n}_\text{FD}(\epsilon)=\frac{1}{e^{(\epsilon-\mu)/kT}+1}
+\end{equation}
+and
+\begin{equation}
+    -\frac{d\overline{n}_\text{FD}(\epsilon)}{d\epsilon}=\frac{1}{kT}\frac{e^x}{(e^x+1)^2}
+\end{equation}
+with $x=(\epsilon-\mu)/kT$.\\~\\
+
+Plugging in $g$ into $U$, we get the following.
+$$U=\int_0^\infty\epsilon g(\epsilon)\frac{1}{e^{(\epsilon-\mu)/kT}+1}\,d\epsilon$$
+$$\implies U=\frac{N}{\epsilon_F}\int_0^\infty\epsilon\frac{1}{e^{(\epsilon-\mu)/kT}+1}\,d\epsilon$$
+We'll start the Sommerfield expansion by integrating by parts.\\
+$dv=\frac{N}{\epsilon_F}\epsilon\,d\epsilon$, so $v=\frac{N}{2\epsilon_F}\epsilon^2$.\\
+$u=\overline{n}_\text{FD}(\epsilon)$, so $du=\frac{d\overline{n}_\text{FD}(\epsilon)}{d\epsilon}$.\\
+$$\implies U=\frac{N}{2\epsilon_F}\epsilon\overline{n}_\text{FD}(\epsilon)\Big|_0^\infty-\frac{N}{2\epsilon_F}\int_0^\infty\epsilon^2\frac{d\overline{n}_\text{FD}(\epsilon)}{d\epsilon}\,d\epsilon$$
+Due to the same logic as problem 7.29 and the book's example, the first term vanishes.
+$$\implies U=\frac{N}{2\epsilon_F}\int_0^\infty\epsilon^2\left(-\frac{d\overline{n}_\text{FD}(\epsilon)}{d\epsilon}\right)\,d\epsilon$$
+$$\implies U=\frac{N}{2\epsilon_FkT}\int_0^\infty\epsilon^2\frac{e^x}{(e^x+1)^2}\,d\epsilon$$
+with $x=(\epsilon-\mu)/kT$ and $dx=d\epsilon/kT$.\\~\\
+
+Changing the integration variable to $x$, $\epsilon=xkT+\mu$ implies the following.
+$$\implies U=\frac{N}{2\epsilon_F}\int_{-\mu/kT}^\infty\epsilon^2\frac{e^x}{(e^x+1)^2}\,dx$$
+$$\implies U=\frac{N}{2\epsilon_F}\int_{-\mu/kT}^\infty(xkT+\mu)^2\frac{e^x}{(e^x+1)^2}\,dx$$
+$$\implies U=\frac{N}{2\epsilon_F}\int_{-\mu/kT}^\infty((kT)^2x^2+2\mu kTx+\mu^2)\frac{e^x}{(e^x+1)^2}\,dx$$
+We can also extend the bounds of integration to negative infinity because the extension will add negligibly to the integral.
+$$\implies U=\frac{N}{2\epsilon_F}\int_{-\infty}^\infty((kT)^2x^2+2\mu kTx+\mu^2)\frac{e^x}{(e^x+1)^2}\,dx$$
+$$\implies U=\frac{N}{2\epsilon_F}\left[\mu^2\int_{-\infty}^\infty\frac{e^x}{(e^x+1)^2}\,dx+2\mu kT\int_{-\infty}^\infty\frac{xe^x}{(e^x+1)^2}\,dx+(kT)^2\int_{-\infty}^\infty\frac{x^2e^x}{(e^x+1)^2}\,dx\right]$$\\~\\
+
+As discussed in the problem 2.29, we have the following results from the book.
+$$\int_{-\infty}^\infty\frac{e^x}{(e^x+1)^2}\,dx=1$$
+$$\int_{-\infty}^\infty\frac{xe^x}{(e^x+1)^2}\,dx=0$$
+$$\int_{-\infty}^\infty\frac{x^2e^x}{(e^x+1)^2}\,dx=\frac{\pi^2}{3}$$\\~\\
+
+Plugging these into our equation for $U$, we get the following.
+$$\implies U=\frac{N}{2\epsilon_F}\left[\mu^2\cdot1+2\mu kT\cdot0+(kT)^2\cdot\frac{\pi^2}{3}\right]$$
+$$\implies U=\frac{N}{2\epsilon_F}\left[\mu^2+(kT)^2\frac{\pi^2}{3}\right]$$
+$$\implies U=\frac{N}{2\epsilon_F}\mu^2+\frac{N}{2\epsilon_F}(kT)^2\frac{\pi^2}{3}$$
+Assuming that $\mu\approx\epsilon_F$, we get the following.
+$$\implies U=\frac{\epsilon_F}{2}N+\frac{\pi^2}{6}\frac{(kT)^2}{\epsilon_F}N$$
+This is a great approximation of the total energy when $kT\ll\epsilon_F$.\\~\\
+
+By applying the equation for $C_V$, we get the following heat capacity for when $kT\ll\epsilon_F$.
+$$C_V=\left(\partDeriv{U}{T}\right)_V$$
+$$\implies C_V=\partDeriv{}{T}\left(\frac{\epsilon_F}{2}N+\frac{\pi^2}{6}\frac{(kT)^2}{\epsilon_F}N\right)$$
+$$\implies C_V=\frac{\pi^2}{3}\frac{kT}{\epsilon_F}Nk$$
+$$\implies C_V=\frac{\pi^2Nk^2T}{3\epsilon_F}$$\\~\\
+
+When $kT\gg\epsilon_F$, things are different.
+We can go back to the integral of $U$ and $g(\epsilon)$.
+$$U=\frac{N}{\epsilon_F}\int_0^\infty\epsilon\frac{1}{e^{(\epsilon-\mu)/kT}+1}\,d\epsilon$$
+Recall the result of $\mu$ from part e of problem 7.28, where we found $\mu$ when $kT\gg\epsilon_F$.
+$$\mu=kT\ln\left(\frac{\epsilon_F}{kT}\right)$$
+Notice that it is negative when $kT\gg\epsilon_F$.
+Plugging this definition of $\mu$ into the equation for $U$ yeilds the following.
+$$\implies U=\frac{N}{\epsilon_F}\int_0^\infty\epsilon\frac{1}{e^{\epsilon/kT-\ln(\epsilon_F/kT)}+1}\,d\epsilon$$
+Since $kT\gg\epsilon_F$, that exponential will always result in a fairly large number, even at $\epsilon=0$.
+So, we can treat the $+1$ as negligible.
+$$\implies U=\frac{N}{\epsilon_F}\int_0^\infty\epsilon e^{-(\epsilon-\mu)/kT}\,d\epsilon$$\\~\\
+
+This is an integral we can solve (I'm using sympy).\\
+$$\implies U=\frac{N}{\epsilon_F}\cdot\left[T^2k^2e^{\mu/kT}\right]$$
+Plugging in our $\mu$, we get the following.
+$$\implies U=\frac{N}{\epsilon_F}\cdot\left[T^2k^2e^{\ln(\epsilon_F/kT)}\right]$$
+$$\implies U=\frac{N}{\epsilon_F}\cdot\left[T^2k^2\frac{\epsilon_F}{kT}\right]$$
+$$\implies U=NkT$$
+$$\implies C_V=Nk$$
+This is the same as an ideal gas with degrees of freedom $f=2$, which makes sense for our two-dimensional problem.
+
+
+
+
+\end{flushleft}
+
+\end{document}
