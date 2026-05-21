@@ -1,0 +1,165 @@
+\documentclass[12pt]{article}
+\usepackage{graphicx} % Required for inserting images
+\usepackage[margin=0.5in]{geometry}
+\usepackage{amsmath, amssymb}
+\usepackage{mathrsfs}
+
+
+\usepackage{soul}
+
+
+% Dr. David Brown Commands
+\newcommand{\ds}{\displaystyle}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\Q}{\mathbb{Q}}
+\newcommand{\C}{\mathbb{C}}
+
+
+% Commands to get script r
+\usepackage{calligra}
+\DeclareMathAlphabet{\mathcalligra}{T1}{calligra}{m}{n}
+\DeclareFontShape{T1}{calligra}{m}{n}{<->s*[2.2]callig15}{}
+\newcommand{\scripty}[1]{\ensuremath{\mathcalligra{#1}}}
+
+% Unit commands
+\newcommand{\degree}{\text{°}}
+\newcommand{\unitSpeed}{\frac{\text{m}}{\text{s}}}
+\newcommand{\unitAcceleration}{\frac{\text{m}}{\text{s}^2}}
+
+% Constant commands
+\newcommand{\avogadro}{6.022\times10^{23}}
+
+\newcommand{\boltzmannConstK}{1.381\times10^{-23}\frac{\text{J}}{\text{K}}}
+\newcommand{\boltzmannConstInEV}{8.617\times10^{-5}\frac{\text{eV}}{\text{K}}}
+\newcommand{\planckConst}{6.626\times10^{-34}\text{J}\cdot\text{s}}
+
+\newcommand{\atmP}{1.01325\times10^5\,\text{Pa}}
+
+% Known Value Commands
+\newcommand{\electronMass}{9.109\times10^{-31}\,\text{kg}}
+\newcommand{\protonMass}{1.673\times10^{-27}\,\text{kg}}
+
+% Commands to easily write partial derivatives
+\newcommand{\partDeriv}[2]{\frac{\partial #1}{\partial #2}}
+\newcommand{\doublePartDeriv}[2]{\frac{\partial^2 #1}{\partial^2 #2}}
+
+
+\title{Problem 7.33}
+\author{Gabriel Decker}
+
+
+\begin{document}
+
+
+\maketitle
+\begin{flushleft}
+
+
+In this problem, we will consider a simplified model of a pure semiconductor.
+We're given that the fermi temperature lies between the end the of valence band and the beginning of the conduction.
+At $T=0$, all electrons are in the valence band.
+The Fermi energy $\epsilon_F$ is in the middle of the band gap.
+The end of the valence band is $\epsilon_v$ and the end of the conduction band is $\epsilon_c$.\\~\\
+
+\textbf{Part a:}\\
+First, we'll consider why $\mu$ must always be in the center of the band gap for all $T$.
+Obviously, $\mu=\epsilon_F$ when $T=0$, so it's in the middle.
+Consider $\mu$'s role in the fermi-dirac distribution, which is multiplied by $g(\epsilon)$ to when getting the number of electrons in a state.
+The fermi-dirac distribution is always centered about $\mu$ for all $T$.
+Also, since the fermi-dirac distribution can be interpreted as a probability and because it's symmetric about $\mu$, the probability for an $\epsilon$ a certain distance from $\mu$ on one side is one minus the probability on the other side of $\mu$.
+We also know that $g(\epsilon)$ is symmetric around $\epsilon_F$.
+So, to keep the total number of electrons the same, we must preserve the property that these functions stay symmetric around the same point.\\~\\~\\
+
+\textbf{Part b:}\\
+We will now find an expression of the number of conduction band electrons per unit volume, in terms of $T$ and the width of the gap $\epsilon_c-\epsilon_v$.
+We will do so, assuming that $kT\ll\epsilon_c-\epsilon_v$.
+The number of electrons in the conduction band is the following.
+\begin{equation}
+    N_c=\int_{\epsilon_c}^{\infty}g(\epsilon)\overline{n}_\text{FD}(\epsilon)\,d\epsilon
+\end{equation}
+with
+\begin{equation}
+    \overline{n}_\text{FD}(\epsilon)=\frac{1}{e^{(\epsilon-\epsilon_F)/kT}+1}
+\end{equation}
+We're also given an equation for $g(\epsilon)$.
+\begin{equation}
+    g(\epsilon)=g_0\sqrt{\epsilon-\epsilon_c}
+\end{equation}
+with
+\begin{equation}
+    g_0=\frac{\pi(8m)^{3/2}}{2h^3}V
+\end{equation}\\~\\
+
+Let's try to solve this integral.
+$$N_c=\int_{\epsilon_c}^{\infty}g(\epsilon)\overline{n}_\text{FD}(\epsilon)\,d\epsilon$$
+$$\implies N_c=\int_{\epsilon_c}^{\infty}g_0\sqrt{\epsilon-\epsilon_c}\frac{1}{e^{(\epsilon-\epsilon_F)/kT}+1}\,d\epsilon$$
+Since $kT$ is relatively small, the exponential will always be fairly large, so the one can be neglected.
+$$\implies N_c=g_0\int_{\epsilon_c}^{\infty}\sqrt{\epsilon-\epsilon_c}e^{-(\epsilon-\epsilon_F)/kT}\,d\epsilon$$
+This can be simplified by making the substitution $x=(\epsilon-\epsilon_c)/kT$.
+$$\implies N_c=g_0\int_{\epsilon_c}^{\infty}\sqrt{xkT}e^{-\epsilon/kT}e^{\epsilon_F/kT}\,d\epsilon$$
+$$\implies N_c=g_0(kT)^{1/2}e^{\epsilon_F/kT}\int_{\epsilon_c}^{\infty}\sqrt{x}e^{-(xkT+\epsilon_c)/kT}\,d\epsilon$$
+$$\implies N_c=g_0(kT)^{1/2}e^{\epsilon_F/kT}\int_{\epsilon_c}^{\infty}\sqrt{x}e^{-xkT/kT}e^{-\epsilon_c/kT}\,d\epsilon$$
+$$\implies N_c=g_0(kT)^{1/2}e^{\epsilon_F/kT}e^{-\epsilon_c/kT}\int_{\epsilon_c}^{\infty}\sqrt{x}e^{-x}\,d\epsilon$$
+$$\implies N_c=g_0(kT)^{1/2}e^{(\epsilon_F-\epsilon_c)/kT}\int_{\epsilon_c}^{\infty}\sqrt{x}e^{-x}\,d\epsilon$$
+$x=(\epsilon-\epsilon_c)/kT$ implies that $dx=d\epsilon/kT$, so we get the following when changing the variable of integration.
+$$\implies N_c=g_0(kT)^{3/2}e^{(\epsilon_F-\epsilon_c)/kT}\int_0^{\infty}\sqrt{x}e^{-x}\,dx$$
+By using sympy, I found the result of this integration to be the followig.
+$$\implies N_c=g_0(kT)^{3/2}e^{(\epsilon_F-\epsilon_c)/kT}\cdot\frac{\sqrt{\pi}}{2}$$
+The problem wants an answer in terms of the band gap, but lucklily, $\epsilon_c-\epsilon_F$ is half of the band gap, so we can exress it properly as the following.
+$$\implies N_c=g_0(kT)^{3/2}e^{-(\epsilon_c-\epsilon_F)/kT}\cdot\frac{\sqrt{\pi}}{2}$$
+$$\implies N_c=\frac{\sqrt{\pi}}{2}g_0(kT)^{3/2}e^{-(\epsilon_c-\epsilon_v)/2kT}$$\\~\\
+
+Plugging in the definition of $g_0$, we can get an equation of the number of conduction electrons per unit volume.
+$$\implies N_c=\frac{\sqrt{\pi}}{2}\frac{\pi(8m)^{3/2}}{2h^3}V(kT)^{3/2}e^{-(\epsilon_c-\epsilon_v)/2kT}$$
+$$\implies N_c=\frac{\pi^{3/2}(8m)^{3/2}}{4h^3}V(kT)^{3/2}e^{-(\epsilon_c-\epsilon_v)/2kT}$$
+$$\implies \frac{N_c}{V}=\frac{\pi^{3/2}(8m)^{3/2}}{4h^3}(kT)^{3/2}e^{-(\epsilon_c-\epsilon_v)/2kT}$$
+$$\implies \frac{N_c}{V}=\frac{(8\pi mkT)^{3/2}}{4h^3}e^{-(\epsilon_c-\epsilon_v)/2kT}$$\\~\\~\\
+
+
+
+\textbf{Part c:}\\
+Now, we will plug in some numbers into the result of part b.
+We're plugging in numbers for silicon, given $T=300\,\text{K}$, $\epsilon_c-\epsilon_v=1.11\,\text{eV}$, and $V=1\,\text{cm}^3=1\times10^{-6}\,\text{m}^3$.
+Plugging the numbers in, we get the following.
+$$\frac{N_c}{V}=\frac{(8\pi mkT)^{3/2}}{4h^3}e^{-(\epsilon_c-\epsilon_v)/2kT}$$
+$$\implies N_c=V\frac{(8\pi mkT)^{3/2}}{4h^3}e^{-(\epsilon_c-\epsilon_v)/2kT}$$
+$$\implies N_c=(1\times10^{-6}\,\text{m}^3)\frac{(8\pi (9.109\times10^{-31}\,\text{kg})(\boltzmannConstK)(300\,\text{K}))^{3/2}}{4(\planckConst)^3}e^{-(1.11\,\text{eV})/2(\boltzmannConstInEV)(300\,\text{K})}$$
+When plugged into a python program, we get the following number.
+$$\implies N_c=1.191\times10^{10}$$\\~\\~\\
+
+
+
+
+\textbf{Part d:}\\
+Semiconductors conduct better at higher temperatures because more electrons end up in the conduction band.
+See this equation.
+$$\frac{N_c}{V}=\frac{(8\pi mkT)^{3/2}}{4h^3}e^{-(\epsilon_c-\epsilon_v)/2kT}$$
+Increasing $T$ increases the $T^{3/2}$ term and makes the exponential less negative.
+Both, especially the exponential case, increase the number of conduction electrons per unit volume, making the material conduct electricity better.\\~\\~\\
+
+
+
+\textbf{Part e:}\\
+Now, we must estimate how wide the band gap $\epsilon_c-\epsilon_v$ would have to be to make a material an insulator.
+
+For this, we would want a material that has a very low $N_c/V$, say $N_c/V=1\,\text{m}^{-3}$ at room temperature $T=300\,\text{K}$.
+Let's begin at the following equation.
+$$\frac{N_c}{V}=\frac{(8\pi mkT)^{3/2}}{4h^3}e^{-(\epsilon_c-\epsilon_v)/2kT}$$
+$$\implies1\,\text{m}^{-3}=(2.5103\times10^{25}\,\text{m}^{-3})\cdot e^{-(\epsilon_c-\epsilon_v)/2kT}$$
+$$\implies e^{-(\epsilon_c-\epsilon_v)/2kT}=3.984\times10^{-26}$$
+$$\implies -(\epsilon_c-\epsilon_v)/2kT=\ln(3.984\times10^{-26})$$
+$$\implies -(\epsilon_c-\epsilon_v)/2kT=-58.484$$
+$$\implies (\epsilon_c-\epsilon_v)/2kT=58.484$$
+$$\implies (\epsilon_c-\epsilon_v)=2kT(58.484)$$
+$$\implies (\epsilon_c-\epsilon_v)=2(\boltzmannConstInEV)(300\,\text{K})(58.484)$$
+$$\implies (\epsilon_c-\epsilon_v)=2(\boltzmannConstInEV)(300\,\text{K})(58.484)$$
+$$\implies (\epsilon_c-\epsilon_v)=3.02\,\text{eV}$$
+So, even a band gap of $3.02\,\text{eV}$ would make it so essentially zero electrons made it to the conduction band.
+
+
+
+
+\end{flushleft}
+
+\end{document}
