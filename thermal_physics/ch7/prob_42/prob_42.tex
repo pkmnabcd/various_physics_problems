@@ -1,0 +1,92 @@
+\documentclass[12pt]{article}
+\usepackage{graphicx} % Required for inserting images
+\usepackage[margin=0.5in]{geometry}
+\usepackage{amsmath, amssymb}
+\usepackage{mathrsfs}
+
+
+\usepackage{soul}
+
+
+% Dr. David Brown Commands
+\newcommand{\ds}{\displaystyle}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\Q}{\mathbb{Q}}
+\newcommand{\C}{\mathbb{C}}
+
+
+% Commands to get script r
+\usepackage{calligra}
+\DeclareMathAlphabet{\mathcalligra}{T1}{calligra}{m}{n}
+\DeclareFontShape{T1}{calligra}{m}{n}{<->s*[2.2]callig15}{}
+\newcommand{\scripty}[1]{\ensuremath{\mathcalligra{#1}}}
+
+% Unit commands
+\newcommand{\degree}{\text{°}}
+\newcommand{\unitSpeed}{\frac{\text{m}}{\text{s}}}
+\newcommand{\unitAcceleration}{\frac{\text{m}}{\text{s}^2}}
+
+% Constant commands
+\newcommand{\avogadro}{6.022\times10^{23}}
+
+\newcommand{\boltzmannConstK}{1.381\times10^{-23}\frac{\text{J}}{\text{K}}}
+\newcommand{\boltzmannConstInEV}{8.617\times10^{-5}\frac{\text{eV}}{\text{K}}}
+\newcommand{\planckConst}{6.626\times10^{-34}\text{J}\cdot\text{s}}
+
+\newcommand{\atmP}{1.01325\times10^5\,\text{Pa}}
+
+% Known Value Commands
+\newcommand{\electronMass}{9.109\times10^{-31}\,\text{kg}}
+\newcommand{\protonMass}{1.673\times10^{-27}\,\text{kg}}
+
+% Commands to easily write partial derivatives
+\newcommand{\partDeriv}[2]{\frac{\partial #1}{\partial #2}}
+\newcommand{\doublePartDeriv}[2]{\frac{\partial^2 #1}{\partial^2 #2}}
+
+
+\title{Problem 7.42}
+\author{Gabriel Decker}
+
+
+\begin{document}
+
+
+\maketitle
+\begin{flushleft}
+
+
+In this problem, we will consider the electromagnetic radiation inside a kiln at $T=1500\,\text{K}$.
+We'll consider the kiln to have a volume of $V=1\,\text{m}^3$.
+We will find the total energy of the radiation, plot the spectrum while varying photon energy $\epsilon$, and find the fraction of the energy in the visible spectrum (400 nm to 700 nm).\\~\\
+
+The total energy can be determined by using the following equation from the book.
+\begin{equation}
+    \frac{U}{V}=\frac{8\pi^5(kT)^4}{15(hc)^3}
+\end{equation}
+We can also use the spectrum equation, as a function of photon energy $\epsilon$ from the book.
+\begin{equation}
+    u(\epsilon)=\frac{8\pi}{(hc)^3}\frac{\epsilon^3}{e^{\epsilon/kT}-1}
+\end{equation}
+We also found in problem 7.39 the total energy with a spectrum as a function of $\lambda$.
+\begin{equation}
+    \frac{U}{V}=8\pi hc\int_0^\infty\frac{1}{\lambda^5}\frac{1}{e^{hc/\lambda kT}-1}\,d\lambda
+\end{equation}
+If we want to get just the contribution to the energy from the visible spectrum, we can adjust the bounds of integration to the following.
+\begin{equation}
+    \frac{U}{V}=8\pi hc\int_{400\,\text{nm}}^{700\,\text{nm}}\frac{1}{\lambda^5}\frac{1}{e^{hc/\lambda kT}-1}\,d\lambda
+\end{equation}
+We'll use all these things as we find the various desired quantities.\\~\\
+
+
+\textbf{Part a:}\\
+
+
+
+
+
+
+
+\end{flushleft}
+
+\end{document}
