@@ -82,9 +82,12 @@ This makes the photon wavelength spectrum the following.
 Now that we have an expression for the energy density per photon wavelength distribution, we can learn some things about it.
 We can plot the distribution at, for example $T=300\,\text{K}$ and find where the max value is.
 I'll use sympy, numpy, and matplotlib to accomplish this.
-I used a substitution of a dimensionless variable: $x=\lambda kT/hc$.
-So, $\lambda=xhc/kT$.\\
-TODO: Getting not implemented error. Try defining $x$ such that we get $e^x$ instead of $e^{1/x}$, and then invert the solution instead or something like that.
+To find the max value, I used a substitution of a dimensionless variable: $x=hc/\lambda kT$.
+So, $\lambda=hc/xkT$.\\~\\
+
+For $T=300\,\text{K}$, we have the peak wavelength $\lambda_\text{peak}=9.657\times10^{-6}\,\text{m}$.
+The following is a plot of $u(\lambda)$.\\
+\includegraphics[width=0.7\linewidth]{lambda_vs_spectrum.png}
 
 
 
