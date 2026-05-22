@@ -1,0 +1,94 @@
+\documentclass[12pt]{article}
+\usepackage{graphicx} % Required for inserting images
+\usepackage[margin=0.5in]{geometry}
+\usepackage{amsmath, amssymb}
+\usepackage{mathrsfs}
+
+
+\usepackage{soul}
+
+
+% Dr. David Brown Commands
+\newcommand{\ds}{\displaystyle}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\Q}{\mathbb{Q}}
+\newcommand{\C}{\mathbb{C}}
+
+
+% Commands to get script r
+\usepackage{calligra}
+\DeclareMathAlphabet{\mathcalligra}{T1}{calligra}{m}{n}
+\DeclareFontShape{T1}{calligra}{m}{n}{<->s*[2.2]callig15}{}
+\newcommand{\scripty}[1]{\ensuremath{\mathcalligra{#1}}}
+
+% Unit commands
+\newcommand{\degree}{\text{°}}
+\newcommand{\unitSpeed}{\frac{\text{m}}{\text{s}}}
+\newcommand{\unitAcceleration}{\frac{\text{m}}{\text{s}^2}}
+
+% Constant commands
+\newcommand{\avogadro}{6.022\times10^{23}}
+
+\newcommand{\boltzmannConstK}{1.381\times10^{-23}\frac{\text{J}}{\text{K}}}
+\newcommand{\boltzmannConstInEV}{8.617\times10^{-5}\frac{\text{eV}}{\text{K}}}
+\newcommand{\planckConst}{6.626\times10^{-34}\text{J}\cdot\text{s}}
+
+\newcommand{\atmP}{1.01325\times10^5\,\text{Pa}}
+
+% Known Value Commands
+\newcommand{\electronMass}{9.109\times10^{-31}\,\text{kg}}
+\newcommand{\protonMass}{1.673\times10^{-27}\,\text{kg}}
+
+% Commands to easily write partial derivatives
+\newcommand{\partDeriv}[2]{\frac{\partial #1}{\partial #2}}
+\newcommand{\doublePartDeriv}[2]{\frac{\partial^2 #1}{\partial^2 #2}}
+
+
+\title{Problem 7.39}
+\author{Gabriel Decker}
+
+
+\begin{document}
+
+
+\maketitle
+\begin{flushleft}
+
+
+In this problem, we consider the Planck Spectrum.
+We will begin with the equation of the total photon energy per unit area as a function of photon energy $\epsilon$ and do a change of variables with $\lambda=hc/\epsilon$.
+This will change the integrand's original interpretation of energy density per photon energy to energy density per photon wavelength.\\~\\
+
+We begin with the given equation that integrates over photon energy.
+\begin{equation}
+    \frac{U}{V}=\int_0^\infty\frac{8\pi}{(hc)^3}\frac{\epsilon^3}{e^{\epsilon/kT}-1}\,d\epsilon
+\end{equation}
+With $\lambda=hc/\epsilon$, this implies that $\epsilon=hc/\lambda$.
+This implies that $d\epsilon/d\lambda=-hc/\lambda^2$, so $d\epsilon=(-hc/\lambda^2)/d\lambda$.
+We can now apply this change of variables to the equation.
+Let's begin by just substituting $\epsilon$.
+$$\frac{U}{V}=\frac{8\pi}{(hc)^3}\int_0^\infty\frac{\epsilon^3}{e^{\epsilon/kT}-1}\,d\epsilon$$
+$$\implies\frac{U}{V}=\frac{8\pi}{(hc)^3}\int_0^\infty\frac{(hc/\lambda)^3}{e^{(hc/\lambda)/kT}-1}\,d\epsilon$$
+$$\implies\frac{U}{V}=8\pi\int_0^\infty\frac{1}{\lambda^3}\frac{1}{e^{hc/\lambda kT}-1}\,d\epsilon$$
+Replacing the variable of integration, we get the following.
+$$\implies\frac{U}{V}=8\pi\int_\infty^0\frac{1}{\lambda^3}\frac{1}{e^{hc/\lambda kT}-1}\cdot\left(-\frac{hc}{\lambda^2}\right)\,d\lambda$$
+$$\implies\frac{U}{V}=8\pi hc\int_0^\infty\frac{1}{\lambda^5}\frac{1}{e^{hc/\lambda kT}-1}\,d\lambda$$
+This makes the photon wavelength spectrum the following.
+\begin{equation}
+    u(\lambda)=\frac{8\pi hc}{\lambda^5}\frac{1}{e^{hc/\lambda kT}-1}
+\end{equation}\\~\\
+
+Now that we have an expression for the energy density per photon wavelength distribution, we can learn some things about it.
+We can plot the distribution at, for example $T=300\,\text{K}$ and find where the max value is.
+I'll use sympy, numpy, and matplotlib to accomplish this.
+I used a substitution of a dimensionless variable: $x=\lambda kT/hc$.
+So, $\lambda=xhc/kT$.\\
+TODO: Getting not implemented error. Try defining $x$ such that we get $e^x$ instead of $e^{1/x}$, and then invert the solution instead or something like that.
+
+
+
+
+\end{flushleft}
+
+\end{document}
