@@ -5,7 +5,7 @@ from sympy import symbols, exp, oo, integrate, simplify, latex, Rational, pi, di
 import matplotlib.pyplot as plt
 
 """
-This program does the numerical integration for the visible 
+This program does the numerical integration for the visible
 spectrum energy and plots the spectrum for T=1500 K.
 """
 
@@ -14,7 +14,7 @@ spectrum energy and plots the spectrum for T=1500 K.
 class Const:
     # Physical Constants
     k_J = 1.381 * pow(10,-23)      # J / K
-    k_ev = 8.617 * pow(10,-5)      # eV / K
+    k_eV = 8.617 * pow(10,-5)      # eV / K
     h = 6.626 * pow(10, -34)       # J s
     G = 6.674 * pow(10, -11)       # N m^2 / kg^2
     c = 2.998 * pow(10, 8)         # m / s
@@ -28,36 +28,20 @@ class Const:
     pi = math.pi
 
 
-# TODO: Make the program. The following was copied from 7.42 and is for reference
+# Plot the energy spectrum
+temp = 1500 # K
+h, c, ep, k, T = symbols("h c epsilon, k, T", positive=True)
 
-# Find the peak wavelength for T=300 K
-temp = 300 # K
-h, c, lam, k, T, x = symbols("h c lamda, k, T x", positive=True)
+spectrum = 8 * pi / ((h * c) ** 3)
+spectrum *= ep ** 3 / (exp(ep / (k * T)) - 1)
+print(f"Energy Spectrum: {spectrum}")
 
-spectrum = 8 * pi * h * c / lam ** 5
-spectrum *= 1 / (exp(h * c / (lam * k * T)) - 1)
-print(f"Wavelength Spectrum: {spectrum}")
-
-spectrum_x = spectrum.subs(lam, h * c / (x * k * T)) # Make dimensionless substitution
-print(f"Substituted Wavelength Spectrum: {spectrum_x}")
-
-spectrum_deriv = diff(spectrum_x, x)
-print(f"Wavelength Spectrum Derivative: {spectrum_deriv}")
-
-solutions = solve(spectrum_deriv, x)
-soln = solutions[0].evalf()
-lambda_peak = Const.h * Const.c / (soln * Const.k_J * temp)
-print(f"Peak Wavelength: {lambda_peak:e} m")
-
-
-
-# Plot the spectrum
-spectrum_prep = spectrum.subs(h, Const.h).subs(c, Const.c).subs(k, Const.k_J).subs(T, temp)
-spectrum_lambda = lambdify(lam, spectrum_prep, "numpy")
-lambda_array = np.linspace(pow(10, -12), 5*pow(10, -5), 10_000)
-spectrum_array = spectrum_lambda(lambda_array)
-plt.plot(lambda_array, spectrum_array)
+spectrum_prep = spectrum.subs(h, Const.h).subs(c, Const.c).subs(k, Const.k_eV).subs(T, temp)
+spectrum_lambda = lambdify(ep, spectrum_prep, "numpy")
+energy_array = np.linspace(pow(10, -3), 2.3*pow(10, 0), 10_000)
+spectrum_array = spectrum_lambda(energy_array)
+plt.plot(energy_array, spectrum_array)
 plt.title(f"Planck Spectrum for T={temp} K")
-plt.xlabel("Wavelength (m)")
-plt.ylabel("Energy Density Per Photon Wavelength (J/m^4)")
-plt.savefig("lambda_vs_spectrum.png")
+plt.xlabel("Photon Energy (eV)")
+plt.ylabel("Energy Density Per Photon Energy (J/(J m^3))")
+plt.savefig("energy_vs_spectrum.png")

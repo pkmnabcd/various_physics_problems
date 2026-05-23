@@ -74,15 +74,31 @@ We also found in problem 7.39 the total energy with a spectrum as a function of 
 \end{equation}
 If we want to get just the contribution to the energy from the visible spectrum, we can adjust the bounds of integration to the following.
 \begin{equation}
-    \frac{U}{V}=8\pi hc\int_{400\,\text{nm}}^{700\,\text{nm}}\frac{1}{\lambda^5}\frac{1}{e^{hc/\lambda kT}-1}\,d\lambda
+    \frac{U_\text{vis}}{V}=8\pi hc\int_{400\,\text{nm}}^{700\,\text{nm}}\frac{1}{\lambda^5}\frac{1}{e^{hc/\lambda kT}-1}\,d\lambda
 \end{equation}
 We'll use all these things as we find the various desired quantities.\\~\\
 
 
 \textbf{Part a:}\\
+First, we'll find the total energy.
+$$\frac{U}{V}=\frac{8\pi^5(kT)^4}{15(hc)^3}$$
+$$\implies U=V\frac{8\pi^5(kT)^4}{15(hc)^3}$$
+Now, we simply plug in our $V=1\,\text{m}^3$ and $T=1500\,\text{K}$.
+$$\implies U=(1\,\text{m}^3)\frac{8\pi^5((\boltzmannConstK)(1500\,\text{K}))^4}{15((\planckConst)(2.998\times10^8\,\text{m/s}))^3}$$
+$$\implies U=0.00383\,\text{J}$$\\~\\~\\
 
 
 
+\textbf{Part b:}\\
+The following is a plot of the spectrum as a functiuon of photon energy.\\
+\includegraphics[width=0.6\linewidth]{energy_vs_spectrum.png}\\~\\~\\
+
+
+
+\textbf{Part c:}\\
+We will use the following equation to find the total energy from the visible spectrum.
+We will divide this from the total energy to get the fraction from visible light.
+$$\frac{U_\text{vis}}{V}=8\pi hc\int_{400\,\text{nm}}^{700\,\text{nm}}\frac{1}{\lambda^5}\frac{1}{e^{hc/\lambda kT}-1}\,d\lambda$$
 
 
 
