@@ -1,0 +1,137 @@
+\documentclass[12pt]{article}
+\usepackage{graphicx} % Required for inserting images
+\usepackage[margin=0.5in]{geometry}
+\usepackage{amsmath, amssymb}
+\usepackage{mathrsfs}
+
+
+\usepackage{soul}
+
+
+% Dr. David Brown Commands
+\newcommand{\ds}{\displaystyle}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\Q}{\mathbb{Q}}
+\newcommand{\C}{\mathbb{C}}
+
+
+% Commands to get script r
+\usepackage{calligra}
+\DeclareMathAlphabet{\mathcalligra}{T1}{calligra}{m}{n}
+\DeclareFontShape{T1}{calligra}{m}{n}{<->s*[2.2]callig15}{}
+\newcommand{\scripty}[1]{\ensuremath{\mathcalligra{#1}}}
+
+% Unit commands
+\newcommand{\degree}{\text{°}}
+\newcommand{\unitSpeed}{\frac{\text{m}}{\text{s}}}
+\newcommand{\unitAcceleration}{\frac{\text{m}}{\text{s}^2}}
+
+% Constant commands
+\newcommand{\avogadro}{6.022\times10^{23}}
+
+\newcommand{\boltzmannConstK}{1.381\times10^{-23}\frac{\text{J}}{\text{K}}}
+\newcommand{\boltzmannConstInEV}{8.617\times10^{-5}\frac{\text{eV}}{\text{K}}}
+\newcommand{\planckConst}{6.626\times10^{-34}\text{J}\cdot\text{s}}
+
+\newcommand{\atmP}{1.01325\times10^5\,\text{Pa}}
+
+% Known Value Commands
+\newcommand{\electronMass}{9.109\times10^{-31}\,\text{kg}}
+\newcommand{\protonMass}{1.673\times10^{-27}\,\text{kg}}
+
+% Commands to easily write partial derivatives
+\newcommand{\partDeriv}[2]{\frac{\partial #1}{\partial #2}}
+\newcommand{\doublePartDeriv}[2]{\frac{\partial^2 #1}{\partial^2 #2}}
+
+
+\title{Problem 7.44}
+\author{Gabriel Decker}
+
+
+\begin{document}
+
+
+\maketitle
+\begin{flushleft}
+
+
+In this problem, we will consider the total number of photons $N$ in thermal equilibrium in a box with volume $V$ at temperature $T$.
+We will compare it to the entropy, which the text says is equal to the entropy up to a constant.\\~\\
+
+\textbf{Part a}\\
+First, let's calculate $N$.
+Recall the Planck distribution, which gives the number of photons at a certain energy level, based on the Bose-Einstein distribution.
+\begin{equation}
+    \overline{n}_\text{Pl}=\frac{1}{e^{\epsilon/kT}-1}
+\end{equation}\\~\\
+
+The total number of photons is simply twice the sum of the $\overline{n}_\text{Pl}$ for each energy state $\epsilon$.
+Twice because of the two possible polarizations (see page 291 of the text).
+So, this implies the following.
+$$N=2\sum_\epsilon\overline{n}_\text{Pl}$$
+$$\implies N=2\sum_\epsilon\frac{1}{e^{\epsilon/kT}-1}$$\\~\\
+
+As shown in the text, recall that the energy levels are degenerate.
+\begin{equation}
+    \epsilon=\frac{hcn}{2L}
+\end{equation}
+with $n=\sqrt{n_x^2+n_y^2+n_z^2}$.
+Plugging this into our $N$ equation, we get the following.
+$$\implies N=2\sum_{n_x}\sum_{n_y}\sum_{n_z}\frac{1}{e^{hcn/2LkT}-1}$$\\~\\
+
+Like in the book, we can use the thermodynamic limit to turn this into an integral.
+We can express this integral in three-dimensional $n$-space in spherical coordinates, with the valid states taking place in $\phi\in[0,\pi/2]$, $\theta\in[0,\pi/2]$, and $n\in[0,\infty]$.
+Recall that the infinitesimal volume in spherical coordinates is $dV=n^2\sin(\theta)\,dn\,d\phi \,d\theta$.
+Therefore, we get the following integral.
+$$\implies N=2\cdot\int_0^{\pi/2}\int_0^{\pi/2}\int_0^\infty\frac{1}{e^{hcn/2LkT}-1}n^2\sin(\theta)\,dn\,d\phi \,d\theta$$
+$$\implies N=\pi\int_0^\infty\frac{n^2}{e^{hcn/2LkT}-1}\,dn$$\\~\\
+
+The integrand can be simplified by using the substitution: $x=hcn/2LkT$.
+This implies that $n=2LkTx/hc$ and $dn=(2LkT/hc)\,dx$.
+Plugging this in, we get the following.
+$$\implies N=\pi\int_0^\infty\frac{4(LkT)^2x^2}{(hc)^2}\frac{1}{e^{x}-1}\frac{2LkT}{hc}\,dx$$
+$$\implies N=8\pi L^3\left(\frac{kT}{hc}\right)^3\int_0^\infty\frac{x^2}{e^{x}-1}\,dx$$
+$$\implies N=8\pi V\left(\frac{kT}{hc}\right)^3\int_0^\infty\frac{x^2}{e^{x}-1}\,dx$$
+This integral has to be evaluated numerically.
+The integrand is approximately 2.404114.
+$$\implies N=8\pi V\left(\frac{kT}{hc}\right)^3\cdot(2.404114)$$\\~\\~\\
+
+
+\textbf{Part b}\\
+We can compare this to the given entropy value by computing the entropy per particle $S/N$.
+Recall the entropy result from the book.
+\begin{equation}
+    S(T)=\frac{32\pi^5}{45}V\left(\frac{kT}{hc}\right)^3k
+\end{equation}
+We can express $S/N$ in terms of a multiple of $k$.
+$$\frac{S}{N}=\frac{(32\pi^5/45)V(kT/hc)^3k}{8\pi V(kT/hc)^3\cdot(2.404114)}$$
+$$\implies\frac{S}{N}=\frac{32\pi^4/45}{8\cdot(2.404114)}k$$
+$$\implies\frac{S}{N}=\frac{4\pi^4/45}{2.404114}k$$
+$$\implies\frac{S}{N}=3.60157k$$\\~\\
+
+
+\textbf{Part c}\\
+Now, let's calculate the number of photons per cubic meter at various temperatures.
+We can simply plug in $V=1\,\text{m}^3$ to do this.
+$$N=8\pi V\left(\frac{kT}{hc}\right)^3\cdot(2.404114)$$
+$$\implies N=8\pi (1\,\text{m}^3)\left(\frac{kT}{hc}\right)^3\cdot(2.404114)$$
+We can plug in the cosmic background radiation temperature $T=2.73\,\text{K}$, room temperature $T=300\,\text{K}$, and the temperature of a kiln $T=1500\,\text{K}$.\\
+\begin{table}[h]
+\begin{center}
+\begin{tabular}{ |c|c| }
+    \hline
+    Temp (K) & Number of Photons Per Square Meter\\
+    2.73 & $4.1306\times10^{8 }$ \\
+    300  & $5.4814\times10^{14}$ \\
+    1500 & $6.8517\times10^{16}$ \\
+    \hline
+\end{tabular}
+\end{center}
+\end{table}
+
+
+
+\end{flushleft}
+
+\end{document}
