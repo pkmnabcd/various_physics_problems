@@ -99,6 +99,15 @@ The following is a plot of the spectrum as a functiuon of photon energy.\\
 We will use the following equation to find the total energy from the visible spectrum.
 We will divide this from the total energy to get the fraction from visible light.
 $$\frac{U_\text{vis}}{V}=8\pi hc\int_{400\,\text{nm}}^{700\,\text{nm}}\frac{1}{\lambda^5}\frac{1}{e^{hc/\lambda kT}-1}\,d\lambda$$
+This integral can be numerically evaluated using python.
+$$\implies\frac{U_\text{vis}}{V}=2.136\times10^{-6}\,\text{J/m}^3$$
+With $V=1\,\text{m}^3$, this implies the following.
+$$\implies U_\text{vis}=2.136\times10^{-6}\,\text{J}$$
+The fraction of energy density from visible light is the following.
+$$\frac{U_\text{vis}/V}{U/V}=\frac{U_\text{vis}}{U}$$
+$$\implies\frac{U_\text{vis}/V}{U/V}=\frac{2.136\times10^{-6}\,\text{J}}{0.00383\,\text{J}}$$
+$$\implies\frac{U_\text{vis}/V}{U/V}=0.000558\%$$
+
 
 
 

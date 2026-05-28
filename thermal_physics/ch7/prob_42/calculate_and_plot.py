@@ -3,6 +3,7 @@ import math
 from math import pow, log
 from sympy import symbols, exp, oo, integrate, simplify, latex, Rational, pi, diff, solve, lambdify
 import matplotlib.pyplot as plt
+from scipy.integrate import quad
 
 """
 This program does the numerical integration for the visible
@@ -45,3 +46,14 @@ plt.title(f"Planck Spectrum for T={temp} K")
 plt.xlabel("Photon Energy (eV)")
 plt.ylabel("Energy Density Per Photon Energy (J/(J m^3))")
 plt.savefig("energy_vs_spectrum.png")
+
+# Evaluate the integral of the energy density from visible light
+lam = symbols("lamda", positive=True)
+integrand = 8 * pi * h * c / (lam ** 5) / ( exp(h * c / (lam * k * T)) - 1 )
+integrand_prepped = integrand.subs(h, Const.h).subs(c, Const.c).subs(k, Const.k_J).subs(T, temp)
+integrand_lambda = lambdify(lam, integrand_prepped, "numpy")
+result, error = quad(integrand_lambda, 400*pow(10, -9), 700*pow(10, -9)) # integrate over visible spectrum
+print(f"Visible Light Energy Density: {result:e} J/m^3\n\t with error {error:e}.")
+total_energy_density = 0.00383
+visible_light_fraction = result / total_energy_density
+print(f"With the total energy density of {total_energy_density:e} J/m^3, the fraction of energy from visible light is {visible_light_fraction}%.")
