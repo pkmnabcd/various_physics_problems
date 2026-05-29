@@ -1,0 +1,111 @@
+\documentclass[12pt]{article}
+\usepackage{graphicx} % Required for inserting images
+\usepackage[margin=0.5in]{geometry}
+\usepackage{amsmath, amssymb}
+\usepackage{mathrsfs}
+
+
+\usepackage{soul}
+
+
+% Dr. David Brown Commands
+\newcommand{\ds}{\displaystyle}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\Q}{\mathbb{Q}}
+\newcommand{\C}{\mathbb{C}}
+
+
+% Commands to get script r
+\usepackage{calligra}
+\DeclareMathAlphabet{\mathcalligra}{T1}{calligra}{m}{n}
+\DeclareFontShape{T1}{calligra}{m}{n}{<->s*[2.2]callig15}{}
+\newcommand{\scripty}[1]{\ensuremath{\mathcalligra{#1}}}
+
+% Unit commands
+\newcommand{\degree}{\text{°}}
+\newcommand{\unitSpeed}{\frac{\text{m}}{\text{s}}}
+\newcommand{\unitAcceleration}{\frac{\text{m}}{\text{s}^2}}
+
+% Constant commands
+\newcommand{\avogadro}{6.022\times10^{23}}
+
+\newcommand{\boltzmannConstK}{1.381\times10^{-23}\frac{\text{J}}{\text{K}}}
+\newcommand{\boltzmannConstInEV}{8.617\times10^{-5}\frac{\text{eV}}{\text{K}}}
+\newcommand{\planckConst}{6.626\times10^{-34}\text{J}\cdot\text{s}}
+
+\newcommand{\atmP}{1.01325\times10^5\,\text{Pa}}
+
+% Known Value Commands
+\newcommand{\electronMass}{9.109\times10^{-31}\,\text{kg}}
+\newcommand{\protonMass}{1.673\times10^{-27}\,\text{kg}}
+
+% Commands to easily write partial derivatives
+\newcommand{\partDeriv}[2]{\frac{\partial #1}{\partial #2}}
+\newcommand{\doublePartDeriv}[2]{\frac{\partial^2 #1}{\partial^2 #2}}
+
+
+\title{Problem 7.48}
+\author{Gabriel Decker}
+
+
+\begin{document}
+
+
+\maketitle
+\begin{flushleft}
+
+
+
+In this problem, we will consider a neutrino-antineutrino gas.
+We're given that neutrinos are fermions, and we will first approximate them to be massless.
+We're also given the following chemical equation.
+\begin{equation}
+    \nu+\overline{\nu}\leftrightarrow2\gamma
+\end{equation}
+with $\nu$ representing a neutrino, $\overline{\nu}$ an antineutrino, and $\gamma$ a photon.
+We also are given that $\mu_\nu=\mu_{\overline{\nu}}$.\\~\\
+
+
+\textbf{Part a}\\
+First, we must show that when the above chemical equation is in an equilibrium state, the chemical potentials $\mu_\nu=\mu_{\overline{\nu}}=0$.
+Recall that $\mu_\gamma=0$, as shown early on in section 7.4.
+Around page 210 (chapter 5), the book explains the conditions for when a system of different particle species is in chemical equilibrium.
+From that, we know the following.
+$$1\cdot\mu_\nu+1\cdot\mu_{\overline{\nu}}=2\cdot\mu_\gamma$$
+$$\implies\mu_\nu+\mu_{\overline{\nu}}=2\mu_\gamma$$
+$$\implies\mu_\nu+\mu_{\overline{\nu}}=0$$
+$$\implies\mu_\nu=-\mu_{\overline{\nu}}$$
+Since $\mu_\nu=\mu_{\overline{\nu}}$, this implies that they both equal zero.\\~\\~\\
+
+
+\textbf{Part b}\\
+We will now calculate the total energy per unit volume for this system.
+We assume that the neutrinos are massless, relativistic fermions.
+We're also given that there are three types of neutrinos that each have antineutrino species.
+So, we have an extra degeneracy of $3\cdot2=6$.
+This implies that we can use the same energy level equation that we did for the photon gas:
+\begin{equation}
+    \epsilon=\frac{hcn}{2L}
+\end{equation}
+with $n=\sqrt{n_x^2+n_y^2+n_z^2}$.
+Recall the Fermi-Dirac distribution for Fermions.
+\begin{equation}
+    \overline{n}_\text{FD}=\frac{1}{e^{(\epsilon-\mu)/kT}+1}
+\end{equation}\\~\\
+
+Following a similar strategy as with the photon gas, the total energy is the following.
+$$U=6\sum_\epsilon\epsilon\overline{n}_\text{FD}$$
+$$\implies U=6\sum_\epsilon\frac{\epsilon}{e^{(\epsilon-\mu)/kT}+1}$$
+Since $\mu=0$, we get the following.
+$$\implies U=6\sum_\epsilon\frac{\epsilon}{e^{\epsilon/kT}+1}$$
+Again, let's express the summation using $n$-space (like in problem 7.44 or the book's photon gas derivation).
+$$\implies U=6\sum_{n_x}\sum_{n_y}\sum_{n_z}\frac{hcn}{2L}\frac{1}{e^{hcn/2LkT}+1}$$
+Using the same $n$-space as in previous examples, we get the following integral in spherical coordinates.
+$$\implies U=6\int_0^{\pi/2}\int_0^{\pi/2}\int_0^\infty\frac{hcn}{2L}\frac{1}{e^{hcn/2LkT}+1}n^2\sin(\theta)\,dn\,d\phi\,d\theta$$
+
+
+
+\end{flushleft}
+
+\end{document}
