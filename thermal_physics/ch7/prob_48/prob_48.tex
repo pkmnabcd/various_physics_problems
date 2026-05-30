@@ -103,7 +103,56 @@ Again, let's express the summation using $n$-space (like in problem 7.44 or the 
 $$\implies U=6\sum_{n_x}\sum_{n_y}\sum_{n_z}\frac{hcn}{2L}\frac{1}{e^{hcn/2LkT}+1}$$
 Using the same $n$-space as in previous examples, we get the following integral in spherical coordinates.
 $$\implies U=6\int_0^{\pi/2}\int_0^{\pi/2}\int_0^\infty\frac{hcn}{2L}\frac{1}{e^{hcn/2LkT}+1}n^2\sin(\theta)\,dn\,d\phi\,d\theta$$
+$$\implies U=\frac{3hc}{L}\int_0^{\pi/2}\int_0^{\pi/2}\int_0^\infty n^3\frac{1}{e^{hcn/2LkT}+1}\sin(\theta)\,dn\,d\phi\,d\theta$$
+$$\implies U=\frac{3\pi hc}{2L}\int_0^\infty n^3\frac{1}{e^{hcn/2LkT}+1}\,dn$$\\~\\
 
+To simplify this integral, we'll make the following substitution.
+$$x=\frac{hcn}{2LkT}$$
+$$\implies n=\frac{2LkTx}{hc}$$
+$$\implies dn=\frac{2LkT}{hc}dx$$
+Plugging these in, we get the following.
+$$\implies U=\frac{3\pi hc}{2L}\int_0^\infty \left(\frac{2LkTx}{hc}\right)^3\frac{1}{e^{x}+1}\frac{2LkT}{hc}\,dx$$
+$$\implies U=3\pi kT\int_0^\infty \left(\frac{2LkTx}{hc}\right)^3\frac{1}{e^{x}+1}\,dx$$
+$$\implies U=24\pi kT\left(\frac{LkT}{hc}\right)^3\int_0^\infty\frac{x^3}{e^{x}+1}\,dx$$
+$$\implies U=\frac{24\pi (kT)^4L^3}{(hc)^3}\int_0^\infty\frac{x^3}{e^{x}+1}\,dx$$
+$$\implies U=\frac{24\pi (kT)^4V}{(hc)^3}\int_0^\infty\frac{x^3}{e^{x}+1}\,dx$$
+$$\implies \frac{U}{V}=\frac{24\pi (kT)^4}{(hc)^3}\int_0^\infty\frac{x^3}{e^{x}+1}\,dx$$\\~\\
+
+To evaluate this dimensionless integral, I'll just numerically approximate it.
+$$\implies \frac{U}{V}=\frac{24\pi (kT)^4}{(hc)^3}\cdot5.6822$$\\~\\~\\
+
+
+
+\textbf{Part c}\\
+For this part, we will get a formula for $N$.
+This is very similar to what we did in part b and problem 7.44.\\~\\
+
+Recall that $N$ is the following.
+$$N=6\sum_\epsilon\overline{n}_\text{FD}$$
+So, this implies that we're going to use the exact same process as we did when getting $U$, but without the $\epsilon$ in the summation.
+This will yield the following integral.
+$$\implies N=6\int_0^{\pi/2}\int_0^{\pi/2}\int_0^\infty\frac{1}{e^{hcn/2LkT}+1}n^2\sin(\theta)\,dn\,d\phi\,d\theta$$
+$$\implies N=3\pi\int_0^\infty\frac{1}{e^{hcn/2LkT}+1}n^2\,dn$$\\~\\
+
+We will make the same change of variables as above to simplify the integral.
+$$\implies N=3\pi\int_0^\infty\left(\frac{2LkTx}{hc}\right)^2\frac{1}{e^{x}+1}\frac{2LkT}{hc}\,dx$$
+$$\implies N=24\pi\left(\frac{LkT}{hc}\right)^3\int_0^\infty\frac{x^2}{e^{x}+1}\,dx$$
+$$\implies \frac{N}{V}=24\pi\left(\frac{kT}{hc}\right)^3\int_0^\infty\frac{x^2}{e^{x}+1}\,dx$$\\~\\
+This integral can also be numerically computed to the following.
+$$\implies \frac{N}{V}=24\pi\left(\frac{kT}{hc}\right)^3\cdot1.8031$$\\~\\
+
+We can evaluate this for $T=1.95\,\text{K}$, the effective temperature of neutrinos.
+This gives $N/V=3.386984\times10^8\,\text{particles/m}^3$.\\~\\~\\
+
+
+
+
+\textbf{Part d}\\
+Notes for solving this:
+The average number density of protons is about 1 proton per meter cubed.
+You can use that with $E=mc^2$ to get the energy density.
+Use the above number density to solve for a comparable neutrino mass.
+The question asks to consider just one species of neutrino, so divide the original number density by three.
 
 
 \end{flushleft}
