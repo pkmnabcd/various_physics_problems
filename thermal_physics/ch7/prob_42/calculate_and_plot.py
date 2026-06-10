@@ -17,6 +17,7 @@ class Const:
     k_J = 1.381 * pow(10,-23)      # J / K
     k_eV = 8.617 * pow(10,-5)      # eV / K
     h = 6.626 * pow(10, -34)       # J s
+    h_eV = 4.136 * pow(10, -15)    # eV s
     G = 6.674 * pow(10, -11)       # N m^2 / kg^2
     c = 2.998 * pow(10, 8)         # m / s
 
@@ -37,7 +38,7 @@ spectrum = 8 * pi / ((h * c) ** 3)
 spectrum *= ep ** 3 / (exp(ep / (k * T)) - 1)
 print(f"Energy Spectrum: {spectrum}")
 
-spectrum_prep = spectrum.subs(h, Const.h).subs(c, Const.c).subs(k, Const.k_eV).subs(T, temp)
+spectrum_prep = spectrum.subs(h, Const.h_eV).subs(c, Const.c).subs(k, Const.k_eV).subs(T, temp)
 spectrum_lambda = lambdify(ep, spectrum_prep, "numpy")
 energy_array = np.linspace(pow(10, -3), 2.3*pow(10, 0), 10_000)
 spectrum_array = spectrum_lambda(energy_array)
