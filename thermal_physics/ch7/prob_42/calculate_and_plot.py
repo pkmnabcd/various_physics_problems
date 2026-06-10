@@ -45,7 +45,7 @@ spectrum_array = spectrum_lambda(energy_array)
 plt.plot(energy_array, spectrum_array)
 plt.title(f"Planck Spectrum for T={temp} K")
 plt.xlabel("Photon Energy (eV)")
-plt.ylabel("Energy Density Per Photon Energy (J/(J m^3))")
+plt.ylabel("Energy Density Per Photon Energy (eV/(eV m^3))")
 plt.savefig("energy_vs_spectrum.png")
 
 # Evaluate the integral of the energy density from visible light
