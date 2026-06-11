@@ -1,0 +1,112 @@
+\documentclass[12pt]{article}
+\usepackage{graphicx} % Required for inserting images
+\usepackage[margin=0.5in]{geometry}
+\usepackage{amsmath, amssymb}
+\usepackage{mathrsfs}
+
+
+\usepackage{soul}
+
+
+% Dr. David Brown Commands
+\newcommand{\ds}{\displaystyle}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\Q}{\mathbb{Q}}
+\newcommand{\C}{\mathbb{C}}
+
+
+% Commands to get script r
+\usepackage{calligra}
+\DeclareMathAlphabet{\mathcalligra}{T1}{calligra}{m}{n}
+\DeclareFontShape{T1}{calligra}{m}{n}{<->s*[2.2]callig15}{}
+\newcommand{\scripty}[1]{\ensuremath{\mathcalligra{#1}}}
+
+% Unit commands
+\newcommand{\degree}{\text{°}}
+\newcommand{\unitSpeed}{\frac{\text{m}}{\text{s}}}
+\newcommand{\unitAcceleration}{\frac{\text{m}}{\text{s}^2}}
+
+% Constant commands
+\newcommand{\avogadro}{6.022\times10^{23}}
+
+\newcommand{\boltzmannConstK}{1.381\times10^{-23}\frac{\text{J}}{\text{K}}}
+\newcommand{\boltzmannConstInEV}{8.617\times10^{-5}\frac{\text{eV}}{\text{K}}}
+\newcommand{\planckConst}{6.626\times10^{-34}\text{J}\cdot\text{s}}
+
+\newcommand{\atmP}{1.01325\times10^5\,\text{Pa}}
+
+% Known Value Commands
+\newcommand{\electronMass}{9.109\times10^{-31}\,\text{kg}}
+\newcommand{\protonMass}{1.673\times10^{-27}\,\text{kg}}
+
+% Commands to easily write partial derivatives
+\newcommand{\partDeriv}[2]{\frac{\partial #1}{\partial #2}}
+\newcommand{\doublePartDeriv}[2]{\frac{\partial^2 #1}{\partial^2 #2}}
+
+
+\title{Problem 7.52}
+\author{Gabriel Decker}
+
+
+\begin{document}
+
+
+\maketitle
+\begin{flushleft}
+
+
+
+In this problem, we will consider a the human body to be a blackbody and do some comparisons with other objects.
+We will just need the blackbody intensity equation.
+\begin{equation}
+    P/A=\sigma eT^4
+\end{equation}
+with $\sigma=5.67\times10^{-8}\,\text{W/m}^2\text{K}^4$.\\~\\~\\
+
+
+\textbf{Part a}\\
+First, we'll find the total power radiating through our bodies.
+This is the following.
+$$P=\sigma eAT^4$$
+The normal human body temperature is $T=310.15\,\text{K}$.
+The average human man surface area is $A=1.9\,\text{m}^2$.
+At this low of temperature, the blackbody spectrum is dominated by thermal radiation, which our bodies radiate like a blackbody., so $\epsilon=1$.
+So, this gives the following power.
+$$\implies P=(5.67\times10^{-8}\,\text{W/m}^2\text{K}^4)(1.9\,\text{m}^2)(310.15\,\text{K})^4$$
+$$\implies P=996.8\,\text{W}$$\\~\\~\\
+
+
+
+\textbf{Part b}\\
+Now considering the daily energy input and output, based on the above power, we can multiply it by one day to get the total energy output $U$ of a person in a vacuum.
+$$U=P\cdot86400\,\text{s}$$
+$$\implies U=996.8\,\text{J/s}\cdot86400\,\text{s}$$
+$$\implies U=8.6124\times10^7\,\text{J}$$\\~\\
+
+The average man should consume about 2500 Calories (or 2500 kcal) of energy from food.
+The conversion factor from kcal to joules is $1\,\text{kcal}=4184\,\text{J}$.
+This implies that we consume about $1.0460\times10^7\,\text{J}$ of energy from food.
+This is about 12\% of the energy that we would need to stay at a constant temperature.
+In this problem, we have been assuming that we aren't absorbing anything from our environment.
+Obviously, we live in environments that also radiate energy, so we get lots of energy from that.\\~\\~\\
+
+
+
+\textbf{Part c}\\
+Let's now compare the power per unit mass of humans vs the sun.
+We're given that for the sun, $M=2\times10^{30}\,\text{kg}$ and $P=3.9\times10^{26}\,\text{W}$.
+For the average human man, we have the above $P=996.8\,\text{W}$ and the looked up $78.1\,\text{kg}$.
+With these values, we can compare the values for us against the sun.\\~\\
+
+For the sun, $P/M=0.000195\,\text{W/kg}$.
+For the the average man, $P/M=12.8\,\text{W/kg}$.
+
+
+
+
+
+
+\end{flushleft}
+
+\end{document}
