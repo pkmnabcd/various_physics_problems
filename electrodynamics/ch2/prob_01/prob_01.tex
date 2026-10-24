@@ -1,0 +1,89 @@
+\documentclass[12pt]{article}
+\usepackage{graphicx} % Required for inserting images
+\usepackage[margin=0.5in]{geometry}
+\usepackage{amsmath, amssymb}
+\usepackage{mathrsfs}
+
+
+\usepackage{soul}
+
+
+% Dr. David Brown Commands
+\newcommand{\ds}{\displaystyle}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\Q}{\mathbb{Q}}
+\newcommand{\C}{\mathbb{C}}
+
+
+% Commands to get script r
+\usepackage{calligra}
+\DeclareMathAlphabet{\mathcalligra}{T1}{calligra}{m}{n}
+\DeclareFontShape{T1}{calligra}{m}{n}{<->s*[2.2]callig15}{}
+\newcommand{\scripty}[1]{\ensuremath{\mathcalligra{#1}}}
+
+% Unit commands
+\newcommand{\degree}{\text{°}}
+\newcommand{\unitSpeed}{\frac{\text{m}}{\text{s}}}
+\newcommand{\unitAcceleration}{\frac{\text{m}}{\text{s}^2}}
+
+% Constant commands
+\newcommand{\avogadro}{6.022\times10^{23}}
+
+\newcommand{\boltzmannConstK}{1.381\times10^{-23}\frac{\text{J}}{\text{K}}}
+\newcommand{\boltzmannConstInEV}{8.617\times10^{-5}\frac{\text{eV}}{\text{K}}}
+\newcommand{\planckConst}{6.626\times10^{-34}\text{J}\cdot\text{s}}
+
+\newcommand{\atmP}{1.01325\times10^5\,\text{Pa}}
+
+% Known Value Commands
+\newcommand{\electronMass}{9.109\times10^{-31}\,\text{kg}}
+\newcommand{\protonMass}{1.673\times10^{-27}\,\text{kg}}
+
+% Commands to easily write partial derivatives
+\newcommand{\partDeriv}[2]{\frac{\partial #1}{\partial #2}}
+\newcommand{\doublePartDeriv}[2]{\frac{\partial^2 #1}{\partial^2 #2}}
+
+
+\title{Problem 2.1}
+\author{Gabriel Decker}
+
+
+\begin{document}
+
+
+\maketitle
+\begin{flushleft}
+
+\textbf{Part a}\\
+First, consider the twelve charges $q$ on the regular 12-polygon, centered about the test charge $Q$.
+Since it's a regular polygon, this implies that each charge is equidistant from the center and its two nearest neighbors.
+We want to find the net force at the center.
+We will prove that the force at the center is zero by way of contradiction.
+Suppose that there is some net force at the center with some direction and magnitude given some distribution of our identical charges.
+Now, rotate our charge distribution by moving our charges all to the right (or left), taking the place of its neighbor.
+Since all of the charges are identical, the charge distribution must be the same as before, and thus the force at the center must be the same as before.
+However, rotating our charge distribution implies that our net force must rotate at the same angle.
+Since the net force must be the same and different, we have a contradiction.
+Thus, the net force at the center must be $\vec{0}$.\\~\\
+
+\textbf{Part b}\\
+If we remove one of our twelve charges, that will make the force at the center nonzero.
+By the superposition principle, removing a charge is identical to adding a charge of opposite charge in the same place as the charge we're trying to remove.
+Adding that charge makes the total charge at that area $q+(-q)=0$.
+It also serves to add a force according to Coulomb's Law:
+$$\vec{F}=\frac{1}{4\pi\epsilon_0}\frac{qQ}{\scripty{r}^2}\hat{\scripty{r}}$$
+Since the charge we're adding has $-q$ charge, and without the new charge, the force at the center is zero, this implies that the net force at the center is in the direction pointing from the center to the missing charge with a magnitude of $\ds\frac{1}{4\pi\epsilon_0}\frac{qQ}{r^2}$.\\~\\
+
+
+\textbf{Part c}\\
+With 13 equal charges arranged in a regular 13-polygon, we use the exact same logic as in part a to determine that the net force in the center is zero.\\~\\
+
+\textbf{Part d}\\
+With 13 equal charges arranged in a regular 13-polygon, we use the exact same logic as in part b to determine that the net force at the center is in the direction pointing from the center to the missing charge with a magnitude of $\ds\frac{1}{4\pi\epsilon_0}\frac{qQ}{r^2}$.\\~\\
+
+
+
+\end{flushleft}
+
+\end{document}
