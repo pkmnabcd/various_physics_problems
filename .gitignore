@@ -10,4 +10,4 @@
 poetry.lock
 
 # Don't ignore the following files
-electrodynamics/E_M_Equation_Sheet/legendre polynomials.png
+!electrodynamics/E_M_Equation_Sheet/legendre polynomials.png
