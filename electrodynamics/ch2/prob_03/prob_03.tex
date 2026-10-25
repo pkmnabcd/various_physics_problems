@@ -55,8 +55,49 @@
 \maketitle
 \begin{flushleft}
 
+In this problem, we will find the electric field a distance $z$ above one end of a line charge of length $L$ and charge density $\lambda$, according to Figure 2.7.
+We must also check that the answer makes sense if $z\gg L$.\\~\\
 
+First, we'll define our coordiante system such that the end of the line charge that we're finding the $\vec{E}$ above is at the origin, and the line extends into the $\hat{x}$ direction and our point of interest is in the $\hat{z}$ direction.
+This implies that our line runs from $\vec{r'}=0\hat{x}+0\hat{z}$ to $\vec{r'}=L\hat{x}+0\hat{z}$, and our point of interest has coordinates $\vec{r}=0\hat{x}+z\hat{z}$.
+Since we're dealing with a line charge, we will use the following equation of an electric field.
+$$\vec{E}(\vec{r})=\frac{1}{4\pi\epsilon_0}\int\frac{\lambda(\vec{r'})}{\scripty{r}^2}\hat{\scripty{r}}\,d\ell'$$\\~\\
 
+We will parameterize our line segments by simply representing the different line segments $d\ell'$ as $dx$ and run along the varying $x$ coordinates from $x=0$ to $x=L$.
+Also, our line charge density is constant across our line charge, so the following is our integral.
+$$\implies\vec{E}(\vec{r})=\frac{1}{4\pi\epsilon_0}\lambda\int_0^L\frac{\hat{\scripty{r}}}{\scripty{r}^2}\,dx$$
+$$\implies\vec{E}(\vec{r})=\frac{1}{4\pi\epsilon_0}\lambda\int_0^L\frac{\vec{\scripty{r}}}{\scripty{r}^3}\,dx$$\\~\\
+
+For a given line segment $dx$, it has position $\vec{r'}=x\hat{x}+0\hat{z}$, so $\vec{\scripty{r}}=\vec{r}-\vec{r'}=-x\hat{x}+z\hat{z}$ and $\scripty{r}=\sqrt{x^2+z^2}$.
+Plugging this in, we get the following.
+$$\implies\vec{E}(\vec{r})=\frac{1}{4\pi\epsilon_0}\lambda\int_0^L\frac{-x\hat{x}+z\hat{z}}{(x^2+z^2)^{3/2}}\,dx$$
+$$\implies\vec{E}(\vec{r})=\frac{1}{4\pi\epsilon_0}\lambda\left[-\hat{x}\int_0^L\frac{x}{(x^2+z^2)^{3/2}}\,dx+z\hat{z}\int_0^L\frac{1}{(x^2+z^2)^{3/2}}\,dx\right]$$
+We now have to solve the two inner integrals.\\~\\
+
+$$\int_0^L\frac{x}{(x^2+z^2)^{3/2}}\,dx$$
+Using the substitution $u=x^2+z^2\implies du=2x\,dx$.
+$$\implies\int_0^L\frac{x}{(x^2+z^2)^{3/2}}\,dx=\frac{1}{2}\int_{z^2}^{L^2+z^2}\frac{1}{u^{3/2}}\,du$$
+$$\implies\int_0^L\frac{x}{(x^2+z^2)^{3/2}}\,dx=\frac{1}{2}\int_{z^2}^{L^2+z^2}u^{-3/2}\,du$$
+$$\implies\int_0^L\frac{x}{(x^2+z^2)^{3/2}}\,dx=-u^{-1/2}\Big|_{z^2}^{L^2+z^2}$$
+$$\implies\int_0^L\frac{x}{(x^2+z^2)^{3/2}}\,dx=-\frac{1}{\sqrt{u}}\Big|_{z^2}^{L^2+z^2}$$
+$$\implies\int_0^L\frac{x}{(x^2+z^2)^{3/2}}\,dx=-\left(\frac{1}{\sqrt{L^2+z^2}}-\frac{1}{\sqrt{z^2}}\right)$$\\~\\
+
+Now for the other integral.
+$$\int_0^L\frac{1}{(x^2+z^2)^{3/2}}\,dx$$
+For this, there is the following solution that comes from doing a trig substitution $x=z\tan(\theta)$.
+$$\int\frac{1}{(x^2+z^2)^{3/2}}\,dx=\frac{x}{z^2\sqrt{x^2+z^2}}$$
+So,
+$$\implies\int_0^L\frac{1}{(x^2+z^2)^{3/2}}\,dx=\frac{L}{z^2\sqrt{L^2+z^2}}$$\\~\\
+
+Plugging in our results, we get the following electric field.
+$$\vec{E}(\vec{r})=\frac{1}{4\pi\epsilon_0}\lambda\left[-\hat{x}\int_0^L\frac{x}{(x^2+z^2)^{3/2}}\,dx+z\hat{z}\int_0^L\frac{1}{(x^2+z^2)^{3/2}}\,dx\right]$$
+$$\implies\vec{E}(\vec{r})=\frac{1}{4\pi\epsilon_0}\lambda\left[\left(\frac{1}{\sqrt{L^2+z^2}}-\frac{1}{\sqrt{z^2}}\right)\hat{x}+\frac{L}{z\sqrt{L^2+z^2}}\hat{z}\right]$$\\~\\
+
+If $z\gg L$, then $\sqrt{L^2+z^2}=\sqrt{z^2(\frac{L^2}{z^2}+1)}\approx\sqrt{z^2}=z$.
+This affects $\vec{E}$ in the following way.
+$$\implies\vec{E}(\vec{r})=\frac{1}{4\pi\epsilon_0}\lambda\left[\left(\frac{1}{z}-\frac{1}{z}\right)\hat{x}+\frac{L}{z^2}\hat{z}\right]$$
+$$\implies\vec{E}(\vec{r})=\frac{1}{4\pi\epsilon_0}\frac{\lambda L}{z^2}\hat{z}$$
+Since $\lambda$ is the charge density, $\lambda L$ is the total charge of the line, so the above equation is functionally the same as if the line segment were a point charge with charge $\lambda L$.
 
 
 \end{flushleft}
