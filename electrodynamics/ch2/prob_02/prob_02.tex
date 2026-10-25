@@ -1,0 +1,95 @@
+\documentclass[12pt]{article}
+\usepackage{graphicx} % Required for inserting images
+\usepackage[margin=0.5in]{geometry}
+\usepackage{amsmath, amssymb}
+\usepackage{mathrsfs}
+
+
+\usepackage{soul}
+
+
+% Dr. David Brown Commands
+\newcommand{\ds}{\displaystyle}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\Q}{\mathbb{Q}}
+\newcommand{\C}{\mathbb{C}}
+
+
+% Commands to get script r
+\usepackage{calligra}
+\DeclareMathAlphabet{\mathcalligra}{T1}{calligra}{m}{n}
+\DeclareFontShape{T1}{calligra}{m}{n}{<->s*[2.2]callig15}{}
+\newcommand{\scripty}[1]{\ensuremath{\mathcalligra{#1}}}
+
+% Unit commands
+\newcommand{\degree}{\text{°}}
+\newcommand{\unitSpeed}{\frac{\text{m}}{\text{s}}}
+\newcommand{\unitAcceleration}{\frac{\text{m}}{\text{s}^2}}
+
+% Constant commands
+\newcommand{\avogadro}{6.022\times10^{23}}
+
+\newcommand{\boltzmannConstK}{1.381\times10^{-23}\frac{\text{J}}{\text{K}}}
+\newcommand{\boltzmannConstInEV}{8.617\times10^{-5}\frac{\text{eV}}{\text{K}}}
+\newcommand{\planckConst}{6.626\times10^{-34}\text{J}\cdot\text{s}}
+
+\newcommand{\atmP}{1.01325\times10^5\,\text{Pa}}
+
+% Known Value Commands
+\newcommand{\electronMass}{9.109\times10^{-31}\,\text{kg}}
+\newcommand{\protonMass}{1.673\times10^{-27}\,\text{kg}}
+
+% Commands to easily write partial derivatives
+\newcommand{\partDeriv}[2]{\frac{\partial #1}{\partial #2}}
+\newcommand{\doublePartDeriv}[2]{\frac{\partial^2 #1}{\partial^2 #2}}
+
+
+\title{Problem 2.2}
+\author{Gabriel Decker}
+
+
+\begin{document}
+
+
+\maketitle
+\begin{flushleft}
+
+We're given a system of two point charges, one with charge $q$ and the other with charge $-q$ with a distance $d$ between them.
+We want to find the electric field a distance $z$ above the midpoint between the charges, as shown in figure 2.4.
+The coordinate system will be centered about the midpoint, with the $\hat{x}$ direction being in the direction of the negative charge and the $\hat{z}$ direction points to the point of interest.
+This implies that the positive charge has position $\vec{r'}_1=-\frac{d}{2}\hat{x}$, the negative charge has position $\vec{r'}_2=\frac{d}{2}\hat{x}$, and the point of interest has position $\vec{r}=z\hat{z}$.\\~\\
+
+We will use the equation of the electric field given a discrete number of charges.
+In our case, $n=2$.
+$$\vec{E}(\vec{r})=\frac{1}{4\pi\epsilon_0}\sum_{i=1}^n\frac{q_i}{\scripty{r}_i^2}\hat{\scripty{r}}_i$$
+$$\implies\vec{E}(\vec{r})=\frac{1}{4\pi\epsilon_0}\left[\frac{q_1}{\scripty{r}_1^2}\hat{\scripty{r}}_1+\frac{q_2}{\scripty{r}_2^2}\hat{\scripty{r}}_2\right]$$
+where 1 refers to the positive charge and 2 refers to the negative charge.\\~\\
+
+Recall that $\vec{\scripty{r}}$ is the displacement vector between the charge and the point of interest, or $\vec{\scripty{r}}=\vec{r}-\vec{r'}$.
+So, we get the following for $\vec{\scripty{r}}_1$ and $\vec{\scripty{r}}_2$.
+$$\vec{\scripty{r}}_1=z\hat{z}+\frac{d}{2}\hat{x}$$
+$$\vec{\scripty{r}}_2=z\hat{z}-\frac{d}{2}\hat{x}$$\\~\\
+
+These vectors have the same squared magnitude of
+$$\scripty{r}^2=\scripty{r}_1^2=\scripty{r}_2^2=\left(\sqrt{z^2+\left(\frac{d}{2}\right)^2}\right)^2=z^2+\frac{d^2}{4}$$
+We also know that $q_1=q=-q_2=-q$, so we can simplify our electric field equation.\\~\\
+$$\vec{E}(\vec{r})=\frac{1}{4\pi\epsilon_0}\left[\frac{q_1}{\scripty{r}_1^2}\hat{\scripty{r}}_1+\frac{q_2}{\scripty{r}_2^2}\hat{\scripty{r}}_2\right]$$
+$$\implies\vec{E}(\vec{r})=\frac{1}{4\pi\epsilon_0}\frac{q}{\scripty{r}^2}\left[\hat{\scripty{r}}_1-\hat{\scripty{r}}_2\right]$$\\~\\
+
+Recall that for a vector $\vec{v}$, $\ds\hat{v}=\frac{\vec{v}}{v}$.
+Using that for our $\vec{\scripty{r}}$ vectors, we get the following.
+$$\implies\vec{E}(\vec{r})=\frac{1}{4\pi\epsilon_0}\frac{q}{\scripty{r}^3}\left[\vec{\scripty{r}}_1-\vec{\scripty{r}}_2\right]$$
+$$\implies\vec{E}(\vec{r})=\frac{1}{4\pi\epsilon_0}\frac{q}{\scripty{r}^3}\left[z\hat{z}+\frac{d}{2}\hat{x}-\left(z\hat{z}-\frac{d}{2}\hat{x}\right)\right]$$
+$$\implies\vec{E}(\vec{r})=\frac{1}{4\pi\epsilon_0}\frac{q}{\scripty{r}^3}d\hat{x}$$
+$$\implies\vec{E}(\vec{r})=\frac{1}{4\pi\epsilon_0}\frac{qd}{\left(z^2+\frac{d^2}{4}\right)^{3/2}}\hat{x}$$\\~\\
+
+So, the vertial components cancel, leaving only a horizontal component.
+You could have guessed that from the beginning, meaning that you would have only had to add together the horizontal components of the individual $\vec{E}$ vectors in a similar way as in example 2.1.
+
+
+
+
+\end{flushleft}
+
+\end{document}
