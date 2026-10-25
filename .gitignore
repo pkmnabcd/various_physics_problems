@@ -8,3 +8,6 @@
 
 # Ignore poetry lock file
 poetry.lock
+
+# Don't ignore the following files
+electrodynamics/E_M_Equation_Sheet/legendre polynomials.png
