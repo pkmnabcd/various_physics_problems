@@ -1,0 +1,92 @@
+\documentclass[12pt]{article}
+\usepackage{graphicx} % Required for inserting images
+\usepackage[margin=0.5in]{geometry}
+\usepackage{amsmath, amssymb}
+\usepackage{mathrsfs}
+
+
+\usepackage{soul}
+
+
+% Dr. David Brown Commands
+\newcommand{\ds}{\displaystyle}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\Q}{\mathbb{Q}}
+\newcommand{\C}{\mathbb{C}}
+
+
+% Commands to get script r
+\usepackage{calligra}
+\DeclareMathAlphabet{\mathcalligra}{T1}{calligra}{m}{n}
+\DeclareFontShape{T1}{calligra}{m}{n}{<->s*[2.2]callig15}{}
+\newcommand{\scripty}[1]{\ensuremath{\mathcalligra{#1}}}
+
+% Unit commands
+\newcommand{\degree}{\text{°}}
+\newcommand{\unitSpeed}{\frac{\text{m}}{\text{s}}}
+\newcommand{\unitAcceleration}{\frac{\text{m}}{\text{s}^2}}
+
+% Constant commands
+\newcommand{\avogadro}{6.022\times10^{23}}
+
+\newcommand{\boltzmannConstK}{1.381\times10^{-23}\frac{\text{J}}{\text{K}}}
+\newcommand{\boltzmannConstInEV}{8.617\times10^{-5}\frac{\text{eV}}{\text{K}}}
+\newcommand{\planckConst}{6.626\times10^{-34}\text{J}\cdot\text{s}}
+
+\newcommand{\atmP}{1.01325\times10^5\,\text{Pa}}
+
+% Known Value Commands
+\newcommand{\electronMass}{9.109\times10^{-31}\,\text{kg}}
+\newcommand{\protonMass}{1.673\times10^{-27}\,\text{kg}}
+
+% Commands to easily write partial derivatives
+\newcommand{\partDeriv}[2]{\frac{\partial #1}{\partial #2}}
+\newcommand{\doublePartDeriv}[2]{\frac{\partial^2 #1}{\partial^2 #2}}
+
+
+\title{Problem 2.4}
+\author{Gabriel Decker}
+
+
+\begin{document}
+
+
+\maketitle
+\begin{flushleft}
+
+
+In this problem, we find $\vec{E}$ a distance $z$ above the center of a square loop of charge with uniform density $\lambda$ and side length $a$, according to Figure 2.8.
+Let's define the coordinate system with the origin at the center of the charge square and square charge being in the $xy$-plane and the point of interest extending in the $\hat{z}$ direction.
+So, $\hat{r}=z\hat{z}$.
+It's easy to see by the symmetry of the problem that the $\hat{x}$ and $\hat{y}$ components of the electric field at the point of interest is zero because each side has identical charge, so a bit of charge on one side whould have the $\hat{x}$ and $\hat{y}$ components of its electric field cancelled out by a bit of charge on the other side of the square.
+So, we only need to find the $\hat{z}$ component of the electric field from each side.
+Since every side is the same and is the same distance from the center, this implies that the $\hat{z}$ component of the electric field, $E_z$ is four times the $\hat{z}$ component from each side $E_{za}$, so $E_z=4E_{za}$.
+So, if we can get just the $\hat{z}$ component of the electric field from one side of the charge square, then this solves our problem.
+
+As directed, we can use the following equation derived in example 2.2.
+The electric field a distance $z$ above the midpoint of a straight line segment of length $2L$ is the following.
+$$\vec{E}=\frac{1}{4\pi\epsilon_0}\frac{2\lambda L}{z\sqrt{z^2+L^2}}\hat{z}$$
+where $\hat{z}$ refers to the direction pointing from the center of the line segment to the point of interest.
+Recall that in our coordinate system, this could include some $\hat{x}$, $\hat{y}$, and $\hat{z}$ components.
+So, we need just the $\hat{z}$ component in our current coordinate system.
+Also, recall that in our problem, the side length is $a$, so $L=a/2$, making our version of the formula the following (still in the example's coordinate system).
+$$\vec{E}=\frac{1}{4\pi\epsilon_0}\frac{\lambda a}{z\sqrt{z^2+(\frac{a}{2})^2}}\hat{z}$$
+Also, the $z$ in the example is the shortest distance between the center of the segment and the point of interest, while in our problem, $z$ goes from the center of the square to the point.
+So, $z$ becomes $\sqrt{(\frac{a}{2})^2+z^2}$ by the pythagorean theorem, making our version of the formula the following (still in the example's coordinate system).
+$$\vec{E}=\frac{1}{4\pi\epsilon_0}\frac{\lambda a}{\sqrt{(\frac{a}{2})^2+z^2}\sqrt{(\frac{a}{2})^2+z^2+(\frac{a}{2})^2}}\hat{z}$$\\~\\
+
+If we define the angle $\theta$ as the angle between the $xy$-plane and the vector pointing from the center of the line segment to the point of interest, then this implies that $E_{za}=E\sin(\theta)$.
+$\ds\sin(\theta)=\frac{z}{\sqrt{(\frac{a}{2})^2+z^2}}$, so $\ds E_{za}=\frac{z}{\sqrt{(\frac{a}{2})^2+z^2}}E$, and thus $\ds E_z=\frac{4z}{\sqrt{(\frac{a}{2})^2+z^2}}E$.\\~\\
+
+Since $E$ is the magnitude of $\vec{E}$, which only has one component, this implies that the $\hat{z}$ component of $\vec{E}$ is the following.
+$$E_z=\frac{1}{4\pi\epsilon_0}\frac{4\lambda az}{\left((\frac{a}{2})^2+z^2\right)\sqrt{2(\frac{a}{2})^2+z^2}}$$\\~\\
+
+And thus, the electric field above the center of a square line charge is the following.
+$$\vec{E}=\frac{1}{4\pi\epsilon_0}\frac{4\lambda az}{\left((\frac{a}{2})^2+z^2\right)\sqrt{2(\frac{a}{2})^2+z^2}}\hat{z}$$
+
+
+
+\end{flushleft}
+
+\end{document}
