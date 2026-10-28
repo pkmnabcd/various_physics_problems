@@ -59,7 +59,28 @@
 In this problem, we find the electric field a distance $z$ above the center of a ring of charge with charge density $\lambda$ and radius $R$.
 For this problem, define the coordinate system such that the center of the ring is at the origin, the ring exists in the $xy$-plane, and the $\hat{z}$ direction points from the origin to the point of interest.
 Since we are dealing with a line of charge, will use the following equation to find our electric field.
-$$\vec{E}(\vec{r})=\frac{1}{4\pi\epsilon_0}\int\frac{\lambda(\vec{r'})}{\scripty{r}^2}\hat{\scripty{r}}\,d\ell'$$
+$$\vec{E}(\vec{r})=\frac{1}{4\pi\epsilon_0}\int\frac{\lambda(\vec{r'})}{\scripty{r}^2}\hat{\scripty{r}}\,d\ell'$$\\~\\
+
+In order to evaluate this integral, we have several things to decide.
+First, we know that $\hat{\scripty{r}}=\vec{\scripty{r}}/\scripty{r}$ and our line charge density $\lambda$ is constant, so this turns the integral into the following.
+$$\vec{E}(\vec{r})=\frac{1}{4\pi\epsilon_0}\lambda\int\frac{\vec{\scripty{r}}}{\scripty{r}^3}\,d\ell'$$\\~\\
+
+You can use a symmetry argument to simplify this problem and only have to find the $\hat{z}$ dependence of $\vec{E}$, but I will show why this argument is valid by not using it and coming to the same conclusion.
+Since we're dealing with a system centered around a central axis that extends to a height $z$, and our $xy$-plane's system is circular, cylindrical coordinates are a good fit for this system.
+So, our $\hat{z}$ coordinate will remain the same, but our circle will be represented essentially by polar coordinates.
+In cylindrical coordinates, position is described by $\vec{r}(s,z)=s\hat{s}+z\hat{z}$, where $s$ represents the shortest distance to the central axis.\\~\\
+
+For each infinitesimal segment in the circular charge, $\vec{\scripty{r}}$ is the following.
+$$\vec{\scripty{r}}=\vec{r}-\vec{r'}$$
+$$\implies\vec{\scripty{r}}=0\hat{s}+z\hat{z}-\left(R\hat{s}+0\hat{z}\right)$$
+$$\implies\vec{\scripty{r}}=-R\hat{s}+z\hat{z}$$
+where $\hat{s}$ points from the central axis to the infintesimal charge (along the shortest path, which is in the $xy$-plane).
+Note that $\hat{s}$ is different for each bit of charge, but everything else is the same.
+We can also get the magnitude, which is the same for every point.
+$$\implies\scripty{r}=\sqrt{R^2+z^2}$$\\~\\
+
+Plugging this into our integral, we get the following.
+$$\vec{E}(\vec{r})=\frac{1}{4\pi\epsilon_0}\lambda\int\frac{-R\hat{s}+z\hat{z}}{(\sqrt{R^2+z^2})^{3/2}}\,d\ell'$$
 
 
 \end{flushleft}
