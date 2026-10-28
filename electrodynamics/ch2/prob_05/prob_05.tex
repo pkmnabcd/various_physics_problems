@@ -80,7 +80,29 @@ We can also get the magnitude, which is the same for every point.
 $$\implies\scripty{r}=\sqrt{R^2+z^2}$$\\~\\
 
 Plugging this into our integral, we get the following.
-$$\vec{E}(\vec{r})=\frac{1}{4\pi\epsilon_0}\lambda\int\frac{-R\hat{s}+z\hat{z}}{(\sqrt{R^2+z^2})^{3/2}}\,d\ell'$$
+$$\vec{E}(\vec{r})=\frac{1}{4\pi\epsilon_0}\lambda\int\frac{-R\hat{s}+z\hat{z}}{(R^2+z^2)^{3/2}}\,d\ell'$$\\~\\
+
+We can parameterize the ring of charge in the following way.
+An infinitesimal segment of charge $d\ell'$ is a small segment of the circle's arc.
+This is given by $d\ell'=Rd\phi$ since we have a circle.
+Since our ring extends all the way around the circle of radius $R$, our $\phi$ runs from zero to $2\pi$.
+Therefore, our integral becomes the following.
+$$\implies\vec{E}(\vec{r})=\frac{1}{4\pi\epsilon_0}\lambda\int_0^{2\pi}\frac{-R\hat{s}+z\hat{z}}{(R^2+z^2)^{3/2}}R\,d\phi$$
+$$\implies\vec{E}(\vec{r})=\frac{1}{4\pi\epsilon_0}\frac{R\lambda}{(R^2+z^2)^{3/2}}\int_0^{2\pi}-R\hat{s}+z\hat{z}\,d\phi$$
+We can split this integral into two.
+$$\implies\vec{E}(\vec{r})=\frac{1}{4\pi\epsilon_0}\frac{R\lambda}{(R^2+z^2)^{3/2}}\left[-R\int_0^{2\pi}\hat{s}\,d\phi+z\hat{z}\int_0^{2\pi}\,d\phi\right]$$
+$$\implies\vec{E}(\vec{r})=\frac{1}{4\pi\epsilon_0}\frac{R\lambda}{(R^2+z^2)^{3/2}}\left[-R\int_0^{2\pi}\hat{s}\,d\phi+2\pi z\hat{z}\right]$$\\~\\
+
+Solving the last integral requires understanding $\hat{s}$.
+This vector always points from the center to the charge, so it is reasonable to assume that if you are looking at all angles, the total vector would end up being zero.
+This can be proven by converting $\hat{s}$ back to cartesian coordinates.
+$\hat{s}=\cos(\phi)\hat{x}+\sin(\phi)\hat{y}$.
+$$\implies\vec{E}(\vec{r})=\frac{1}{4\pi\epsilon_0}\frac{R\lambda}{(R^2+z^2)^{3/2}}\left[-R\int_0^{2\pi}\cos(\phi)\hat{x}+\sin(\phi)\hat{y}\,d\phi+2\pi z\hat{z}\right]$$
+$$\implies\vec{E}(\vec{r})=\frac{1}{4\pi\epsilon_0}\frac{R\lambda}{(R^2+z^2)^{3/2}}\left[-R\left(\sin(\phi)\hat{x}-\cos(\phi)\hat{y}\right)\Big|_0^{2\pi}+2\pi z\hat{z}\right]$$
+$$\implies\vec{E}(\vec{r})=\frac{1}{4\pi\epsilon_0}\frac{R\lambda}{(R^2+z^2)^{3/2}}\left[-R\left(\sin(2\pi)\hat{x}-\cos(2\pi)\hat{y}\right)-\left(\sin(0)\hat{x}-\cos(0)\hat{y}\right)+2\pi z\hat{z}\right]$$
+$$\implies\vec{E}(\vec{r})=\frac{1}{4\pi\epsilon_0}\frac{R\lambda}{(R^2+z^2)^{3/2}}\left[-R\left(0\hat{x}-1\hat{y}\right)-\left(0\hat{x}-1\hat{y}\right)+2\pi z\hat{z}\right]$$
+$$\implies\vec{E}(\vec{r})=\frac{1}{4\pi\epsilon_0}\frac{R\lambda}{(R^2+z^2)^{3/2}}\left[2\pi z\hat{z}\right]$$
+$$\implies\vec{E}(\vec{r})=\frac{1}{4\pi\epsilon_0}\frac{2\pi R\lambda z}{(R^2+z^2)^{3/2}}\hat{z}$$
 
 
 \end{flushleft}
