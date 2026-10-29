@@ -1,0 +1,78 @@
+\documentclass[12pt]{article}
+\usepackage{graphicx} % Required for inserting images
+\usepackage[margin=0.5in]{geometry}
+\usepackage{amsmath, amssymb}
+\usepackage{mathrsfs}
+
+
+\usepackage{soul}
+
+
+% Dr. David Brown Commands
+\newcommand{\ds}{\displaystyle}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\Q}{\mathbb{Q}}
+\newcommand{\C}{\mathbb{C}}
+
+
+% Commands to get script r
+\usepackage{calligra}
+\DeclareMathAlphabet{\mathcalligra}{T1}{calligra}{m}{n}
+\DeclareFontShape{T1}{calligra}{m}{n}{<->s*[2.2]callig15}{}
+\newcommand{\scripty}[1]{\ensuremath{\mathcalligra{#1}}}
+
+% Unit commands
+\newcommand{\degree}{\text{°}}
+\newcommand{\unitSpeed}{\frac{\text{m}}{\text{s}}}
+\newcommand{\unitAcceleration}{\frac{\text{m}}{\text{s}^2}}
+
+% Constant commands
+\newcommand{\avogadro}{6.022\times10^{23}}
+
+\newcommand{\boltzmannConstK}{1.381\times10^{-23}\frac{\text{J}}{\text{K}}}
+\newcommand{\boltzmannConstInEV}{8.617\times10^{-5}\frac{\text{eV}}{\text{K}}}
+\newcommand{\planckConst}{6.626\times10^{-34}\text{J}\cdot\text{s}}
+
+\newcommand{\atmP}{1.01325\times10^5\,\text{Pa}}
+
+% Known Value Commands
+\newcommand{\electronMass}{9.109\times10^{-31}\,\text{kg}}
+\newcommand{\protonMass}{1.673\times10^{-27}\,\text{kg}}
+
+% Commands to easily write partial derivatives
+\newcommand{\partDeriv}[2]{\frac{\partial #1}{\partial #2}}
+\newcommand{\doublePartDeriv}[2]{\frac{\partial^2 #1}{\partial^2 #2}}
+
+
+\title{Problem 2.6}
+\author{Gabriel Decker}
+
+
+\begin{document}
+
+
+\maketitle
+\begin{flushleft}
+
+
+In this problem, we find the electric field a distance $z$ above the center of a circular disk of charge with charge density $\sigma$ and radius $R$.
+For this problem, define the coordinate system such that the center of the disk is at the origin, the ring exists in the $xy$-plane, and the $\hat{z}$ direction points from the origin to the point of interest.
+Since we are dealing with a surface of charge, will use the following equation to find our electric field.
+$$\vec{E}(\vec{r})=\frac{1}{4\pi\epsilon_0}\int\frac{\sigma(\vec{r'})}{\scripty{r}^2}\hat{\scripty{r}}\,da'$$\\~\\
+
+We will use the following result from problem 2.5, where we found the electric field a distance $z$ above the center of a ring of line charge with radius $r$.
+$$\vec{E}(z,r)=\frac{1}{4\pi\epsilon_0}\frac{r\lambda}{(r^2+z^2)^{3/2}}\int_0^{2\pi}-r\hat{s}+z\hat{z}\,d\phi$$
+$$\implies\vec{E}(z,r)=\frac{1}{4\pi\epsilon_0}\frac{2\pi r\lambda z}{(r^2+z^2)^{3/2}}\hat{z}$$\\~\\
+
+You can safely make the assumption that we will treat our disk as a bunch of rings and sum up the total electric field for all the infinitesimal rings with radii between zero and $R$, but I will demonstrate that this assumption works.\\~\\
+
+Let's start by finding how $\lambda$ is related to $\sigma$.
+$\sigma$ is total charge $Q$ divided by the total surface area $\pi R^2$, so $\sigma=Q/\pi R^2$.
+One ring of the disk at radius $r$ will take a sliver of that area.
+It has area $\pi(r+dr)^2-\pi r^2=\pi(r^2+2rdr+dr^2)-\pi r^2=2\pi rdr$ (neglecting the doubly infinitesimal $dr^2$).
+
+
+\end{flushleft}
+
+\end{document}
