@@ -69,8 +69,44 @@ You can safely make the assumption that we will treat our disk as a bunch of rin
 
 Let's start by finding how $\lambda$ is related to $\sigma$.
 $\sigma$ is total charge $Q$ divided by the total surface area $\pi R^2$, so $\sigma=Q/\pi R^2$.
-One ring of the disk at radius $r$ will take a sliver of that area.
-It has area $\pi(r+dr)^2-\pi r^2=\pi(r^2+2rdr+dr^2)-\pi r^2=2\pi rdr$ (neglecting the doubly infinitesimal $dr^2$).
+It also follows that the density is the same for infinitesimal portions of the disk, so $\sigma=dq/dA$, or $dq=\sigma dA$.
+If we first think of the disk as a summation of infinitesimal rings (as in problem 2.5), we can consider things rings with radius $r$ that will take a sliver of the area of the disk.
+The charge of that ring is the charge density $\lambda$ times the circumference $2\pi r$.
+So, an infinitesimal ring of charge with radius $r$ has charge, $dq=2\pi r\lambda$.
+The rings can also be described as slivers of a disk with radius $r$ being subtracted from a disk of radius $(r+dr)$.
+This has area:
+$$dA=\pi(r+dr)^2-\pi r^2$$
+$$\implies dA=\pi(r^2+2rdr+dr^2)-\pi r^2$$
+$$\implies dA=2\pi rdr$$
+(neglecting the doubly infinitesimal $dr^2$).
+So, representing the charge that way, since $dq=\sigma dA$, this implies that $dq=2\pi\sigma rdr$.
+We have two ways to represent the same $dq$, so we can equate them.
+$$2\pi r\lambda=2\pi r\sigma dr$$
+Finally, since our problem gives us a charge density $\sigma$, we can plug that into our $\vec{E}(z,r)$ equation to use to solve our integral later.
+$$\implies\vec{E}(z,r)=\frac{1}{4\pi\epsilon_0}\frac{2\pi r\sigma zdr}{(r^2+z^2)^{3/2}}\hat{z}$$\\~\\
+
+Now, back to our original integral.
+It turns out that our $\scripty{r}$ and $\hat{\scripty{r}}$ are the same as in problem 2.5, except now our $r$ varies, unlike the constant $R$ ring.
+So, $\scripty{r}=\sqrt{r^2+z^2}$ and $\hat{\scripty{r}}=(-r\hat{s}+z\hat{z})/\scripty{r}$.
+$\hat{s}$ is the same as in problem 2.5 (and cylindrical coordinates).
+We will paramaterize $da'$ in polar coordinates, so $da'=rdrd\phi$ with $r$ going from zero to $R$ and $\phi$ from zero to $2\pi$.\\~\\
+
+This all turns our integral into the following.
+$$\vec{E}(\vec{r})=\frac{1}{4\pi\epsilon_0}\int\frac{\sigma(\vec{r'})}{\scripty{r}^2}\hat{\scripty{r}}\,da'$$
+$$\implies\vec{E}(\vec{r})=\frac{1}{4\pi\epsilon_0}\sigma\int_0^{2\pi}\int_0^R \frac{-r\hat{s}+z\hat{z}}{(r^2+z^2)^{3/2}}\,rdrd\phi$$
+$$\implies\vec{E}(\vec{r})=\int_0^R\frac{1}{4\pi\epsilon_0}\frac{r\sigma}{(r^2+z^2)^{3/2}}\int_0^{2\pi} (-r\hat{s}+z\hat{z})\,d\phi dr$$\\~\\
+
+By the result from 2.5 shown at the top of my solution (and the solution in terms of $\sigma$ and the fact that $\lambda=\sigma dr$), this implies the following.
+$$\implies\vec{E}(\vec{r})=\int_0^R\frac{1}{4\pi\epsilon_0}\frac{2\pi r\sigma z}{(r^2+z^2)^{3/2}}\,dr\,\hat{z}$$
+$$\implies\vec{E}(\vec{r})=\frac{1}{4\pi\epsilon_0}(2\pi\sigma z)\hat{z}\int_0^R\frac{r}{(r^2+z^2)^{3/2}}\,dr$$
+Using the substitution: $u=r^2+z^2$, so $du=2r\,dr$,
+$$\implies\vec{E}(\vec{r})=\frac{1}{4\pi\epsilon_0}(\pi\sigma z)\hat{z}\int_{z^2}^{R^2+z^2}\frac{1}{(u)^{3/2}}\,du$$
+$$\implies\vec{E}(\vec{r})=-\frac{1}{4\pi\epsilon_0}(\pi\sigma z)\hat{z}\cdot2(\frac{1}{\sqrt{u}})\Big|_{z^2}^{R^2+z^2}$$
+$$\implies\vec{E}(\vec{r})=-\frac{1}{4\pi\epsilon_0}(\pi\sigma z)\hat{z}\cdot2(\frac{1}{\sqrt{R^2+z^2}}-\frac{1}{\sqrt{z^2}})$$
+$$\implies\vec{E}(\vec{r})=\frac{\sigma}{2\epsilon_0}z\left(\frac{1}{z}-\frac{1}{\sqrt{R^2+z^2}}\right)\hat{z}$$
+$$\implies\vec{E}(z)=\frac{\sigma}{2\epsilon_0}\left(1-\frac{z}{\sqrt{R^2+z^2}}\right)\hat{z}$$\\~\\
+
+As $R\rightarrow\infty$, this implies that $\vec{E}$ is constant at all points above the disk (or infinite sheet of charge).
 
 
 \end{flushleft}
