@@ -1,0 +1,135 @@
+\documentclass[12pt]{article}
+\usepackage{graphicx} % Required for inserting images
+\usepackage[margin=0.5in]{geometry}
+\usepackage{amsmath, amssymb}
+\usepackage{mathrsfs}
+
+
+\usepackage{soul}
+
+
+% Dr. David Brown Commands
+\newcommand{\ds}{\displaystyle}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\Q}{\mathbb{Q}}
+\newcommand{\C}{\mathbb{C}}
+
+
+% Commands to get script r
+\usepackage{calligra}
+\DeclareMathAlphabet{\mathcalligra}{T1}{calligra}{m}{n}
+\DeclareFontShape{T1}{calligra}{m}{n}{<->s*[2.2]callig15}{}
+\newcommand{\scripty}[1]{\ensuremath{\mathcalligra{#1}}}
+
+% Unit commands
+\newcommand{\degree}{\text{°}}
+\newcommand{\unitSpeed}{\frac{\text{m}}{\text{s}}}
+\newcommand{\unitAcceleration}{\frac{\text{m}}{\text{s}^2}}
+
+% Constant commands
+\newcommand{\avogadro}{6.022\times10^{23}}
+
+\newcommand{\boltzmannConstK}{1.381\times10^{-23}\frac{\text{J}}{\text{K}}}
+\newcommand{\boltzmannConstInEV}{8.617\times10^{-5}\frac{\text{eV}}{\text{K}}}
+\newcommand{\planckConst}{6.626\times10^{-34}\text{J}\cdot\text{s}}
+
+\newcommand{\atmP}{1.01325\times10^5\,\text{Pa}}
+
+% Known Value Commands
+\newcommand{\electronMass}{9.109\times10^{-31}\,\text{kg}}
+\newcommand{\protonMass}{1.673\times10^{-27}\,\text{kg}}
+
+% Commands to easily write partial derivatives
+\newcommand{\partDeriv}[2]{\frac{\partial #1}{\partial #2}}
+\newcommand{\doublePartDeriv}[2]{\frac{\partial^2 #1}{\partial^2 #2}}
+
+
+\title{Problem 2.7}
+\author{Gabriel Decker}
+
+
+\begin{document}
+
+
+\maketitle
+\begin{flushleft}
+
+
+In this problem, we find the electric field a distance $z$ above the center of a spherical shell of charge with density $\sigma$ and radius $R$.
+We will consider the case of when $z<R$ and $z>R$, and also put the answer in terms of the total charge $Q$.
+For this problem, we will use spherical coordinates, with $\hat{z}$ being the polar axis that the polar angle $\theta$ is measured against.
+With the center of the spherical shell of charge being set as the origin, $\hat{z}$ will be defined as in the direction pointing from the center to the point of interest a distance $z$ from the center.
+This means that the azimuthal angle is measured by projecting the point into the $xy$-plane and taking the angle from the $\hat{x}$ axis (which I won't specifically define since it doesn't matter to me like the $\hat{z}$ axis does).
+Since we are dealing with a surface of charge, will use the following equation to find our electric field.
+$$\vec{E}(\vec{r})=\frac{1}{4\pi\epsilon_0}\int\frac{\sigma(\vec{r'})}{\scripty{r}^2}\hat{\scripty{r}}\,da'$$\\~\\
+
+We are also directed to use the law of cosines:
+$$c^2=a^2+b^2-2ab\cos(C)$$\\~\\
+
+We'll start by using cartesian-spherical coordinate conversions to describe $\hat{\scripty{r}}$ in cartesian unit vectors, but spherical coordinate values $(r,\theta,\phi)$.
+$\vec{r}=z\hat{z}$, and for a given portion of the charged sphere, it has coordinates $\vec{r'}=R\sin(\theta)\cos(\phi)\hat{x}+R\sin(\theta)\sin(\phi)\hat{y}+R\cos(\theta)\hat{z}$.
+So, this implies the following.
+$$\vec{\scripty{r}}=-R\sin(\theta)\cos(\phi)\hat{x}-R\sin(\theta)\sin(\phi)\hat{y}+(z-R\cos(\theta))\hat{z}$$\\~\\
+
+By the law of cosines and the triangle shown in Figure 2.11, the triangle formed by connected sides of length $z$, $R$, and $\scripty{r}$ with the polar angle $\theta$ being the opposite angle of the side $\scripty{r}$ describes $\scripty{r}$ as the following.
+$$\scripty{r}=\sqrt{R^2+z^2-2Rz\cos(\theta)}$$
+Note the lack of $\phi$ dependence.\\~\\
+
+Finally, since we're dealing with a spherical shell of charge, this implies that we can parameterize $da'$ as a spherical surface with radius $R$.
+This is known to be $da'=R^2\sin(\theta)\,d\theta d\phi$.\\~\\
+
+Before combining everything into the integral, let's consider the symmetry of the situation.
+Let's assume that the electric field at the point of interest has an $\hat{x}$ or $\hat{y}$ component.
+This implies that some side of the sphere has more charge than another side, or that there is an amount of charge on one side of the sphere that isn't matched on the other side, causing an imbalance.
+However, our system is a spherical shell of charge with uniform density, so for each bit of charge one one side, it will always be matched by the other.
+This is also corroborated with the fact that the distance from a bit of charge to the point of interest $\scripty{r}$ has no $\phi$ dependence, only $\theta$.
+You can also think of it as the spherical shell is made up of a bunch of concentric rings of charge (as in problem 2.5), all centered about the $\hat{z}$ axis.
+We know from that problem that the resulting electric field always points in the direction of the point above the center (when measuring at the center axis), so that will be true for us as well.
+So, this all implies that the electric field inside and outside the spherical shell of charge will always point in the direction of that point from the origin ($\hat{z}$), and thus we get the following.
+$$\vec{E}=E_z\hat{z}$$
+So, when we plug everything in, we can ignore the $\hat{x}$ and $\hat{y}$ dependencies.\\~\\
+
+Finally, we can plug everyting in.
+Recall that $\hat{v}=\vec{v}/v$.
+$$\vec{E}(\vec{r})=\frac{1}{4\pi\epsilon_0}\int\frac{\sigma(\vec{r'})}{\scripty{r}^2}\hat{\scripty{r}}\,da'$$
+$$\implies\vec{E}(\vec{r})=\frac{1}{4\pi\epsilon_0}\sigma\int_0^{\pi}\int_0^{2\pi}\frac{-R\sin(\theta)\cos(\phi)\hat{x}-R\sin(\theta)\sin(\phi)\hat{y}+(z-R\cos(\theta))\hat{z}}{\scripty{r}^3}R^2\sin(\theta)\,d\phi d\theta$$
+We could split this into three integrals with our different vector components, but we know by our symmetry that we can skip that, so we can simplify this to the following integral.
+$$\implies\vec{E}(\vec{r})=\frac{1}{4\pi\epsilon_0}R^2\sigma\hat{z}\int_0^{\pi}\int_0^{2\pi}\frac{(z-R\cos(\theta))}{\scripty{r}^3}\sin(\theta)\,d\phi d\theta$$
+Plugging in our $\scripty{r}$ implies the following.
+$$\implies\vec{E}(\vec{r})=\frac{1}{4\pi\epsilon_0}R^2\sigma\hat{z}\int_0^{\pi}\int_0^{2\pi}\frac{(z-R\cos(\theta))}{(R^2+z^2-2Rz\cos(\theta))^{3/2}}\sin(\theta)\,d\phi d\theta$$
+Note the lack of $\phi$-dependence, implying the following.
+$$\implies\vec{E}(\vec{r})=\frac{2\pi R^2\sigma}{4\pi\epsilon_0}\hat{z}\int_0^{\pi}\frac{(z-R\cos(\theta))}{(R^2+z^2-2Rz\cos(\theta))^{3/2}}\sin(\theta)\,d\theta$$\\~\\
+
+I'm not going to do this integral, but you can use a substitution of $u=\cos(\theta)$ and $v=2-Rzu+z^2+R^2$ to solve it, yielding the following result.
+$$\implies\vec{E}(\vec{r})=\frac{1}{4\pi\epsilon_0}\frac{2\pi R^2\sigma}{z^2}\left[\frac{z+R}{\sqrt{z^2+2Rz+R^2}}+\frac{z-R}{\sqrt{z^2-2Rz+R^2}}\right]\hat{z}$$
+$$\implies\vec{E}(\vec{r})=\frac{1}{4\pi\epsilon_0}\frac{2\pi R^2\sigma}{z^2}\left[\frac{z+R}{\sqrt{(z+R)^2}}+\frac{z-R}{\sqrt{(z-R)^2}}\right]\hat{z}$$
+Since $z$ and $R$ are always positive and $\sqrt{x^2}=|X|$,
+$$\implies\vec{E}(\vec{r})=\frac{1}{4\pi\epsilon_0}\frac{2\pi R^2\sigma}{z^2}\left[\frac{z+R}{|z+R|}+\frac{z-R}{|z-R|}\right]\hat{z}$$
+$$\implies\vec{E}(\vec{r})=\frac{1}{4\pi\epsilon_0}\frac{2\pi R^2\sigma}{z^2}\left[1+\frac{z-R}{|z-R|}\right]\hat{z}$$\\~\\
+
+None of this has required distinguishing between $z>R$ and $z<R$, but we're almost there.
+Let's finally make this equation depend on the total charge $Q$ instead of $\sigma$.
+Our spherical shell of charge has a total surface area $4\pi R^2$.
+The charge density $\sigma$ is charge per area, so $\sigma=Q/4\pi R^2$.
+This implies the following.
+$$\implies\vec{E}(\vec{r})=\frac{1}{4\pi\epsilon_0}\frac{4\pi R^2\sigma}{2z^2}\left[1+\frac{z-R}{|z-R|}\right]\hat{z}$$
+$$\implies\vec{E}(\vec{r})=\frac{1}{4\pi\epsilon_0}\frac{Q}{2z^2}\left[1+\frac{z-R}{|z-R|}\right]\hat{z}$$\\~\\
+
+You can probably see where we're going with this.
+If $z<R$, or the point of interest in inside the shell, then $|z-R|=-(z-R)$.
+$$\implies\vec{E}(\vec{r})=\frac{1}{4\pi\epsilon_0}\frac{Q}{2z^2}\left[1-\frac{z-R}{z-R}\right]\hat{z}$$
+$$\implies\vec{E}(\vec{r})=\frac{1}{4\pi\epsilon_0}\frac{Q}{2z^2}\left[1-1\right]\hat{z}$$
+$$\implies\vec{E}(\vec{r})=0\hat{z},\ \ \text{(inside shell)}$$\\~\\
+
+If $z>R$, or the point of interest in outside the shell, then $|z-R|=z-R$.
+$$\implies\vec{E}(\vec{r})=\frac{1}{4\pi\epsilon_0}\frac{Q}{2z^2}\left[1+\frac{z-R}{z-R}\right]\hat{z}$$
+$$\implies\vec{E}(\vec{r})=\frac{1}{4\pi\epsilon_0}\frac{Q}{2z^2}\left[1+1\right]\hat{z}$$
+$$\implies\vec{E}(\vec{r})=\frac{1}{4\pi\epsilon_0}\frac{Q}{z^2}\hat{z},\ \ \text{(outside shell)}$$
+This means that when inside the shell, there is no electric field, and when outside the shell, the electric field is the same as if the system were a point charge with charge $Q$ at the center.
+
+
+
+\end{flushleft}
+
+\end{document}
