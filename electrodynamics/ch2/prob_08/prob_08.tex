@@ -1,0 +1,91 @@
+\documentclass[12pt]{article}
+\usepackage{graphicx} % Required for inserting images
+\usepackage[margin=0.5in]{geometry}
+\usepackage{amsmath, amssymb}
+\usepackage{mathrsfs}
+
+
+\usepackage{soul}
+
+
+% Dr. David Brown Commands
+\newcommand{\ds}{\displaystyle}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\Q}{\mathbb{Q}}
+\newcommand{\C}{\mathbb{C}}
+
+
+% Commands to get script r
+\usepackage{calligra}
+\DeclareMathAlphabet{\mathcalligra}{T1}{calligra}{m}{n}
+\DeclareFontShape{T1}{calligra}{m}{n}{<->s*[2.2]callig15}{}
+\newcommand{\scripty}[1]{\ensuremath{\mathcalligra{#1}}}
+
+% Unit commands
+\newcommand{\degree}{\text{°}}
+\newcommand{\unitSpeed}{\frac{\text{m}}{\text{s}}}
+\newcommand{\unitAcceleration}{\frac{\text{m}}{\text{s}^2}}
+
+% Constant commands
+\newcommand{\avogadro}{6.022\times10^{23}}
+
+\newcommand{\boltzmannConstK}{1.381\times10^{-23}\frac{\text{J}}{\text{K}}}
+\newcommand{\boltzmannConstInEV}{8.617\times10^{-5}\frac{\text{eV}}{\text{K}}}
+\newcommand{\planckConst}{6.626\times10^{-34}\text{J}\cdot\text{s}}
+
+\newcommand{\atmP}{1.01325\times10^5\,\text{Pa}}
+
+% Known Value Commands
+\newcommand{\electronMass}{9.109\times10^{-31}\,\text{kg}}
+\newcommand{\protonMass}{1.673\times10^{-27}\,\text{kg}}
+
+% Commands to easily write partial derivatives
+\newcommand{\partDeriv}[2]{\frac{\partial #1}{\partial #2}}
+\newcommand{\doublePartDeriv}[2]{\frac{\partial^2 #1}{\partial^2 #2}}
+
+
+\title{Problem 2.8}
+\author{Gabriel Decker}
+
+
+\begin{document}
+
+
+\maketitle
+\begin{flushleft}
+
+
+In this problem, we find the electric field a distance $z$ above the center of a sphere of charge with density $\rho$ and radius $R$.
+We will consider the case of when $z<R$ and $z>R$, and also put the answer in terms of the total charge $Q$.
+We will use the result of problem 2.7, wherein we found that given a spherical shell of charge with radius $r$ and total charge $q$, the electric field inside the shell is:
+$$\vec{E}(\vec{r})=0\hat{z},\ \ \text{(inside shell)}$$
+and outside the shell is:
+$$\vec{E}(\vec{r})=\frac{1}{4\pi\epsilon_0}\frac{Q}{z^2}\hat{z},\ \ \text{(outside shell)}$$
+This means that when inside the shell, there is no electric field, and when outside the shell, the electric field is the same as if the system were a point charge with charge $Q$ at the center.\\~\\
+
+We can model our sphere of charge as a superposition of a series of spherical shells with radii $r$ ranging from zero to $R$.
+If $z>R$, then that means that the point of interest is outside each of the shells, so that means that the entire charge $Q$ can be treated as a point charge at the center of the sphere, and thus we get the following field.
+$$\vec{E}(\vec{r})=\frac{1}{4\pi\epsilon_0}\frac{Q}{z^2}\hat{z},\ \ \text{(outside sphere)}$$\\~\\
+
+If $z<R$, then the system is a bit trickier.
+$z<R$ implies that you're outside some of the slices/shells, but inside other ones.
+We know that if you're looking inside a spherical shell of charge, then there is no electric field from that sphere of charge.
+For the shells that we're outside, we can treat their charge as a point charge at the center of the sphere, but it's not the total charge $Q$, it's some fraction of it.\\~\\
+
+We have a uniform density $\rho=Q/\frac{4}{3}\pi R^3$.
+Given some distance $z$ from the center, the shells that the point is outside take up a volume $\frac{4}{3}\pi z^3$, and since the charge density is contant, this implies the following charge contained $Q_\text{cont}$.
+$$\rho=\frac{Q}{\frac{4}{3}\pi R^3}\ \text{and}\  \rho=\frac{q_\text{cont}}{\frac{4}{3}\pi z^3}$$
+$$\implies\frac{Q}{\frac{4}{3}\pi R^3}=\frac{q_\text{cont}}{\frac{4}{3}\pi z^3}$$
+$$\implies q_\text{cont}=Q\frac{z^3}{R^3}$$\\~\\
+
+So, when $z<R$, we get the following electric field.
+$$\vec{E}(\vec{r})=\frac{1}{4\pi\epsilon_0}\frac{q_\text{contained}}{z^2}\hat{z},\ \ \text{(inside sphere)}$$
+$$\implies\vec{E}(\vec{r})=\frac{1}{4\pi\epsilon_0}\frac{Qz}{R^3}\hat{z},\ \ \text{(inside sphere)}$$\\~\\
+
+I'm not going to plot it right now, but inside the sphere, the electric field magnitude $E$ inceases linearly with $z$, and once outside the sphere, it immediately starts decreasing, being inversely proportional to $z^2$.
+
+
+\end{flushleft}
+
+\end{document}
